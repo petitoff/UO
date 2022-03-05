@@ -9,20 +9,21 @@ namespace lista_1
         {
             Console.WriteLine("Zadanie 1");
             Console.Write("Podaj długość boku: ");
-            int dlugoscBoku = Convert.ToInt32(Console.ReadLine());
+            int dlugoscBoku = GetInputFromUser();
             Szescian(dlugoscBoku);
 
             Console.WriteLine("\nZadanie 2");
             Console.Write("Podaj a: ");
-            int a = Convert.ToInt32(Console.ReadLine());
+            int a = GetInputFromUser();
+
             Console.Write("Podaj b: ");
-            int b = Convert.ToInt32(Console.ReadLine());
+            int b = GetInputFromUser();
             double wynikSumy = Suma(a, b);
             Console.WriteLine(wynikSumy);
 
             Console.WriteLine("\nZadanie 3");
             Console.Write("Podaj liczbe: ");
-            int c = Convert.ToInt32(Console.ReadLine());
+            int c = GetInputFromUser();
             WszystkieDzielniki(c);
 
             Console.WriteLine("\nZadanie 4");
@@ -31,6 +32,23 @@ namespace lista_1
 
             Console.WriteLine("\nZadanie 5");
             TabliczaMnozenia();
+        }
+
+        static int GetInputFromUser()
+        {
+            // walidacja wejścia
+            // funkcja zwraca typ int
+            try
+            {
+                int userInput = Convert.ToInt32(Console.ReadLine());
+                return userInput;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Błąd!");
+                Console.WriteLine("Został wprowadzony niepoprawny typ danych!");
+                return 0;
+            }
         }
         static void Szescian(double a)
         {
@@ -73,7 +91,7 @@ namespace lista_1
             while (true)
             {
                 Console.Write("Podaj liczbe: ");
-                int input = Convert.ToInt32(Console.ReadLine());
+                int input = GetInputFromUser();
                 if (input == 0)
                 {
                     if (list.Count == 0)
@@ -101,7 +119,7 @@ namespace lista_1
         static void TabliczaMnozenia()
         {
             Console.Write("Podaj liczbe: ");
-            int a = Convert.ToInt32(Console.ReadLine());
+            int a = GetInputFromUser();
             for (int i = 1; i <= a; i++)
             {
                 for (int j = 1; j <= a; j++)
