@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace lista_1
 {
@@ -7,6 +8,8 @@ namespace lista_1
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8; // Dodanie obsługi polskich znaków diakrytycznych
+
             Console.WriteLine("Zadanie 1");
             Console.Write("Podaj długość boku: ");
             int dlugoscBoku = GetInputFromUser();
