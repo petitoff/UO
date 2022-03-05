@@ -4,3 +4,10 @@
 \\dc\stud_homes\134024\Documents\csharp\1\lista-1\lista-1\bin\Debug\lista-1.pdb
 \\dc\stud_homes\134024\Documents\csharp\1\lista-1\lista-1\obj\Debug\lista-1.exe
 \\dc\stud_homes\134024\Documents\csharp\1\lista-1\lista-1\obj\Debug\lista-1.pdb
+C:\Users\petit\Desktop\repos\UO\programowanie-2\lista-1\lista-1\bin\Debug\lista-1.exe.config
+C:\Users\petit\Desktop\repos\UO\programowanie-2\lista-1\lista-1\bin\Debug\lista-1.exe
+C:\Users\petit\Desktop\repos\UO\programowanie-2\lista-1\lista-1\bin\Debug\lista-1.pdb
+C:\Users\petit\Desktop\repos\UO\programowanie-2\lista-1\lista-1\obj\Debug\lista-1.csprojAssemblyReference.cache
+C:\Users\petit\Desktop\repos\UO\programowanie-2\lista-1\lista-1\obj\Debug\lista-1.csproj.CoreCompileInputs.cache
+C:\Users\petit\Desktop\repos\UO\programowanie-2\lista-1\lista-1\obj\Debug\lista-1.exe
+C:\Users\petit\Desktop\repos\UO\programowanie-2\lista-1\lista-1\obj\Debug\lista-1.pdb

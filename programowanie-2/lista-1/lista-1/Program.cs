@@ -10,10 +10,12 @@ namespace lista_1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Zadanie 1");
             Console.Write("Podaj długość boku: ");
             int dlugoscBoku = Convert.ToInt32(Console.ReadLine());
             Szescian(dlugoscBoku);
 
+            Console.WriteLine("\nZadanie 2");
             Console.Write("Podaj a: ");
             int a = Convert.ToInt32(Console.ReadLine());
             Console.Write("Podaj b: ");
@@ -21,13 +23,17 @@ namespace lista_1
             double wynikSumy = Suma(a, b);
             Console.WriteLine(wynikSumy);
 
+            Console.WriteLine("\nZadanie 3");
             Console.Write("Podaj liczbe: ");
             int c = Convert.ToInt32(Console.ReadLine());
             WszystkieDzielniki(c);
 
+            Console.WriteLine("\nZadanie 4");
             int liczbaMax = Max();
-            Console.WriteLine(liczbaMax);
+            Console.WriteLine($"Największa liczba to: {liczbaMax}");
 
+            Console.WriteLine("\nZadanie 5");
+            TabliczaMnozenia();
         }
         static void Szescian(double a)
         {
@@ -72,7 +78,16 @@ namespace lista_1
                 Console.Write("Podaj liczbe: ");
                 int input = Convert.ToInt32(Console.ReadLine());
                 if (input == 0)
-                    break;
+                {
+                    if (list.Count == 0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
                 list.Add(input);
             }
             int maxLiczba = list[0];
@@ -90,7 +105,14 @@ namespace lista_1
         {
             Console.Write("Podaj liczbe: ");
             int a = Convert.ToInt32(Console.ReadLine());
-            for
+            for (int i = 1; i <= a; i++)
+            {
+                for (int j = 1; j <= a; j++)
+                {
+                    Console.Write(i * j + "\t");
+                }
+                Console.Write("\n");
+            }
         }
     }
 }
