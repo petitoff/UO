@@ -2,7 +2,7 @@
 *.suo
 *.user
 _ReSharper.*
-bin/
-debug/
+*bin\
 obj
 packages
+*.exe
