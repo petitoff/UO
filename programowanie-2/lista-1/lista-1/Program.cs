@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace lista_1
 {
@@ -45,15 +42,15 @@ namespace lista_1
         static double Suma(int a, int b)
         {
             int wynik = a + b;
-            if(0<wynik && wynik>=10)
+            if (0 < wynik && wynik >= 10)
             {
                 return Math.Pow(a, 3) * Math.Pow(b, 3);
             }
-            else if(10<wynik && wynik >=100)
+            else if (10 < wynik && wynik >= 100)
             {
                 return a + b;
             }
-            else if(wynik > 100)
+            else if (wynik > 100)
             {
                 return a - b;
             }
@@ -72,8 +69,8 @@ namespace lista_1
         }
         static int Max()
         {
-             List<int> list = new List<int>();
-            while(true)
+            var list = new List<int>();
+            while (true)
             {
                 Console.Write("Podaj liczbe: ");
                 int input = Convert.ToInt32(Console.ReadLine());
