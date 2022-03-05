@@ -5,5 +5,4 @@ _ReSharper.*
 bin
 obj
 packages
-packages
 *.exe
