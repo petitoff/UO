@@ -58,7 +58,6 @@ namespace lista_1
             double pole = Math.Pow(a, 2) * 6;
             double objetosc = Math.Pow(a, 3D);
             Console.WriteLine($"Pole sześcianu wynosi: {pole} a objętość {objetosc}");
-
         }
         static double Suma(int a, int b)
         {
@@ -115,8 +114,6 @@ namespace lista_1
                 if (maxLiczba < item)
                     maxLiczba = item;
             }
-
-
             return maxLiczba;
         }
         static void TabliczaMnozenia()
