@@ -62,12 +62,9 @@ namespace lista_1
         static double Suma(int a, int b)
         {
             int wynik = a + b;
-            if (0 < wynik && wynik >= 10)
-            {
+            if (0 < wynik && wynik <= 10)
                 return Math.Pow(a, 3) * Math.Pow(b, 3);
-            }
-            else if (10 < wynik && wynik >= 100)
-            {
+            else if (10 < wynik && wynik <= 100)
                 return a + b;
             }
             else if (wynik > 100)
