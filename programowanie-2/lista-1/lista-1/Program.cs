@@ -46,7 +46,7 @@ namespace lista_1
                 int userInput = Convert.ToInt32(Console.ReadLine());
                 return userInput;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Console.WriteLine("Błąd!");
                 Console.WriteLine("Został wprowadzony niepoprawny typ danych!");
@@ -57,7 +57,7 @@ namespace lista_1
         {
             double pole = Math.Pow(a, 2) * 6;
             double objetosc = Math.Pow(a, 3D);
-            Console.WriteLine($"Pole sześcianu wynosi: {pole} a objętość {objetosc}");
+            Console.WriteLine($"Pole sześcianu wynosi: {pole}cm2 a objętość {objetosc}cm3");
         }
         static double Suma(int a, int b)
         {
@@ -66,11 +66,8 @@ namespace lista_1
                 return Math.Pow(a, 3) * Math.Pow(b, 3);
             else if (10 < wynik && wynik <= 100)
                 return a + b;
-            }
             else if (wynik > 100)
-            {
                 return a - b;
-            }
             return 0;
         }
         static void WszystkieDzielniki(int liczba)
@@ -97,10 +94,7 @@ namespace lista_1
                     {
                         return 0;
                     }
-                    else
-                    {
-                        break;
-                    }
+                    break;
                 }
                 list.Add(input);
             }
