@@ -67,14 +67,18 @@ namespace lista_2
             if (e.KeyChar == (char)Keys.Return)
             {
                 e.Handled = true; // prevent beep
+
                 if (textBox5.Text == "0")
                 {
+                    textBox5.Text = "";
                     if (ListN.Count() != 0) label13.Text = "Największą liczbą jest " + ListN.Max().ToString();
+                    ListN.RemoveRange(0, ListN.Count);
                     return;
                 }
                 var obliczanie = new Calculator();
                 ListN.Add(obliczanie.ConvertToNumber(textBox5.Text));
                 textBox5.Text = "";
+                label13.Text = "";
             }
 
         }
