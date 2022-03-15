@@ -24,7 +24,6 @@ namespace lista_2
             int objetosc = obliczanie.SzescianObjetosc(textBoxInput);
             label3.Text = $"Pole szceścianu wynosi {pole} cm2 a objetość {objetosc} cm3";
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (textBox2.Text != "" && textBox3.Text != "")
@@ -35,7 +34,6 @@ namespace lista_2
                 label7.Text = $"wynik: {result}";
             }
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             label9.Text = $"Wyświetlanie dzielników liczby {textBox4.Text}";
@@ -59,11 +57,9 @@ namespace lista_2
                 }
             }
         }
-
         public List<int> ListN = new List<int>();
         public void textBox5_TextChanged(object sender, KeyPressEventArgs e)
         {
-
             if (e.KeyChar == (char)Keys.Return)
             {
                 e.Handled = true; // prevent beep
@@ -80,9 +76,7 @@ namespace lista_2
                 textBox5.Text = "";
                 label13.Text = "";
             }
-
         }
-
         private void TabliczkaMnozenia()
         {
             label16.Text = "";
@@ -98,12 +92,10 @@ namespace lista_2
                 label16.Text += "\n";
             }
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             TabliczkaMnozenia();
         }
-
         private void textBox6_TextChanged(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
