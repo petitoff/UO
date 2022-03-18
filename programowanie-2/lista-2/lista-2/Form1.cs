@@ -16,29 +16,68 @@ namespace lista_2
         {
             InitializeComponent();
         }
+
+        public int ConvertToNumber(string str)
+        {
+            try
+            {
+                return Convert.ToInt32(str);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Błąd! Wprowadzono niepoprawny typ danych!");
+                return 0;
+            }
+        }
+
+        public void Szescian(int a)
+        {
+            if (a < 0)
+            {
+                label3.Text = "Podałeś nieprawidłowe wymiary!";
+                return;
+            }
+
+            int pole = a * a * 6;
+            int objetosc = a * a * a;
+            label3.Text = $"Pole szceścianu wynosi {pole} cm2 a objetość {objetosc} cm3";
+        }
+
         public void button1_Click(object sender, EventArgs e)
         {
-            var textBoxInput = textBox1.Text;
-            var obliczanie = new Calculator();
-            int pole = obliczanie.SzescianPole(textBoxInput);
-            int objetosc = obliczanie.SzescianObjetosc(textBoxInput);
-            label3.Text = $"Pole szceścianu wynosi {pole} cm2 a objetość {objetosc} cm3";
+            Szescian(ConvertToNumber(textBox1.Text));
+        }
+
+        private int Suma(int a, int b)
+        {
+            int wynik = a + b;
+            if (0 < wynik && wynik <= 10)
+            {
+                return a * a * a * b * b * b;
+            }
+            else if (10 < wynik && wynik <= 100)
+            {
+                return wynik;
+            }
+            else if (wynik > 100)
+            {
+                return a - b;
+            }
+            return 0;
         }
         private void button2_Click(object sender, EventArgs e)
         {
             if (textBox2.Text != "" && textBox3.Text != "")
             {
-                var obliczanie = new Calculator();
-                int result = obliczanie.Suma(textBox2.Text, textBox3.Text);
-
+                int result = Suma(ConvertToNumber(textBox2.Text), ConvertToNumber(textBox3.Text));
                 label7.Text = $"wynik: {result}";
             }
         }
+
         private void button3_Click(object sender, EventArgs e)
         {
             label9.Text = $"Wyświetlanie dzielników liczby {textBox4.Text}";
-            var obliczanie = new Calculator();
-            int liczba = obliczanie.ConvertToNumber(textBox4.Text);
+            int liczba = ConvertToNumber(textBox4.Text);
 
             label10.Text = "";
             int ifBreak = 0;
@@ -57,7 +96,14 @@ namespace lista_2
                 }
             }
         }
+
         public List<int> ListN = new List<int>();
+        private int Maks()
+        {
+            if (ListN.Count() != 0) label13.Text = "Największą liczbą jest " + ListN.Max();
+            return ListN.Max();
+        }
+
         public void textBox5_TextChanged(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
@@ -67,21 +113,20 @@ namespace lista_2
                 if (textBox5.Text == "0")
                 {
                     textBox5.Text = "";
-                    if (ListN.Count() != 0) label13.Text = "Największą liczbą jest " + ListN.Max().ToString();
+                    Maks();
                     ListN.RemoveRange(0, ListN.Count);
                     return;
                 }
-                var obliczanie = new Calculator();
-                ListN.Add(obliczanie.ConvertToNumber(textBox5.Text));
+                ListN.Add(ConvertToNumber(textBox5.Text));
                 textBox5.Text = "";
                 label13.Text = "";
             }
         }
+
         private void TabliczkaMnozenia()
         {
             label16.Text = "";
-            var obliczanie = new Calculator();
-            int a = obliczanie.ConvertToNumber(textBox6.Text);
+            int a = ConvertToNumber(textBox6.Text);
 
             for (int i = 1; i <= a; i++)
             {
@@ -92,10 +137,12 @@ namespace lista_2
                 label16.Text += "\n";
             }
         }
+
         private void button4_Click(object sender, EventArgs e)
         {
             TabliczkaMnozenia();
         }
+
         private void textBox6_TextChanged(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
