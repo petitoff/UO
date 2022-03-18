@@ -137,7 +137,6 @@ namespace lista_2
                 }
 
                 listBox1.Items.Add(wyswietlanieTabeli ?? string.Empty);
-                //label16.Text += "\n";
             }
         }
 
