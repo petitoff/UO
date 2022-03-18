@@ -127,14 +127,17 @@ namespace lista_2
         {
             label16.Text = "";
             int a = ConvertToNumber(textBox6.Text);
-
+            listBox1.Items.Clear();
             for (int i = 1; i <= a; i++)
             {
+                string wyswietlanieTabeli = null;
                 for (int j = 1; j <= a; j++)
                 {
-                    label16.Text += i * j + @"    ";
+                    wyswietlanieTabeli += i * j + "\t";
                 }
-                label16.Text += "\n";
+
+                listBox1.Items.Add(wyswietlanieTabeli ?? string.Empty);
+                //label16.Text += "\n";
             }
         }
 

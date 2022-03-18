@@ -55,6 +55,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -343,6 +344,7 @@
             // tabPage5
             // 
             this.tabPage5.AutoScroll = true;
+            this.tabPage5.Controls.Add(this.listBox1);
             this.tabPage5.Controls.Add(this.button4);
             this.tabPage5.Controls.Add(this.label16);
             this.tabPage5.Controls.Add(this.label15);
@@ -354,6 +356,15 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Zadanie 5";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.Location = new System.Drawing.Point(40, 216);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(697, 173);
+            this.listBox1.TabIndex = 9;
             // 
             // button4
             // 
@@ -367,11 +378,10 @@
             // 
             // label16
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(34, 180);
+            this.label16.Location = new System.Drawing.Point(0, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(0, 13);
-            this.label16.TabIndex = 7;
+            this.label16.Size = new System.Drawing.Size(100, 23);
+            this.label16.TabIndex = 10;
             // 
             // label15
             // 
@@ -460,6 +470,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
