@@ -113,7 +113,7 @@ namespace lista_2
                 if (textBox5.Text == "0")
                 {
                     textBox5.Text = "";
-                    Maks();
+                    int result = Maks();
                     ListN.RemoveRange(0, ListN.Count);
                     return;
                 }
