@@ -23,7 +23,7 @@ namespace lista_2
             {
                 return Convert.ToInt32(str);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("Błąd! Wprowadzono niepoprawny typ danych!");
                 return 0;
