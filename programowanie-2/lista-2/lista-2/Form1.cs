@@ -81,12 +81,11 @@ namespace lista_2
 
             label10.Text = "";
             int ifBreak = 0;
-            for (int i = 1; i <= liczba; i++)
+            for (int i = 1; i <= liczba / 2; i++)
             {
                 if (liczba % i == 0)
                 {
-                    label10.Text += $"{i}";
-                    if (i != liczba) label10.Text += ", ";
+                    label10.Text += $"{i}, ";
                     ifBreak++;
                     if (ifBreak > 13)
                     {
@@ -95,6 +94,7 @@ namespace lista_2
                     }
                 }
             }
+            label10.Text += $"{liczba}";
         }
 
         public List<int> ListN = new List<int>();
