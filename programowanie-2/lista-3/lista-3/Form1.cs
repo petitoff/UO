@@ -64,5 +64,12 @@ namespace lista_3
             this.Hide();
             form2.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            this.Hide();
+            form3.ShowDialog();
+        }
     }
 }
