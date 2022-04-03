@@ -103,7 +103,6 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(800, 42);
             this.label4.TabIndex = 5;
-            this.label4.Text = "label4";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button2
