@@ -17,7 +17,7 @@ int main()
 				cmp DL, 0
 				jz end
 				mov[EAX], DL
-				inc EAX
+				inc EAX	
 
 				mov DL, [ECX]
 				mov[EAX], DL
