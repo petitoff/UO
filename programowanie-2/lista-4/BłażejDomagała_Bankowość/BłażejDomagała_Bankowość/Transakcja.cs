@@ -36,7 +36,7 @@ namespace BłażejDomagała_Bankowość
             this.idUser = 37128;
             this.firstNameUser = "Jan";
             this.lastNameUser = "Kowalski";
-            this.dateOfTransaction = CalcuteNow();
+            this.dateOfTransaction = CalculateNow();
             this.idUserDestination = 27431;
             this.firstNameUserDestination = "Dariusz";
             this.lastNameUserDestination = "Nowak";
@@ -96,7 +96,7 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Opis do transakcji: {description}");
         }
 
-        private string CalcuteNow()
+        private string CalculateNow()
         {
             string dateString1 = DateTime.Now.ToString("dd-MM-yyyy");
             return dateString1;
