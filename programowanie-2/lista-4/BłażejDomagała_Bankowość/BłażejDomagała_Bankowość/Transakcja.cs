@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace BłażejDomagała_Bankowość
 {
@@ -40,6 +41,23 @@ namespace BłażejDomagała_Bankowość
             this.lastNameUserDestination = "Nowak";
             this.nameOfBankDestination = "mBank";
             this.description = "Przelew";
+        }
+
+        public Transakcja(string nameOfBank, string currency, float amount, int id, int idUser, string firstNameUser,string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
+        {
+            this.nameOfBank = nameOfBank;
+            this.currency = currency;
+            this.amount = amount;
+            this.id = id;
+            this.idUser = idUser;
+            this.firstNameUser = firstNameUser;
+            this.lastNameUser = lastNameUser;
+            this.dateOfTransaction = dateOfTransaction;
+            this.idUserDestination = idUserDestination;
+            this.firstNameUserDestination = firstNameUserDestination;
+            this.lastNameUserDestination = lastNameUserDestination;
+            this.nameOfBankDestination = nameOfBankDestination;
+            this.description = description;
         }
 
         public void Write(ListBox listBox)
