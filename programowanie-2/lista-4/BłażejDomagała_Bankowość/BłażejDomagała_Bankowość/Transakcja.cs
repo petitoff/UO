@@ -28,6 +28,7 @@ namespace BłażejDomagała_Bankowość
 
         public Transakcja()
         {
+            // Konstruktor bezargumentowy
             this.nameOfBank = "eBank";
             this.currency = "PLN";
             this.amount = 120.50F;
@@ -35,7 +36,7 @@ namespace BłażejDomagała_Bankowość
             this.idUser = 37128;
             this.firstNameUser = "Jan";
             this.lastNameUser = "Kowalski";
-            this.dateOfTransaction = "10.03.2022";
+            this.dateOfTransaction = CalcuteNow();
             this.idUserDestination = 27431;
             this.firstNameUserDestination = "Dariusz";
             this.lastNameUserDestination = "Nowak";
@@ -45,6 +46,7 @@ namespace BłażejDomagała_Bankowość
 
         public Transakcja(string nameOfBank, string currency, float amount, int id, int idUser, string firstNameUser,string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
         {
+            // Konstruktor wieloargumentowy
             this.nameOfBank = nameOfBank;
             this.currency = currency;
             this.amount = amount;
@@ -58,6 +60,23 @@ namespace BłażejDomagała_Bankowość
             this.lastNameUserDestination = lastNameUserDestination;
             this.nameOfBankDestination = nameOfBankDestination;
             this.description = description;
+        }
+
+        public Transakcja(Transakcja t)
+        {
+            this.nameOfBank = t.nameOfBank;
+            this.currency = t.currency;
+            this.amount = t.amount;
+            this.id = t.id;
+            this.idUser = t.idUser;
+            this.firstNameUser = t.firstNameUser;
+            this.lastNameUser = t.lastNameUser;
+            this.dateOfTransaction = t.dateOfTransaction;
+            this.idUserDestination = t.idUserDestination;
+            this.firstNameUserDestination = t.firstNameUserDestination;
+            this.lastNameUserDestination = t.lastNameUserDestination;
+            this.nameOfBankDestination = t.nameOfBankDestination;
+            this.description = t.description;
         }
 
         public void Write(ListBox listBox)
@@ -75,6 +94,12 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Nazwisko użytkownika do którego ma dotrzeć przelew: {lastNameUserDestination}");
             listBox.Items.Add($"Nazwa banku użytkownika do którego ma dotrzeć przelew: {nameOfBankDestination}");
             listBox.Items.Add($"Opis do transakcji: {description}");
+        }
+
+        private string CalcuteNow()
+        {
+            string dateString1 = DateTime.Now.ToString("dd-MM-yyyy");
+            return dateString1;
         }
 
         ~Transakcja()
