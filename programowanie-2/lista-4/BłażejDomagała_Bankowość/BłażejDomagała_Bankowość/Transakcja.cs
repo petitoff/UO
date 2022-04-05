@@ -42,7 +42,7 @@ namespace BłażejDomagała_Bankowość
             this.description = "Przelew";
         }
 
-        public void Print(ListBox listBox)
+        public void Write(ListBox listBox)
         {
             listBox.Items.Add($"Nazwa banku: {nameOfBank}");
             listBox.Items.Add($"Nazwa waluty: {currency}");
