@@ -58,5 +58,10 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Nazwa banku użytkownika do którego ma dotrzeć przelew: {nameOfBankDestination}");
             listBox.Items.Add($"Opis do transakcji: {description}");
         }
+
+        ~Transakcja()
+        {
+            MessageBox.Show("Likwidacja obiektu klasy Transakcja.");
+        }
     }
 }
