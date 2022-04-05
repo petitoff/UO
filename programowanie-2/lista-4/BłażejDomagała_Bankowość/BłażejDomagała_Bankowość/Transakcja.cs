@@ -1,12 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BłażejDomagała_Bankowość
 {
     internal class Transakcja
     {
+        private string nameOfBank = "eBank";
+        private string currency = "PLN";
+        private float amount;
+        private int id; // indentyfikator transakcji
+        private int idUser; // indentyfikator użytkownika
+        private string firstNameUser;
+        private string lastNameUser;
+        private string dateOfTransaction;
+        private int idUserDestination;
+        private string firstNameUserDestination;
+        private string lastNameUserDestination;
+        private string nameOfBankDestination;
+        private string description;
+
+
+        public Transakcja()
+        {
+            this.nameOfBank = "eBank";
+            this.currency = "PLN";
+            this.amount = 120.50F;
+            this.id = 2;
+            this.idUser = 37128;
+            this.firstNameUser = "Jan";
+            this.lastNameUser = "Kowalski";
+            this.dateOfTransaction = "10.03.2022";
+            this.idUserDestination = 27431;
+            this.firstNameUserDestination = "Dariusz";
+            this.lastNameUserDestination = "Nowak";
+            this.nameOfBankDestination = "mBank";
+            this.description = "Przelew";
+        }
+
+        public void Print(ListBox listBox)
+        {
+            listBox.Items.Add($"Nazwa banku: {nameOfBank}");
+            listBox.Items.Add($"Nazwa waluty: {currency}");
+            listBox.Items.Add($"Kwota transakcji: {amount}");
+            listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
+            listBox.Items.Add($"Numer indentyfikacyjny użytkownika wysyłającego: {idUser}");
+            listBox.Items.Add($"Imię użytkownika wysyłającego: {firstNameUser}");
+            listBox.Items.Add($"Nazwisko użytkownika wysyłającego: {firstNameUser}");
+            listBox.Items.Add($"Data wykonania transakcji: {dateOfTransaction}");
+            listBox.Items.Add($"Numer indentyfikacyjny użytkownika do którego ma dotrzeć przelew: {idUserDestination}");
+            listBox.Items.Add($"Imię użytkownika do którego ma dotrzeć przelew: {firstNameUserDestination}");
+            listBox.Items.Add($"Nazwisko użytkownika do którego ma dotrzeć przelew: {lastNameUserDestination}");
+            listBox.Items.Add($"Nazwa banku użytkownika do którego ma dotrzeć przelew: {nameOfBankDestination}");
+            listBox.Items.Add($"Opis do transakcji: {description}");
+        }
     }
 }

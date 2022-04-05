@@ -8,6 +8,5 @@ namespace BłażejDomagała_Bankowość
 {
     internal class Bankowosc
     {
-        private string nazwaBanku;
     }
 }
