@@ -20,7 +20,7 @@ namespace BłażejDomagała_Bankowość
         private void button1_Click(object sender, EventArgs e)
         {
             Transakcja transakcja = new Transakcja();
-            transakcja.Print(listBox1);
+            transakcja.Write(listBox1);
         }
     }
 }
