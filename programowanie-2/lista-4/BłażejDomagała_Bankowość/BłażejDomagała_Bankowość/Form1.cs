@@ -26,8 +26,6 @@ namespace BłażejDomagała_Bankowość
 
             Transakcja transakcja2 = new Transakcja("eBank", "EUR", 150.60F, 970, 45124, "Andrzej", "Jackowski", "20-04-2022", 76342, "Paweł", "Waglik", "ING", "Oddaje");
             transakcja2.Write(listBox1);
-
-            //Transakcja transakcja3 = new Transakcja();
         }
     }
 }
