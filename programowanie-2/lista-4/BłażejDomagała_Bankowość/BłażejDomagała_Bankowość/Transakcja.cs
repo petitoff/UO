@@ -80,6 +80,9 @@ namespace BłażejDomagała_Bankowość
 
         public void Write(ListBox listBox)
         {
+            CheckIfTheSameId();
+            CheckOfDescriptionIsEmpty();
+
             listBox.Items.Add($"Nazwa banku: {nameOfBank}");
             listBox.Items.Add($"Nazwa waluty: {currency}");
             listBox.Items.Add($"Kwota transakcji: {amount}");
@@ -93,6 +96,22 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Nazwisko użytkownika do którego ma dotrzeć przelew: {lastNameUserDestination}");
             listBox.Items.Add($"Nazwa banku użytkownika do którego ma dotrzeć przelew: {nameOfBankDestination}");
             listBox.Items.Add($"Opis do transakcji: {description}");
+        }
+
+        private void CheckIfTheSameId()
+        {
+            if(idUser == idUserDestination)
+            {
+                MessageBox.Show("Nie można dokonać transakcji na to samo konto!");
+            }
+        }
+
+        private void CheckOfDescriptionIsEmpty()
+        {
+            if(description == "")
+            {
+                MessageBox.Show("Opis transakcji nie może być pusty!");
+            }
         }
 
         ~Transakcja()
