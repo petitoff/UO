@@ -15,6 +15,7 @@ namespace BłażejDomagała_Bankowość
         private string currency = "PLN";
         private float amount;
         private int id; // indentyfikator transakcji
+        private bool isCompleted;
         private int idUser; // indentyfikator użytkownika
         private string firstNameUser;
         private string lastNameUser;
@@ -32,6 +33,7 @@ namespace BłażejDomagała_Bankowość
             this.currency = "PLN";
             this.amount = 120.50F;
             this.id = 2;
+            this.isCompleted = false;
             this.idUser = 37128;
             this.firstNameUser = "Jan";
             this.lastNameUser = "Kowalski";
@@ -43,13 +45,14 @@ namespace BłażejDomagała_Bankowość
             this.description = "Przelew";
         }
 
-        public Transakcja(string nameOfBank, string currency, float amount, int id, int idUser, string firstNameUser, string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
+        public Transakcja(string nameOfBank, string currency, float amount, int id,bool isCompleted, int idUser, string firstNameUser, string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
         {
             // Konstruktor wieloargumentowy
             this.nameOfBank = nameOfBank;
             this.currency = currency;
             this.amount = amount;
             this.id = id;
+            this.isCompleted = isCompleted;
             this.idUser = idUser;
             this.firstNameUser = firstNameUser;
             this.lastNameUser = lastNameUser;
@@ -67,6 +70,7 @@ namespace BłażejDomagała_Bankowość
             this.currency = t.currency;
             this.amount = t.amount;
             this.id = t.id;
+            this.isCompleted = t.isCompleted;
             this.idUser = t.idUser;
             this.firstNameUser = t.firstNameUser;
             this.lastNameUser = t.lastNameUser;
@@ -87,6 +91,7 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Nazwa waluty: {currency}");
             listBox.Items.Add($"Kwota transakcji: {amount}");
             listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
+            listBox.Items.Add($"Transakcja {(isCompleted == true ? "została" : "niezostała")} zrelizowana");
             listBox.Items.Add($"Numer indentyfikacyjny użytkownika wysyłającego: {idUser}");
             listBox.Items.Add($"Imię użytkownika wysyłającego: {firstNameUser}");
             listBox.Items.Add($"Nazwisko użytkownika wysyłającego: {firstNameUser}");
