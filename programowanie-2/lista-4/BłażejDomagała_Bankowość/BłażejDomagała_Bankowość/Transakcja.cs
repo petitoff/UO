@@ -25,7 +25,6 @@ namespace BłażejDomagała_Bankowość
         private string nameOfBankDestination;
         private string description;
 
-
         public Transakcja()
         {
             // Konstruktor bezargumentowy
@@ -36,7 +35,7 @@ namespace BłażejDomagała_Bankowość
             this.idUser = 37128;
             this.firstNameUser = "Jan";
             this.lastNameUser = "Kowalski";
-            this.dateOfTransaction = CalculateNow();
+            this.dateOfTransaction = "06-04-2022";
             this.idUserDestination = 27431;
             this.firstNameUserDestination = "Dariusz";
             this.lastNameUserDestination = "Nowak";
@@ -44,7 +43,7 @@ namespace BłażejDomagała_Bankowość
             this.description = "Przelew";
         }
 
-        public Transakcja(string nameOfBank, string currency, float amount, int id, int idUser, string firstNameUser,string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
+        public Transakcja(string nameOfBank, string currency, float amount, int id, int idUser, string firstNameUser, string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
         {
             // Konstruktor wieloargumentowy
             this.nameOfBank = nameOfBank;
@@ -94,12 +93,6 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Nazwisko użytkownika do którego ma dotrzeć przelew: {lastNameUserDestination}");
             listBox.Items.Add($"Nazwa banku użytkownika do którego ma dotrzeć przelew: {nameOfBankDestination}");
             listBox.Items.Add($"Opis do transakcji: {description}");
-        }
-
-        private string CalculateNow()
-        {
-            string dateString1 = DateTime.Now.ToString("dd-MM-yyyy");
-            return dateString1;
         }
 
         ~Transakcja()
