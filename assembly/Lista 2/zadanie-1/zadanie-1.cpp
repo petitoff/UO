@@ -1,4 +1,4 @@
-
+﻿
 #include "stdafx.h"
 
 char napis[] = "ABCD";
@@ -9,23 +9,19 @@ int main()
 	{
 		mov EDI, offset napis
 
-		mov BL, 32
-		add[EDI], BL
+		add[EDI], 32
 
 		inc EDI
 
-		mov BL, 32
-		add[EDI], BL
+		add[EDI], 32
 
 		inc EDI
 
-		mov BL, 32
-		add[EDI], BL
+		add[EDI], 32
 
 		inc EDI
 
-		mov BL, 32
-		add[EDI], BL
+		add[EDI], 32
 	}
 	std::cout << napis;
 	std::cin.get();
