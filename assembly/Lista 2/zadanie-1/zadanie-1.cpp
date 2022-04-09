@@ -1,6 +1,4 @@
-// zadanie-1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
+﻿
 #include "stdafx.h"
 
 char napis[] = "ABCD";
@@ -11,13 +9,19 @@ int main()
 	{
 		mov EDI, offset napis
 
-		petla_tutaj: mov BL, 32
-		add[EDI], BL
+		add[EDI], 32
 
 		inc EDI
-		mov BL, [EDI]
-		cmp BL, 0
-		jne petla_tutaj
+
+		add[EDI], 32
+
+		inc EDI
+
+		add[EDI], 32
+
+		inc EDI
+
+		add[EDI], 32
 	}
 	std::cout << napis;
 	std::cin.get();

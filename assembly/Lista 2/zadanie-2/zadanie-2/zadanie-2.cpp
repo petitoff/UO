@@ -10,18 +10,34 @@ int main()
 		mov EAX, offset napis1
 		mov EBX, offset napis2
 
-		start : MOV DL, [EAX]
+		MOV DL, [EAX]
 
-				cmp DL, 0
-				jz end
-				XCHG DL, [EBX]
-				MOV[EAX], DL
+		XCHG DL, [EBX]
+		MOV[EAX], DL
 
-				inc EAX
-				inc EBX
+		inc EAX
+		inc EBX
 
-				jmp start
-				end :
+		MOV DL, [EAX]
+
+		XCHG DL, [EBX]
+		MOV[EAX], DL
+
+		inc EAX
+		inc EBX
+
+		MOV DL, [EAX]
+
+		XCHG DL, [EBX]
+		MOV[EAX], DL
+
+		inc EAX
+		inc EBX
+
+		MOV DL, [EAX]
+
+		XCHG DL, [EBX]
+		MOV[EAX], DL
 	}
 
 	std::cout << napis1 << std::endl;
