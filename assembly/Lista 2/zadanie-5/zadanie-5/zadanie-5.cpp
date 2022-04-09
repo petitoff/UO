@@ -1,143 +1,98 @@
 
 #include "stdafx.h"
 
-//__int16 liczba = 0b1010101010101010;
-
-char liczba[16] = "111010101010101";
-//__int16 liczba;
-
-char wynik;
+__int16 liczba;
 
 int main()
 {
 	__asm
 	{
-		mov EBX, offset liczba
-		mov CL, 0
+		xor eax, eax
+		xor ebx, ebx
+		xor ecx, ecx
 
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej1
+		mov AX, 15
 
-		add CL, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		dalej1: inc EBX
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej2
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		add CL, 1
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		dalej2: inc EBX
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej3
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		add CL, 1
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		dalej3: inc EBX
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej4
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		add CL, 1
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		dalej4: inc EBX
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej5
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		add CL, 1
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		dalej5: inc EBX
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej6
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
 
-		add CL, 1
-
-		dalej6: inc EBX
-
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej7
-
-		add CL, 1
-
-		dalej7: inc EBX
-
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej8
-
-		add CL, 1
-
-		dalej8: inc EBX
-
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej9
-
-		add CL, 1
-
-		dalej9: inc EBX
-
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej10
-
-		add CL, 1
-
-		dalej10: inc EBX
-
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej11
-
-		add CL, 1
-
-		dalej11: inc EBX
-
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej12
-
-		add CL, 1
-
-		dalej12: inc EBX
-
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej13
-
-		add CL, 1
-
-		dalej13: inc EBX
-
-		mov wynik, CL
-
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej14
-
-		add CL, 1
-
-		dalej14: inc EBX
-
-		mov AL, [EBX]
-		cmp AL, '0'
-		jz dalej15
-
-		add CL, 1
-
-		dalej15: inc EBX
+		shr AX, 1
+		mov BX, AX
+		and BX, 1
+		add CX, BX
+		mov liczba, cx
 	}
 	std::cout << liczba << std::endl;
-	std::cout << (int)wynik;
 	std::cin.get();
 }
