@@ -1,7 +1,7 @@
 
 #include "stdafx.h"
 
-char tablica[4] = { 1,2,3 };
+char tablica[4] = { 3,5,9 };
 char wynik[2];
 
 int main()
