@@ -11,13 +11,23 @@ int main()
 	{
 		mov EDI, offset napis
 
-		petla_tutaj: mov BL, 32
+		mov BL, 32
 		add[EDI], BL
 
 		inc EDI
-		mov BL, [EDI]
-		cmp BL, 0
-		jne petla_tutaj
+
+		mov BL, 32
+		add[EDI], BL
+
+		inc EDI
+
+		mov BL, 32
+		add[EDI], BL
+
+		inc EDI
+
+		mov BL, 32
+		add[EDI], BL
 	}
 	std::cout << napis;
 	std::cin.get();
