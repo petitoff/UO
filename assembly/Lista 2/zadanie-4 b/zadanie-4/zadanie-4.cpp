@@ -1,22 +1,22 @@
 
 #include "stdafx.h"
 
-char tablica1[] = "123";
+__int16 tablica[3] = {5,7,9};
 __int16 wynik;
 
 int main()
 {
 	__asm
 	{
-		mov EBX, offset tablica1
-		//mov EBX, offset wynik
+		// Zadanie 4b
 
-		mov AX, WORD PTR[EBX]
-		inc EBX
-		add AX, WORD PTR[EBX]
-		inc EBX
-		add AX, WORD PTR[EBX]
-		mov wynik, AX
+		xor ax,ax
+
+		add AX, tablica[0]
+		add AX, tablica[2]
+		add AX, tablica[4]
+
+		mov wynik, ax
 	}
 	std::cout << (int)wynik;
 	std::cin.get();
