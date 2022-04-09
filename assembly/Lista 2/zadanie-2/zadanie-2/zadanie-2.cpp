@@ -1,7 +1,7 @@
 
 #include "stdafx.h"
-char napis1[] = "abcd";
-char napis2[] = "hjkl";
+char napis1[4] = "abc";
+char napis2[4] = "hjk";
 
 int main()
 {
@@ -9,14 +9,6 @@ int main()
 	{
 		mov EAX, offset napis1
 		mov EBX, offset napis2
-
-		MOV DL, [EAX]
-
-		XCHG DL, [EBX]
-		MOV[EAX], DL
-
-		inc EAX
-		inc EBX
 
 		MOV DL, [EAX]
 
