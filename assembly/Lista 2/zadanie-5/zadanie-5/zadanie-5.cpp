@@ -7,6 +7,7 @@ int main()
 {
 	__asm
 	{
+		// Zadanie 5a
 		xor eax, eax
 		xor ebx, ebx
 		xor ecx, ecx
