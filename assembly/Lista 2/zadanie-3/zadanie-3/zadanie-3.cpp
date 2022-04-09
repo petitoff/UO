@@ -1,32 +1,28 @@
 
 #include "stdafx.h"
 
-char napis1[] = "asd";
-char napis2[] = "fgh";
-char napis3[] = "";
+char napis1[4] = "asd";
+char napis2[4] = "fgh";
+char napis3[7] = "";
 
 int main()
 {
 	__asm
 	{
-		mov EAX, offset napis3
-		mov EBX, offset napis1
-		mov ECX, offset napis2
+		mov AL, napis1[0]
+		mov AH, napis2[0]
+		mov napis3[0], AL
+		mov napis3[1], AH
 
-		start : mov DL, [EBX]
-				cmp DL, 0
-				jz end
-				mov[EAX], DL
-				inc EAX	
+		mov AL, napis1[1]
+		mov AH, napis2[1]
+		mov napis3[2], AL
+		mov napis3[3], AH
 
-				mov DL, [ECX]
-				mov[EAX], DL
-
-				inc EBX
-				inc ECX
-				inc EAX
-				jmp start
-				end :
+		mov AL, napis1[2]
+		mov AH, napis2[2]
+		mov napis3[4], AL
+		mov napis3[5], AH
 	}
 	std::cout << napis3;
 
