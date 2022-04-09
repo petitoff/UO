@@ -8,6 +8,7 @@ int main()
 {
 	__asm
 	{
+		// Zadanie 4a
 		mov AL, tablica[0]
 		mov AH, tablica[1]
 		mov BL, tablica[2]
