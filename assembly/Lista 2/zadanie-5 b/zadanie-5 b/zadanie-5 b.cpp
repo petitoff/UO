@@ -14,8 +14,6 @@ int main()
 
 		mov AX, liczba 
 
-		mov AX, 15
-
 		mov BX, AX
 		and BX, 1
 		add CX, BX
