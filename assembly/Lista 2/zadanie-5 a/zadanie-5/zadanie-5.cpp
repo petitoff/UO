@@ -1,7 +1,7 @@
 
 #include "stdafx.h"
 
-__int16 liczba;
+__int16 liczba = 15;
 
 int main()
 {
@@ -12,7 +12,7 @@ int main()
 		xor ebx, ebx
 		xor ecx, ecx
 
-		mov AX, 15
+		mov AX, liczba
 
 		mov BX, AX
 		and BX, 1
