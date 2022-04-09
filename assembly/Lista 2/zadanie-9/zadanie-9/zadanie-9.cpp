@@ -12,14 +12,14 @@ int main()
 		mov AL, liczba
 		and EAX, 7
 
-		mov ebx, eax
+		mov EBX, EAX
 
-		mul eax
-		mul eax
-		mul eax
-		mul ebx
+		mul EAX
+		mul EAX
+		mul EAX
+		mul EBX
 
-		mov wynik, eax
+		mov wynik, EAX
 	}
 	std::cout << wynik;
 	std::cin.get();
