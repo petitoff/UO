@@ -1,23 +1,22 @@
 
 #include "stdafx.h"
 
-char tablica1[] = "123";
-__int8 wynik;
+char tablica[4] = { 1,2,3 };
+char wynik[2];
 
 int main()
 {
 	__asm
 	{
-		mov EBX, offset tablica1
-		//mov EBX, offset wynik
+		mov AL, tablica[0]
+		mov AH, tablica[1]
+		mov BL, tablica[2]
 
-		mov AL, [EBX]
-		inc EBX
-		add AL, [EBX]
-		inc EBX
-		add AL, [EBX]
-		mov wynik, AL
+		add AH, AL
+		add AH, BL
+
+		mov wynik[0], AH
 	}
-	std::cout << (int)wynik;
+	std::cout << (int)wynik[0];
 	std::cin.get();
 }
