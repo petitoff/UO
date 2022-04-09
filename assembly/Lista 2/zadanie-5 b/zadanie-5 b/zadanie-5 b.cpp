@@ -1,7 +1,7 @@
 
 #include "stdafx.h"
 
-__int16 liczba = 15;
+__int16 liczba = 25;
 
 int main()
 {
@@ -12,84 +12,102 @@ int main()
 		xor ebx, ebx
 		xor ecx, ecx
 
-		mov AX, liczba 
+		mov AX, liczba
 
 		mov BX, AX
+		
+		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 
 		shr AX, 1
 		mov BX, AX
+		not BX
 		and BX, 1
 		add CX, BX
 		mov liczba, cx
