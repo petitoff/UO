@@ -7,7 +7,14 @@ function wynik = mnozenieDwochMacierzy(m1,m2)
    return
   endif
 
+  if(d - b != 0)
   wynik = m1;
+  wynik(:,[b]) = []
+
+  else
+  wynik = m1;
+  endif
+
   wynik = wynik * 0;
 
   for n=1:a
@@ -15,7 +22,6 @@ function wynik = mnozenieDwochMacierzy(m1,m2)
       for j=1:c
 
       wynik(n,i) += m1(n,j) * m2(j,i);
-      disp(wynik);
 
       endfor
     endfor
