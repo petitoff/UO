@@ -24,8 +24,14 @@ namespace BłażejDomagała_Bankowość
 
             listBox1.Items.Add("");
 
-            Transakcja transakcja2 = new Transakcja("eBank", "EUR", 150.60F, 970, true, 45124, "Andrzej", "Jackowski", "20-04-2022", 76342, "Paweł", "Waglik", "ING", "Oddaje");
+            Transakcja transakcja2 = new Transakcja("eBank", "EUR", 150.60F, true, 45124, "Andrzej", "Jackowski", "20-04-2022", 76342, "Paweł", "Waglik", "ING", "Oddaje");
             transakcja2.Write(listBox1);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var form2 = new Form2();
+            form2.Show();
         }
     }
 }

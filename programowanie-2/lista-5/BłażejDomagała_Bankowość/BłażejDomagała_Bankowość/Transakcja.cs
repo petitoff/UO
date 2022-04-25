@@ -14,7 +14,7 @@ namespace BłażejDomagała_Bankowość
         private string bankName = "eBank";
         private string currency = "PLN";
         private float amount;
-        private int id; // indentyfikator transakcji
+        protected static int id; // indentyfikator transakcji
         private bool isCompleted;
         private int userId; // indentyfikator użytkownika
         private string userFirstName;
@@ -32,7 +32,7 @@ namespace BłażejDomagała_Bankowość
             this.bankName = "eBank";
             this.currency = "PLN";
             this.amount = 120.50F;
-            this.id = 2;
+            id +=1;
             this.isCompleted = false;
             this.userId = 37128;
             this.userFirstName = "Jan";
@@ -45,13 +45,13 @@ namespace BłażejDomagała_Bankowość
             this.description = "Przelew";
         }
 
-        public Transakcja(string nameOfBank, string currency, float amount, int id,bool isCompleted, int idUser, string firstNameUser, string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
+        public Transakcja(string bankName, string currency, float amount, bool isCompleted, int idUser, string firstNameUser, string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
         {
             // Konstruktor wieloargumentowy
-            this.bankName = nameOfBank;
+            this.bankName = bankName;
             this.currency = currency;
             this.amount = amount;
-            this.id = id;
+            id +=1;
             this.isCompleted = isCompleted;
             this.userId = idUser;
             this.userFirstName = firstNameUser;
@@ -69,7 +69,7 @@ namespace BłażejDomagała_Bankowość
             this.bankName = t.bankName;
             this.currency = t.currency;
             this.amount = t.amount;
-            this.id = t.id;
+            id +=1;
             this.isCompleted = t.isCompleted;
             this.userId = t.userId;
             this.userFirstName = t.userFirstName;
@@ -103,20 +103,31 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Opis do transakcji: {description}");
         }
 
-        private void CheckIfTheSameId()
+        private bool CheckIfTheSameId()
         {
-            if(userId == endUserId)
+            if (userId == endUserId)
             {
                 MessageBox.Show("Nie można dokonać transakcji na to samo konto!");
+                return true;
             }
+
+            return false;
         }
 
-        private void CheckOfDescriptionIsEmpty()
+        private bool CheckOfDescriptionIsEmpty()
         {
-            if(description == "")
+            if (description == "")
             {
                 MessageBox.Show("Opis transakcji nie może być pusty!");
+                return true;
             }
+
+            return false;
+        }
+
+        public void CreateNewTransaction()
+        {
+
         }
 
         ~Transakcja()
