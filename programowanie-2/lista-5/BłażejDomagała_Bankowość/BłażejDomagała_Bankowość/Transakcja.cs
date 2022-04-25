@@ -125,9 +125,9 @@ namespace BłażejDomagała_Bankowość
             return false;
         }
 
-        public void CreateNewTransaction()
+        public string TypeOfTransaction(string type)
         {
-
+            return $"Typ przelewu: {type}";
         }
 
         ~Transakcja()
