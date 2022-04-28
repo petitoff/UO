@@ -14,7 +14,7 @@ namespace BłażejDomagała_Bankowość
         private string bankName = "eBank";
         private string currency = "PLN";
         private float amount;
-        protected static int id; // indentyfikator transakcji
+        private static int id; // indentyfikator transakcji
         private bool isCompleted;
         private int userId; // indentyfikator użytkownika
         private string userFirstName;
