@@ -26,6 +26,26 @@ namespace BłażejDomagała_Bankowość
             typeOfTransaction = "przelew stały";
         }
 
+        public PrzelewStaly(string dateWhenTransactionHasToBePerformed, string timeWhenTransactionHasToBePerformed, string timeZoneGmt, bool isActive, string typeOfTransaction, float amount) : base()
+        {
+            this.dateWhenTransactionHasToBePerformed = dateWhenTransactionHasToBePerformed;
+            this.timeWhenTransactionHasToBePerformed = timeWhenTransactionHasToBePerformed;
+            this.timeZoneGmt = timeZoneGmt;
+            this.isActive = isActive;
+            this.typeOfTransaction = typeOfTransaction;
+            this.amount = amount;
+        }
+
+        public PrzelewStaly(PrzelewStaly ps)
+        {
+            this.dateWhenTransactionHasToBePerformed = ps.dateWhenTransactionHasToBePerformed;
+            this.timeWhenTransactionHasToBePerformed = ps.timeWhenTransactionHasToBePerformed;
+            this.timeZoneGmt = ps.timeZoneGmt;
+            this.isActive = ps.isActive;
+            this.typeOfTransaction = ps.typeOfTransaction;
+            this.amount = ps.amount;
+        }
+
         public new void Write(ListBox listBox)
         {
             var transakcja = new Transakcja();
