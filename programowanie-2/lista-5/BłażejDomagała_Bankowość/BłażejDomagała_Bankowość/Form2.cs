@@ -22,8 +22,11 @@ namespace BłażejDomagała_Bankowość
             //var transaction = new Transakcja();
             //transaction.Write(listBox1);
 
-            var przelewStaly = new PrzelewStaly();
-            przelewStaly.Write(listBox1);
+            var przelewStaly1 = new PrzelewStaly();
+            przelewStaly1.Write(listBox1);
+            listBox1.Items.Add("");
+            var przelewStaly2 = new PrzelewStaly("28-04-2022", "20.15", "-8", false, "przelew stały" ,2019);
+            przelewStaly2.Write(listBox1);
         }
     }
 }
