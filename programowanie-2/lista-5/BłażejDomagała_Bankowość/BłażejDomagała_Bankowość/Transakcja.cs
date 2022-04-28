@@ -19,7 +19,7 @@ namespace BłażejDomagała_Bankowość
         private int userId; // indentyfikator użytkownika
         private string userFirstName;
         private string userLastName;
-        private string dateOfTransaction;
+        public DateTime dateOfTransaction;
         private int endUserId;
         private string endUserFirstName;
         private string endUserLastName;
