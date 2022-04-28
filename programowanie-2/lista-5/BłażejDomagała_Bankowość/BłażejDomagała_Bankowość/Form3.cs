@@ -16,5 +16,11 @@ namespace BłażejDomagała_Bankowość
         {
             InitializeComponent();
         }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            var przelewZwykly = new PrzelewZwykly();
+            przelewZwykly.Write(listBox1);
+        }
     }
 }

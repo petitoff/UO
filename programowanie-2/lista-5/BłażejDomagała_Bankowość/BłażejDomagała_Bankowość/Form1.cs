@@ -33,5 +33,11 @@ namespace BłażejDomagała_Bankowość
             var form2 = new Form2();
             form2.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var form3 = new Form3();
+            form3.Show();
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace BłażejDomagała_Bankowość
     {
         private string bankName = "eBank";
         private string currency = "PLN";
+        private float amount;
         private static int id; // indentyfikator transakcji
         private bool isCompleted;
         private int userId; // indentyfikator użytkownika
@@ -86,7 +87,7 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Nazwa banku: {bankName}");
             listBox.Items.Add($"Nazwa waluty: {currency}");
             listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
-            listBox.Items.Add($"Transakcja {(isCompleted == true ? "została" : "niezostała")} zrelizowana");
+            listBox.Items.Add($"Transakcja {(isCompleted ? "została" : "niezostała")} zrelizowana");
             listBox.Items.Add($"Numer indentyfikacyjny użytkownika wysyłającego: {userId}");
             listBox.Items.Add($"Imię użytkownika wysyłającego: {userFirstName}");
             listBox.Items.Add($"Nazwisko użytkownika wysyłającego: {userFirstName}");

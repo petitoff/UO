@@ -30,6 +30,8 @@ namespace BłażejDomagała_Bankowość
         {
             var transakcja = new Transakcja();
 
+            if (CheckValidation()) return;
+
             base.Write(listBox);
             listBox.Items.Add($"kwota transakcji {amount}");
             listBox.Items.Add(dateWhenTransactionHasToBePerformed);
@@ -46,6 +48,17 @@ namespace BłażejDomagała_Bankowość
                 return "Przelew stały jest aktywny";
             }
             return "Przelew stały jest nieaktywny";
+        }
+
+        private bool CheckValidation()
+        {
+            if (dateWhenTransactionHasToBePerformed.Length == 0 || timeWhenTransactionHasToBePerformed.Length == 0)
+            {
+                MessageBox.Show("Błąd! Podałeś pustą wartość!");
+                return true;
+            }
+
+            return false;
         }
     }
 }
