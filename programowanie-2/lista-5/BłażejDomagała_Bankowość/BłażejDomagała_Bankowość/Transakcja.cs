@@ -91,7 +91,7 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Nazwa waluty: {currency}");
             listBox.Items.Add($"Kwota transakcji: {amount}");
             listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
-            listBox.Items.Add($"Transakcja {(isCompleted == true ? "została" : "niezostała")} zrelizowana");
+            listBox.Items.Add($"Transakcja {(isCompleted ? "została" : "niezostała")} zrelizowana");
             listBox.Items.Add($"Numer indentyfikacyjny użytkownika wysyłającego: {userId}");
             listBox.Items.Add($"Imię użytkownika wysyłającego: {userFirstName}");
             listBox.Items.Add($"Nazwisko użytkownika wysyłającego: {userFirstName}");
