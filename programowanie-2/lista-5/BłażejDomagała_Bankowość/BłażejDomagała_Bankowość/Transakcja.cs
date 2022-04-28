@@ -13,8 +13,7 @@ namespace BłażejDomagała_Bankowość
     {
         private string bankName = "eBank";
         private string currency = "PLN";
-        private float amount;
-        protected static int id; // indentyfikator transakcji
+        private static int id; // indentyfikator transakcji
         private bool isCompleted;
         private int userId; // indentyfikator użytkownika
         private string userFirstName;
@@ -31,8 +30,7 @@ namespace BłażejDomagała_Bankowość
             // Konstruktor bezargumentowy
             this.bankName = "eBank";
             this.currency = "PLN";
-            this.amount = 120.50F;
-            id +=1;
+            id += 1;
             this.isCompleted = false;
             this.userId = 37128;
             this.userFirstName = "Jan";
@@ -45,13 +43,12 @@ namespace BłażejDomagała_Bankowość
             this.description = "Przelew";
         }
 
-        public Transakcja(string bankName, string currency, float amount, bool isCompleted, int idUser, string firstNameUser, string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
+        public Transakcja(string bankName, string currency, bool isCompleted, int idUser, string firstNameUser, string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
         {
             // Konstruktor wieloargumentowy
             this.bankName = bankName;
             this.currency = currency;
-            this.amount = amount;
-            id +=1;
+            id += 1;
             this.isCompleted = isCompleted;
             this.userId = idUser;
             this.userFirstName = firstNameUser;
@@ -68,8 +65,7 @@ namespace BłażejDomagała_Bankowość
         {
             this.bankName = t.bankName;
             this.currency = t.currency;
-            this.amount = t.amount;
-            id +=1;
+            id += 1;
             this.isCompleted = t.isCompleted;
             this.userId = t.userId;
             this.userFirstName = t.userFirstName;
@@ -89,7 +85,6 @@ namespace BłażejDomagała_Bankowość
 
             listBox.Items.Add($"Nazwa banku: {bankName}");
             listBox.Items.Add($"Nazwa waluty: {currency}");
-            listBox.Items.Add($"Kwota transakcji: {amount}");
             listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
             listBox.Items.Add($"Transakcja {(isCompleted == true ? "została" : "niezostała")} zrelizowana");
             listBox.Items.Add($"Numer indentyfikacyjny użytkownika wysyłającego: {userId}");
