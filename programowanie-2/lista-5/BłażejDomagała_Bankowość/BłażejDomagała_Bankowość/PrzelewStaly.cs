@@ -14,9 +14,11 @@ namespace BłażejDomagała_Bankowość
         string timeZoneGmt;
         bool isActive;
         string typeOfTransaction;
+        float amount;
 
         public PrzelewStaly() : base()
         {
+            amount = 123.9F;
             dateWhenTransactionHasToBePerformed = "25-04-2022";
             timeWhenTransactionHasToBePerformed = "10.10";
             timeZoneGmt = "+2";
@@ -29,6 +31,7 @@ namespace BłażejDomagała_Bankowość
             var transakcja = new Transakcja();
 
             base.Write(listBox);
+            listBox.Items.Add($"kwota transakcji {amount}");
             listBox.Items.Add(dateWhenTransactionHasToBePerformed);
             listBox.Items.Add(timeWhenTransactionHasToBePerformed);
             listBox.Items.Add(timeZoneGmt);
@@ -36,9 +39,9 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add(transakcja.TypeOfTransaction(typeOfTransaction));
         }
 
-        private string CheckIsActive(bool isActive)
+        private string CheckIsActive(bool isActiveArg)
         {
-            if (isActive)
+            if (isActiveArg)
             {
                 return "Przelew stały jest aktywny";
             }
