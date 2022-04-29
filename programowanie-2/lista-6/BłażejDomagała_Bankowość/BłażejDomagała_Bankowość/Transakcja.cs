@@ -9,10 +9,9 @@ namespace BłażejDomagała_Bankowość
 {
     class Transakcja
     {
-        private string bankName = "eBank";
-        private string currency = "PLN";
-        private static int id = 0;
-        private DateTime dateofTransaction;
+        // dane transakcji
+        private string bankName; // nazwa banku z którego wychodzi przelew
+        private string endBankName; // nazwa banku do którego idzie
 
         private int userId;
         private string userFirstName;
