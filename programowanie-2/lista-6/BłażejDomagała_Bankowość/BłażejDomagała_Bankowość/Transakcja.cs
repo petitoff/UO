@@ -39,5 +39,10 @@ namespace BłażejDomagała_Bankowość
             this.endUserFirstName = "-";
             this.endUserLastName = "-";
         }
+
+        public void Write(ListBox listbox)
+        {
+            // Funkcja odpowiedzialna za wypisywanie wartości pól do listbox'a
+        }
     }
 }
