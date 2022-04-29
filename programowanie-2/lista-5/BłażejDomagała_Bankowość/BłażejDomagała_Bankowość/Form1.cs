@@ -12,6 +12,7 @@ namespace BłażejDomagała_Bankowość
 {
     public partial class Form1 : Form
     {
+        private DateTime dateOfTransaction;
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace BłażejDomagała_Bankowość
 
             listBox1.Items.Add("");
 
-            Transakcja transakcja2 = new Transakcja("eBank", "EUR", true, 45124, "Andrzej", "Jackowski", Convert.ToDateTime("20-04-2022"), 76342, "Paweł", "Waglik", "ING", "Oddaje");
+            Transakcja transakcja2 = new Transakcja("eBank", "EUR", true, 45124, "Andrzej", "Jackowski", dateOfTransaction,76342, "Paweł", "Waglik", "ING", "Oddaje");
             transakcja2.Write(listBox1);
         }
 
@@ -48,8 +49,7 @@ namespace BłażejDomagała_Bankowość
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            Transakcja transakcja = new Transakcja();
-            transakcja.dateOfTransaction = dateTimePicker1.Value;
+            dateOfTransaction = dateTimePicker1.Value;
         }
     }
 }
