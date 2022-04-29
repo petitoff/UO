@@ -45,5 +45,11 @@ namespace BłażejDomagała_Bankowość
             Transakcja transakcja = new Transakcja();
             transakcja.LoadImage(pictureBox1);
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Transakcja transakcja = new Transakcja();
+            transakcja.dateOfTransaction = dateTimePicker1.Value;
+        }
     }
 }
