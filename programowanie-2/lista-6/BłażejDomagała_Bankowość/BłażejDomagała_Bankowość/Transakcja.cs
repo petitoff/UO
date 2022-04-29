@@ -13,11 +13,11 @@ namespace BłażejDomagała_Bankowość
         private string bankName; // nazwa banku z którego wychodzi przelew
         private string endBankName; // nazwa banku do którego idzie
 
-        private string currency = "PLN"; // symbol waluty w jakiej dociera przelew
+        private string currency; // symbol waluty w jakiej dociera przelew
         private static int id = 0; // id transakcji
         private DateTime dateofTransaction; // data wysłania przelewu
         private string description; // opis przelewu od użytkownika
-        private string isCompleted; // czy transakcja została już zrealizowana
+        private bool isCompleted; // czy transakcja została już zrealizowana
 
         // dane użytkownika wyjściowego
         private int userId; // id użytkownika wysyłającego przelew
@@ -31,9 +31,18 @@ namespace BłażejDomagała_Bankowość
 
         public Transakcja()
         {
+            this.bankName = "eBank";
+            this.endBankName = "eBank";
+
+            this.currency = "PLN";
             id += 1;
+            this.dateofTransaction = DateTime.Now;
+            this.description = "-";
+            this.isCompleted = false; // domyślnie transakcja nie została jeszcze wykonana
+
             this.userId = 0;
             this.endUserId = userId;
+
             this.userFirstName = "-";
             this.userLastName = "-";
             this.endUserFirstName = "-";
@@ -43,6 +52,8 @@ namespace BłażejDomagała_Bankowość
         public void Write(ListBox listbox)
         {
             // Funkcja odpowiedzialna za wypisywanie wartości pól do listbox'a
+
+            listbox.Items.Add($"");
         }
     }
 }
