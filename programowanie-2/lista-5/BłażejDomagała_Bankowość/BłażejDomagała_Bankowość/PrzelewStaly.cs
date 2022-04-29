@@ -16,6 +16,8 @@ namespace BłażejDomagała_Bankowość
         string typeOfTransaction;
         float amount;
 
+        private List<int> idList = new List<int>();
+
         public PrzelewStaly() : base()
         {
             amount = 123.9F;
