@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,8 @@ namespace BłażejDomagała_Bankowość
         private string endBankName;
         private string description;
 
+        Bitmap image;
+
         public Transakcja()
         {
             // Konstruktor bezargumentowy
@@ -36,7 +40,7 @@ namespace BłażejDomagała_Bankowość
             this.userId = 37128;
             this.userFirstName = "Jan";
             this.userLastName = "Kowalski";
-            this.dateOfTransaction = "06-04-2022";
+            this.dateOfTransaction = DateTime.Now;
             this.endUserId = 27431;
             this.endUserFirstName = "Dariusz";
             this.endUserLastName = "Nowak";
@@ -44,7 +48,7 @@ namespace BłażejDomagała_Bankowość
             this.description = "Przelew";
         }
 
-        public Transakcja(string bankName, string currency, bool isCompleted, int idUser, string firstNameUser, string lastNameUser, string dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
+        public Transakcja(string bankName, string currency, bool isCompleted, int idUser, string firstNameUser, string lastNameUser, DateTime dateOfTransaction, int idUserDestination, string firstNameUserDestination, string lastNameUserDestination, string nameOfBankDestination, string description)
         {
             // Konstruktor wieloargumentowy
             this.bankName = bankName;
@@ -124,6 +128,17 @@ namespace BłażejDomagała_Bankowość
         public string TypeOfTransaction(string type)
         {
             return $"Typ przelewu: {type}";
+        }
+
+        public void LoadImage(PictureBox pb)
+        {
+            //PictureBox pictureBox = new PictureBox();
+            string fileName = "img_forest.jpg";
+            string path = Path.Combine(Environment.CurrentDirectory, fileName);
+            image = new Bitmap(
+                path);
+            pb.Image = image;
+            pb.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         ~Transakcja()
