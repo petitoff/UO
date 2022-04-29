@@ -18,6 +18,7 @@ namespace BłażejDomagała_Bankowość
         private DateTime dateofTransaction; // data wysłania przelewu
         private string description; // opis przelewu od użytkownika
         private bool isCompleted; // czy transakcja została już zrealizowana
+        private float amount; // kwota realizacji przelewu
 
         // dane użytkownika wyjściowego
         private int userId; // id użytkownika wysyłającego przelew
@@ -39,6 +40,7 @@ namespace BłażejDomagała_Bankowość
             this.dateofTransaction = DateTime.Now;
             this.description = "-";
             this.isCompleted = false; // domyślnie transakcja nie została jeszcze wykonana
+            this.amount = 0F;
 
             this.userId = 0;
             this.endUserId = userId;
@@ -53,7 +55,21 @@ namespace BłażejDomagała_Bankowość
         {
             // Funkcja odpowiedzialna za wypisywanie wartości pól do listbox'a
 
-            listbox.Items.Add($"");
+            listbox.Items.Add($"Nazwa banku z którego pochodzi przelew: {bankName}");
+            listbox.Items.Add($"Nazwa banku do którego wysyłany jest przelew: {endBankName}");
+            listbox.Items.Add($"Nazwa banku do którego wysyłany jest przelew: {endBankName}");
+            listbox.Items.Add($"Waluta w jakiej realizowany jest przelew {currency}");
+            listbox.Items.Add($"Numer indentyfikacyjny transakcji {id}");
+            listbox.Items.Add($"Data wysłania przelewu {dateofTransaction}");
+            listbox.Items.Add($"Opis przelewu {description}");
+            listbox.Items.Add($"Czy transakcja została już zrealizowana: {(isCompleted ? "tak" : "nie")}");
+            listbox.Items.Add($"Kwota przelewu {amount}");
+            listbox.Items.Add($"Numer indentyfikacyjny użytkownika wysyłającego przelew {userId}");
+            listbox.Items.Add($"Imię użytkownika wysyłającego przelew {userFirstName}");
+            listbox.Items.Add($"Nazwisko użytkownika wysyłającego przelew {userLastName}");
+            listbox.Items.Add($"Numer indentyfikacyjny użytkownika odbierającego przelew {endUserId}");
+            listbox.Items.Add($"Imię użytkownika odbierającego przelew {endUserFirstName}");
+            listbox.Items.Add($"Nazwisko użytkownika odbierającego przelew {endUserLastName}");
         }
     }
 }
