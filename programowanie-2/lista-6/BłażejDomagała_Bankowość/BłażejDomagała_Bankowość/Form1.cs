@@ -21,6 +21,7 @@ namespace BłażejDomagała_Bankowość
         {
             var transakcja = new Transakcja();
             transakcja.Write(listBox1);
+            listBox1.Items.Add("");
         }
     }
 }
