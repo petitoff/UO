@@ -18,6 +18,7 @@ namespace BłażejDomagała_Bankowość
         private DateTime dateofTransaction; // data wysłania przelewu
         private string description; // opis przelewu od użytkownika
         private float amount; // kwota realizacji przelewu
+        private string category;
 
         // dane użytkownika wyjściowego
         private int userId; // id użytkownika wysyłającego przelew
@@ -39,6 +40,7 @@ namespace BłażejDomagała_Bankowość
             this.dateofTransaction = DateTime.Now;
             this.description = "-";
             this.amount = 0F;
+            this.category = "";
 
             this.userId = 0;
             this.endUserId = userId;
