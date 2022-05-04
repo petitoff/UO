@@ -38,14 +38,14 @@
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.Location = new System.Drawing.Point(12, 157);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(316, 290);
+            this.listBox1.Size = new System.Drawing.Size(336, 290);
             this.listBox1.TabIndex = 0;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(12, 89);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(316, 62);
+            this.button1.Size = new System.Drawing.Size(336, 62);
             this.button1.TabIndex = 1;
             this.button1.Text = "Transakcja";
             this.button1.UseVisualStyleBackColor = true;
