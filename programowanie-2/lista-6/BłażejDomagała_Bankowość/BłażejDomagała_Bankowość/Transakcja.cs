@@ -56,7 +56,6 @@ namespace BłażejDomagała_Bankowość
 
             listbox.Items.Add($"Nazwa banku z którego pochodzi przelew: {bankName}");
             listbox.Items.Add($"Nazwa banku do którego wysyłany jest przelew: {endBankName}");
-            listbox.Items.Add($"Nazwa banku do którego wysyłany jest przelew: {endBankName}");
             listbox.Items.Add($"Kwota przelewu {amount}");
             listbox.Items.Add($"Waluta w jakiej realizowany jest przelew {currency}");
             listbox.Items.Add($"Numer indentyfikacyjny transakcji {id}");
