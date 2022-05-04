@@ -13,11 +13,11 @@ namespace BłażejDomagała_Bankowość
         private string bankName; // nazwa banku z którego wychodzi przelew
         private string endBankName; // nazwa banku do którego idzie
 
+        private float amount; // kwota realizacji przelewu
         private string currency; // symbol waluty w jakiej dociera przelew
         private static int id = 0; // id transakcji
         private DateTime dateofTransaction; // data wysłania przelewu
         private string description; // opis przelewu od użytkownika
-        private float amount; // kwota realizacji przelewu
         private string category;
 
         // dane użytkownika wyjściowego
@@ -35,11 +35,11 @@ namespace BłażejDomagała_Bankowość
             this.bankName = "eBank";
             this.endBankName = "eBank";
 
+            this.amount = 0F;
             this.currency = "PLN";
             id += 1;
             this.dateofTransaction = DateTime.Now;
             this.description = "-";
-            this.amount = 0F;
             this.category = "";
 
             this.userId = 0;
@@ -58,11 +58,11 @@ namespace BłażejDomagała_Bankowość
             listbox.Items.Add($"Nazwa banku z którego pochodzi przelew: {bankName}");
             listbox.Items.Add($"Nazwa banku do którego wysyłany jest przelew: {endBankName}");
             listbox.Items.Add($"Nazwa banku do którego wysyłany jest przelew: {endBankName}");
+            listbox.Items.Add($"Kwota przelewu {amount}");
             listbox.Items.Add($"Waluta w jakiej realizowany jest przelew {currency}");
             listbox.Items.Add($"Numer indentyfikacyjny transakcji {id}");
             listbox.Items.Add($"Data wysłania przelewu {dateofTransaction}");
             listbox.Items.Add($"Opis przelewu {description}");
-            listbox.Items.Add($"Kwota przelewu {amount}");
             listbox.Items.Add($"Numer indentyfikacyjny użytkownika wysyłającego przelew {userId}");
             listbox.Items.Add($"Imię użytkownika wysyłającego przelew {userFirstName}");
             listbox.Items.Add($"Nazwisko użytkownika wysyłającego przelew {userLastName}");
