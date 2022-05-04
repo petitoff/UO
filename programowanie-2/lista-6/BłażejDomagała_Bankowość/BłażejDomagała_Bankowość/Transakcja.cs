@@ -17,7 +17,6 @@ namespace BłażejDomagała_Bankowość
         private static int id = 0; // id transakcji
         private DateTime dateofTransaction; // data wysłania przelewu
         private string description; // opis przelewu od użytkownika
-        private bool isCompleted; // czy transakcja została już zrealizowana
         private float amount; // kwota realizacji przelewu
 
         // dane użytkownika wyjściowego
@@ -39,7 +38,6 @@ namespace BłażejDomagała_Bankowość
             id += 1;
             this.dateofTransaction = DateTime.Now;
             this.description = "-";
-            this.isCompleted = false; // domyślnie transakcja nie została jeszcze wykonana
             this.amount = 0F;
 
             this.userId = 0;
@@ -62,7 +60,6 @@ namespace BłażejDomagała_Bankowość
             listbox.Items.Add($"Numer indentyfikacyjny transakcji {id}");
             listbox.Items.Add($"Data wysłania przelewu {dateofTransaction}");
             listbox.Items.Add($"Opis przelewu {description}");
-            listbox.Items.Add($"Czy transakcja została już zrealizowana: {(isCompleted ? "tak" : "nie")}");
             listbox.Items.Add($"Kwota przelewu {amount}");
             listbox.Items.Add($"Numer indentyfikacyjny użytkownika wysyłającego przelew {userId}");
             listbox.Items.Add($"Imię użytkownika wysyłającego przelew {userFirstName}");
