@@ -18,7 +18,7 @@ namespace BłażejDomagała_Bankowość
         private static int id = 0; // id transakcji
         private DateTime dateofTransaction; // data wysłania przelewu
         private string description; // opis przelewu od użytkownika
-        private string category;
+        //private string category; // to będzie lista
 
         // dane użytkownika wyjściowego
         private int userId; // id użytkownika wysyłającego przelew
@@ -40,7 +40,6 @@ namespace BłażejDomagała_Bankowość
             id += 1;
             this.dateofTransaction = DateTime.Now;
             this.description = "-";
-            this.category = "";
 
             this.userId = 0;
             this.endUserId = userId;
