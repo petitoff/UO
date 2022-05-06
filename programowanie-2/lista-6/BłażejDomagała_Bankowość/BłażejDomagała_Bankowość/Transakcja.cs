@@ -51,6 +51,13 @@ namespace BłażejDomagała_Bankowość
             this.endUserLastName = "-";
         }
 
+        public Transakcja(string bankName, string endBankName, float amount)
+        {
+            this.bankName = bankName;
+            this.endBankName = endBankName;
+            this.amount = amount;
+        }
+
         public void Write(ListBox listbox)
         {
             // Funkcja odpowiedzialna za wypisywanie wartości pól do listbox'a
