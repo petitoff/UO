@@ -22,6 +22,9 @@ namespace BłażejDomagała_Bankowość
             var transakcja = new Transakcja();
             transakcja.Write(listBox1);
             listBox1.Items.Add("");
+
+            var transakcja2 = new Transakcja("eBank", "mBank", 785F);
+            transakcja2.Write(listBox1);
         }
     }
 }
