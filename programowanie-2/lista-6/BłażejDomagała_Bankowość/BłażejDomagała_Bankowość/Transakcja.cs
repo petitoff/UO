@@ -53,6 +53,7 @@ namespace BłażejDomagała_Bankowość
 
         public Transakcja(string bankName, string endBankName, float amount, string currency, DateTime dateofTransaction, string description)
         {
+            id += 1;
             this.bankName = bankName;
             this.endBankName = endBankName;
             this.amount = amount;
