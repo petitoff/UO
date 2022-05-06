@@ -69,6 +69,7 @@ namespace BłażejDomagała_Bankowość
             listbox.Items.Add($"Numer indentyfikacyjny transakcji {id}");
             listbox.Items.Add($"Data wysłania przelewu {dateofTransaction}");
             listbox.Items.Add($"Opis przelewu {description}");
+            listbox.Items.Add($"Czy transakcja może zostać wykoana: {(isCorrect? "Tak" : "Nie")}");
             listbox.Items.Add($"Numer indentyfikacyjny użytkownika wysyłającego przelew {userId}");
             listbox.Items.Add($"Imię użytkownika wysyłającego przelew {userFirstName}");
             listbox.Items.Add($"Nazwisko użytkownika wysyłającego przelew {userLastName}");
