@@ -17,7 +17,7 @@ namespace BłażejDomagała_Bankowość
         private string currency; // symbol waluty w jakiej dociera przelew
         private static int id = 0; // id transakcji
         private DateTime dateofTransaction; // data wysłania przelewu
-        private string description; // opis przelewu od użytkownika
+        private string description = ""; // opis przelewu od użytkownika
         private bool isCorrect = false;
         //private string category; // to będzie lista
 
