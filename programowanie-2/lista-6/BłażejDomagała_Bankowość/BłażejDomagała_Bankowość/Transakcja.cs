@@ -61,7 +61,7 @@ namespace BłażejDomagała_Bankowość
             this.description = description;
         }
 
-        public void Write(ListBox listbox)
+        public void Write(ListBox listBox)
         {
             // Funkcja odpowiedzialna za wypisywanie wartości pól do listbox'a
 
