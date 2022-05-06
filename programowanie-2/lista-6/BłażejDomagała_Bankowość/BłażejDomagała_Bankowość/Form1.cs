@@ -36,7 +36,6 @@ namespace BłażejDomagała_Bankowość
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
             var transakcja = new Transakcja(textBox1.Text, textBox2.Text, GetInputValidator.ConvertToFloat(textBox3.Text), comboBox1.Text, GetInputValidator.GetOnlyDDMMYYY(dateTimePicker1), textBox4.Text);
             transakcja.Write(listBox1);
             listBox1.Items.Add("");
