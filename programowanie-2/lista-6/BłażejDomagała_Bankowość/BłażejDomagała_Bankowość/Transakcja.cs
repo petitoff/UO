@@ -65,6 +65,13 @@ namespace BłażejDomagała_Bankowość
         {
             // Funkcja odpowiedzialna za wypisywanie wartości pól do listbox'a
 
+            ChangeIsCorrect();
+
+            if(!isCorrect)
+            {
+                MessageBox.Show("Niepoprawne wypełnienie formularza. Przelew się nie odbył!");
+                return;
+            }
 
             listBox.Items.Add($"Nazwa banku z którego pochodzi przelew: {bankName}");
             listBox.Items.Add($"Nazwa banku do którego wysyłany jest przelew: {endBankName}");
@@ -81,6 +88,25 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Imię użytkownika odbierającego przelew: {endUserFirstName}");
             listBox.Items.Add($"Nazwisko użytkownika odbierającego przelew: {endUserLastName}");
         }
+
+        private void ChangeIsCorrect()
+        {
+            if (!CheckAmount()) return;
+            //if (!CheckDescription()) return;
+
+            isCorrect = true;
+        }
+
+        private bool CheckAmount()
+        {
+            if (amount == 0F) return false;
+            return true;
+        }
+
+        private bool CheckDescription()
+        {
+            if (description.Length == 0) return false;
+            return true;
         }
     }
 }
