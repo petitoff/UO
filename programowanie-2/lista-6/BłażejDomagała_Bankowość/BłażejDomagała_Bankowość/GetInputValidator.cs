@@ -16,7 +16,7 @@ namespace BłażejDomagała_Bankowość
                 return Single.Parse(s);
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("Błąd! Wprowadź liczby zamiast tekstu!");
                 return 0;
