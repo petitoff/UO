@@ -9,8 +9,6 @@ int main()
 {
 	__asm
 	{
-		//mov EDX, offset napis
-		//mov EBX, offset tablica
 		xor EAX, EAX
 		mov AL, napis[0]
 		push AL
