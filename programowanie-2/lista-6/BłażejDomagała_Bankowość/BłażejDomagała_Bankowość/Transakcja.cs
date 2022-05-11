@@ -10,7 +10,7 @@ namespace BłażejDomagała_Bankowość
     class Transakcja
     {
         // dane transakcji
-        private string bankName; // nazwa banku z którego wychodzi przelew
+        private string bankName = "eBank"; // nazwa banku z którego wychodzi przelew
         private string endBankName; // nazwa banku do którego idzie
 
         private float amount; // kwota realizacji przelewu
@@ -19,9 +19,9 @@ namespace BłażejDomagała_Bankowość
         private DateTime dateofTransaction; // data wysłania przelewu
         private string description = ""; // opis przelewu od użytkownika
         private bool isCorrect = false;
-        //private string category; // to będzie lista
 
         // dane użytkownika wyjściowego
+        private float amountMoneyInAccount = 1000;
         private int userId; // id użytkownika wysyłającego przelew
         private string userFirstName; // imie użytkownika wyjściowego
         private string userLastName; // nazwisko użytkownika wyjściowego
@@ -33,7 +33,6 @@ namespace BłażejDomagała_Bankowość
 
         public Transakcja()
         {
-            this.bankName = "eBank";
             this.endBankName = "eBank";
 
             this.amount = 0F;
@@ -51,10 +50,17 @@ namespace BłażejDomagała_Bankowość
             this.endUserLastName = "-";
         }
 
-        public Transakcja(string bankName, string endBankName, float amount, string currency, DateTime dateofTransaction, string description)
+        public Transakcja(string userFirstName, string userLastName, float amountMoneyInAccount)
+        {
+            this.userFirstName = userFirstName;
+            this.userLastName = userLastName;
+            this.amountMoneyInAccount = amountMoneyInAccount;
+        }
+
+        public Transakcja(string endBankName, float amount, string currency, DateTime dateofTransaction, string description)
         {
             id += 1;
-            this.bankName = bankName;
+            //this.bankName = bankName;
             this.endBankName = endBankName;
             this.amount = amount;
             this.currency = currency;
@@ -66,36 +72,39 @@ namespace BłażejDomagała_Bankowość
         {
             // Funkcja odpowiedzialna za wypisywanie wartości pól do listbox'a
 
-            ChangeIsCorrect();
+            listBox.Items.Clear();
 
-            if(!isCorrect)
+            CheckIsCorrect();
+            if (!isCorrect)
             {
-                MessageBox.Show("Niepoprawne wypełnienie formularza. Przelew się nie odbył!");
+                listBox.Items.Add("Błąd w wypełnianiu formularza!");
+                MessageBox.Show("Błąd w wypełnianiu formularza!");
                 return;
             }
 
-            listBox.Items.Add($"Nazwa banku z którego pochodzi przelew: {bankName}");
-            listBox.Items.Add($"Nazwa banku do którego wysyłany jest przelew: {endBankName}");
-            listBox.Items.Add($"Kwota przelewu: {amount}");
-            listBox.Items.Add($"Waluta w jakiej realizowany jest przelew: {currency}");
-            listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
-            listBox.Items.Add($"Data wysłania przelewu: {dateofTransaction}");
-            listBox.Items.Add($"Opis przelewu: {description}");
-            listBox.Items.Add($"Czy transakcja może zostać wykoana: {(isCorrect? "Tak" : "Nie")}");
-            listBox.Items.Add($"Numer indentyfikacyjny użytkownika wysyłającego przelew: {userId}");
-            listBox.Items.Add($"Imię użytkownika wysyłającego przelew: {userFirstName}");
-            listBox.Items.Add($"Nazwisko użytkownika wysyłającego przelew: {userLastName}");
-            listBox.Items.Add($"Numer indentyfikacyjny użytkownika odbierającego przelew: {endUserId}");
-            listBox.Items.Add($"Imię użytkownika odbierającego przelew: {endUserFirstName}");
-            listBox.Items.Add($"Nazwisko użytkownika odbierającego przelew: {endUserLastName}");
+            listBox.Items.Add($"Dzień dobry: {userFirstName} {userLastName}");
+            listBox.Items.Add($"Ilość pieniędzy w twoim banku: {amountMoneyInAccount} PLN");
+
         }
 
-        private void ChangeIsCorrect()
+        private void CheckIsCorrect()
         {
-            if (!CheckAmount()) return;
+            //if (!CheckAmount()) return;
             //if (!CheckDescription()) return;
 
+            if (!FormIsFellCorrect()) return;
+
             isCorrect = true;
+        }
+
+        private bool FormIsFellCorrect()
+        {
+            if (userFirstName != "" && userLastName != "")
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private bool CheckAmount()
@@ -108,6 +117,19 @@ namespace BłażejDomagała_Bankowość
         {
             if (description.Length == 0) return false;
             return true;
+        }
+
+        public static float ConvertToFloat(string s)
+        {
+            try
+            {
+                return float.Parse(s);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Błąd! Wprowadź liczby!");
+                return 0;
+            }
         }
     }
 }
