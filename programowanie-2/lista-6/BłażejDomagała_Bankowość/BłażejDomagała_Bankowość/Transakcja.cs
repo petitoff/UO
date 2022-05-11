@@ -83,6 +83,7 @@ namespace BłażejDomagała_Bankowość
             }
 
             listBox.Items.Add($"Dzień dobry: {userFirstName} {userLastName}");
+            listBox.Items.Add($"Twój numer indentyfikacyjny: {userId}");
             listBox.Items.Add($"Ilość pieniędzy w twoim banku: {amountMoneyInAccount} PLN");
 
         }
