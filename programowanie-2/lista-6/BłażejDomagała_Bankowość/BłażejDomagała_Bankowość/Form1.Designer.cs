@@ -28,12 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -52,29 +48,38 @@
             this.label9 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox1_2 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.textBox1_1 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox1_3 = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.HorizontalScrollbar = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 157);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(336, 290);
-            this.listBox1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 62);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Transakcja - przykładowe dane";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -94,23 +99,6 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Przelew Zwykły";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(438, 157);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Nazwa Pana banku:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(571, 156);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
             // 
             // textBox2
             // 
@@ -277,16 +265,6 @@
             this.label10.TabIndex = 23;
             this.label10.Text = "ID osoby końcowej:";
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(188, 89);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(160, 62);
-            this.button4.TabIndex = 25;
-            this.button4.Text = "Transakcja - zrealizuj";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -305,14 +283,307 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 27;
             // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(919, 292);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker2.TabIndex = 49;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label13.Location = new System.Drawing.Point(817, 296);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(96, 16);
+            this.label13.TabIndex = 48;
+            this.label13.Text = "Data przelewu:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(919, 488);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 47;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label14.Location = new System.Drawing.Point(788, 492);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(125, 16);
+            this.label14.TabIndex = 46;
+            this.label14.Text = "ID osoby końcowej:";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(919, 457);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(100, 20);
+            this.textBox10.TabIndex = 45;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label15.Location = new System.Drawing.Point(743, 461);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(170, 16);
+            this.label15.TabIndex = 44;
+            this.label15.Text = "Nazwisko osoby końcowej:";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(919, 428);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 20);
+            this.textBox11.TabIndex = 43;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label16.Location = new System.Drawing.Point(776, 432);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(137, 16);
+            this.label16.TabIndex = 42;
+            this.label16.Text = "Imię osoby końcowej:";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(919, 394);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 20);
+            this.textBox12.TabIndex = 41;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label17.Location = new System.Drawing.Point(812, 398);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(101, 16);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "Pana nazwisko:";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(919, 363);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 20);
+            this.textBox13.TabIndex = 39;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label18.Location = new System.Drawing.Point(842, 367);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(71, 16);
+            this.label18.TabIndex = 38;
+            this.label18.Text = "Pana imię:";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(919, 329);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(100, 20);
+            this.textBox14.TabIndex = 37;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label19.Location = new System.Drawing.Point(874, 333);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(39, 16);
+            this.label19.TabIndex = 36;
+            this.label19.Text = "Opis:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "PLN",
+            "EUR",
+            "USD"});
+            this.comboBox2.Location = new System.Drawing.Point(919, 259);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(100, 21);
+            this.comboBox2.TabIndex = 35;
+            this.comboBox2.Text = "PLN";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(860, 259);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(53, 16);
+            this.label20.TabIndex = 34;
+            this.label20.Text = "Waluta:";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(919, 221);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(100, 20);
+            this.textBox15.TabIndex = 33;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(810, 225);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(103, 16);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "Kwota przelewu:";
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(919, 190);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(100, 20);
+            this.textBox16.TabIndex = 31;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(748, 194);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(165, 16);
+            this.label22.TabIndex = 30;
+            this.label22.Text = "Nazwa banku końcowego:";
+            // 
+            // textBox1_2
+            // 
+            this.textBox1_2.Location = new System.Drawing.Point(238, 221);
+            this.textBox1_2.Name = "textBox1_2";
+            this.textBox1_2.Size = new System.Drawing.Size(100, 20);
+            this.textBox1_2.TabIndex = 53;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(89, 225);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(143, 16);
+            this.label23.TabIndex = 52;
+            this.label23.Text = "Podaj swoje nazwisko:";
+            // 
+            // textBox1_1
+            // 
+            this.textBox1_1.Location = new System.Drawing.Point(238, 190);
+            this.textBox1_1.Name = "textBox1_1";
+            this.textBox1_1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1_1.TabIndex = 51;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(119, 194);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(113, 16);
+            this.label24.TabIndex = 50;
+            this.label24.Text = "Podaj swoje imię:";
+            // 
+            // textBox1_3
+            // 
+            this.textBox1_3.Location = new System.Drawing.Point(238, 253);
+            this.textBox1_3.Name = "textBox1_3";
+            this.textBox1_3.Size = new System.Drawing.Size(100, 20);
+            this.textBox1_3.TabIndex = 55;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(7, 257);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(225, 16);
+            this.label25.TabIndex = 54;
+            this.label25.Text = "Podaj ilość pieniędzy w twoim banku";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(75, 311);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 38);
+            this.button1.TabIndex = 56;
+            this.button1.Text = "Wypełnij przykładowymi danymi";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(219, 311);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(119, 38);
+            this.button4.TabIndex = 57;
+            this.button4.Text = "Zatwierdź dane";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // listBox1
+            // 
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(10, 25);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(446, 84);
+            this.listBox1.TabIndex = 58;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 543);
+            this.ClientSize = new System.Drawing.Size(975, 543);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1_3);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.textBox1_2);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.textBox1_1);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.textBox12);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.textBox13);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.textBox14);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.textBox15);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.textBox16);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox8);
@@ -331,27 +602,19 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox3;
@@ -370,9 +633,37 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox textBox1_2;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox textBox1_1;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBox1_3;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
