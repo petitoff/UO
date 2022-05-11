@@ -48,5 +48,11 @@ namespace BłażejDomagała_Bankowość
             transakcja.Write(listBox1);
             listBox1.Items.Add("");
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form form2 = new Form2();
+            form2.Show();
+        }
     }
 }
