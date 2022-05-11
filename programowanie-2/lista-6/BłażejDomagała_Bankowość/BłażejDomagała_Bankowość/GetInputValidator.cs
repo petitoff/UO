@@ -25,9 +25,6 @@ namespace BłażejDomagała_Bankowość
 
         public static DateTime GetOnlyDDMMYYY(DateTimePicker dateTimePicker)
         {
-            //MessageBox.Show(Convert.ToDateTime(dateTimePicker.Value.ToShortDateString()).ToString("dd/MM/yyyy"));
-            //DateTime dt = Convert.ToDateTime(dateTimePicker.Value.ToShortDateString());
-
             return Convert.ToDateTime(dateTimePicker.Value.ToShortDateString()); ;
         }
     }
