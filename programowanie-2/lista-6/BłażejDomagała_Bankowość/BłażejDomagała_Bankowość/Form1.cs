@@ -42,12 +42,24 @@ namespace BłażejDomagała_Bankowość
             listBox1.Items.Add("");
         }
 
+        private bool isClicked = false;
+
         private void button3_Click(object sender, EventArgs e)
         {
             if (!Transakcja.CheckTransaction()) return;
+            isClicked = true;
 
             Form form2 = new Form2();
             form2.Show();
+        }
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            if (isClicked)
+            {
+                Transakcja transakcja = new Transakcja();
+                transakcja.Write(listBox1);
+            }
         }
     }
 }

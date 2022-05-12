@@ -10,25 +10,53 @@ namespace BłażejDomagała_Bankowość
     class PrzelewZwykly : Transakcja
     {
         private List<string> categoriesList = new List<string>{"jedzenie", "zakupy", "paliwo"};
+        private string currency;
+        private float amount;
 
         public PrzelewZwykly()
         {
-
+            this.amount = amount;
         }
 
-        public PrzelewZwykly(string endBankName, float amount, string currency, DateTime dateofTransaction, string description) : base(endBankName, amount, currency, dateofTransaction, description)
+        public PrzelewZwykly(string endBankName, float amount, string currency, DateTime dateofTransaction, string description, string endUserFirstName, string endUserLastName, int endUserId) : base(endBankName, amount, currency, dateofTransaction, description, endUserFirstName, endUserLastName, endUserId)
         {
-
+            this.amount = amount;
+            this.currency = currency;
         }
 
         public new void Write(ListBox listBox)
         {
             base.WriteData(listBox);
+
+            if (currency != "PLN")
+            {
+                listBox.Items.Add($"Transfer w walucie obcej przeliczone na złotówki: {CurrencyConversion()} PLN");
+            }
         }
 
         public void WriteWidget(ListBox listBox)
         {
             base.Write(listBox);
+        }
+
+        private void WhenTransferArrives()
+        {
+
+        }
+
+        private float CurrencyConversion()
+        {
+            if (currency == "EUR")
+            {
+                return (float) Math.Round((amount * 4.5F),2);
+            }
+
+            if (currency == "USD")
+            {
+                return (float) Math.Round((amount * 3.8F),2);
+            }
+
+            return 0;
         }
     }
 }

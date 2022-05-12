@@ -37,7 +37,6 @@ namespace BłażejDomagała_Bankowość
 
             this.amount = 0F;
             this.currency = "PLN";
-            id += 1;
             this.dateofTransaction = DateTime.Now;
             this.description = "-";
 
@@ -52,13 +51,12 @@ namespace BłażejDomagała_Bankowość
 
         public Transakcja(string userFirstNameArg, string userLastNameArg, float amountMoneyInAccountArg)
         {
-            id += 1;
             userFirstName = userFirstNameArg;
             userLastName = userLastNameArg;
             amountMoneyInAccount = amountMoneyInAccountArg;
         }
 
-        public Transakcja(string endBankName, float amount, string currency, DateTime dateofTransaction, string description)
+        public Transakcja(string endBankName, float amount, string currency, DateTime dateofTransaction, string description, string endUserFirstName, string endUserLastName, int endUserId)
         {
             id += 1;
             this.endBankName = endBankName;
@@ -66,6 +64,17 @@ namespace BłażejDomagała_Bankowość
             this.currency = currency;
             this.dateofTransaction = dateofTransaction;
             this.description = description;
+            this.endUserFirstName = endUserFirstName;
+            this.endUserLastName = endUserLastName;
+            this.endUserId = endUserId;
+        }
+
+        public void UpdateData(ListBox listBox)
+        {
+            listBox.Items.Clear();
+            listBox.Items.Add($"Dzień dobry: {userFirstName} {userLastName}");
+            listBox.Items.Add($"Twój numer indentyfikacyjny: {userId}");
+            listBox.Items.Add($"Ilość pieniędzy w twoim banku: {amountMoneyInAccount} PLN");
         }
 
         public void Write(ListBox listBox)
@@ -82,15 +91,17 @@ namespace BłażejDomagała_Bankowość
                 return;
             }
 
-            listBox.Items.Add($"Dzień dobry: {userFirstName} {userLastName}");
-            listBox.Items.Add($"Twój numer indentyfikacyjny: {userId}");
-            listBox.Items.Add($"Ilość pieniędzy w twoim banku: {amountMoneyInAccount} PLN");
+            UpdateData(listBox);
         }
 
         public void WriteData(ListBox listBox)
         {
             listBox.Items.Clear();
             CheckingWhetherTransferCanTakePlace();
+
+            listBox.Items.Add($"Czy przelew może się odbyć: {(isCorrect ? "tak" : "nie")}");
+            listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
+
             if (!isCorrect)
             {
                 listBox.Items.Add("Błąd w wypełnianiu formularza!");
@@ -98,11 +109,22 @@ namespace BłażejDomagała_Bankowość
                 return;
             }
 
+            UpdatingMoneyInAccount();
+
             listBox.Items.Add($"Nazwa banku do którego wysyłany jest przelew: {endBankName}");
             listBox.Items.Add($"Kwota przelewu: {amount}");
             listBox.Items.Add($"Waluta przelewu: {currency}");
+            listBox.Items.Add($"Stan konta po przelewie: {amountMoneyInAccount} PLN");
             listBox.Items.Add($"Data przelewu: {dateofTransaction}");
             listBox.Items.Add($"Opis przelewu: {description}");
+            listBox.Items.Add($"Imię osoby do kótrej wysyłany jest przelew: {endUserFirstName}");
+            listBox.Items.Add($"Nazwisko osoby do kótrej wysyłany jest przelew: {endUserLastName}");
+            listBox.Items.Add($"Numer indentyfikacyjny osoby do której wysyłany jest przelew: {endUserId}");
+        }
+
+        public void UpdatingMoneyInAccount()
+        {
+            amountMoneyInAccount -= amount;
         }
 
         private void CheckIsCorrect()
@@ -127,6 +149,7 @@ namespace BłażejDomagała_Bankowość
 
             if (!CheckAmount()) return;
             if (!CheckDescription()) return;
+            if (!CheckIfIdIsSame()) return;
 
             isCorrect = true;
         }
@@ -134,6 +157,30 @@ namespace BłażejDomagała_Bankowość
         private bool CheckAmount()
         {
             if (amount == 0F) return false;
+
+            if (currency == "EUR")
+            {
+                if (amountMoneyInAccount - amount * 4.5F < 0)
+                {
+                    MessageBox.Show(@"Podałeś kwotę większą niż posiadasz pieniędzy w banku!");
+                    return false;
+                }
+            }
+
+            if (currency == "USD")
+            {
+                if (amountMoneyInAccount - amount * 3.8F < 0)
+                {
+                    MessageBox.Show(@"Podałeś kwotę większą niż posiadasz pieniędzy w banku!");
+                    return false;
+                }
+            }
+
+            if (amountMoneyInAccount - amount < 0)
+            {
+                MessageBox.Show(@"Podałeś kwotę większą niż posiadasz pieniędzy w banku!");
+                return false;
+            }
             return true;
         }
 
@@ -143,11 +190,35 @@ namespace BłażejDomagała_Bankowość
             return true;
         }
 
+        private bool CheckIfIdIsSame()
+        {
+            if (userId == endUserId)
+            {
+                MessageBox.Show(@"Nie możesz zrealizować przelewu na to samo konto!");
+                return false;
+            }
+
+            return true;
+        }
+
         public static float ConvertToFloat(string s)
         {
             try
             {
                 return float.Parse(s);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Błąd! Wprowadź liczby!");
+                return 0;
+            }
+        }
+
+        public static int ConvertToInt(string s)
+        {
+            try
+            {
+                return int.Parse(s);
             }
             catch (Exception)
             {
