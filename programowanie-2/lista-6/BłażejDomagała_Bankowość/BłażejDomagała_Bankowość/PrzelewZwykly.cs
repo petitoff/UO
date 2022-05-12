@@ -13,16 +13,18 @@ namespace BłażejDomagała_Bankowość
         private string currency;
         private float amount;
         private DateTime dateTransaction;
+        private int indexOfCategories;
 
         public PrzelewZwykly()
         {
         }
 
-        public PrzelewZwykly(string endBankName, float amount, string currency, DateTime dateofTransaction, string description, string endUserFirstName, string endUserLastName, int endUserId) : base(endBankName, amount, currency, dateofTransaction, description, endUserFirstName, endUserLastName, endUserId)
+        public PrzelewZwykly(string endBankName, float amount, string currency, DateTime dateofTransaction, string description, string endUserFirstName, string endUserLastName, int endUserId, int indexOfCategories) : base(endBankName, amount, currency, dateofTransaction, description, endUserFirstName, endUserLastName, endUserId)
         {
             this.amount = amount;
             this.currency = currency;
             this.dateTransaction = dateofTransaction;
+            this.indexOfCategories = indexOfCategories;
         }
 
         public new void Write(ListBox listBox)
@@ -30,6 +32,7 @@ namespace BłażejDomagała_Bankowość
             base.WriteData(listBox);
 
             listBox.Items.Add($"Przewidywny czas realizacji przelewu {WhenTransferArrives()}");
+            listBox.Items.Add($"Kategoria przelewu {categoriesList[indexOfCategories]}");
             if (currency != "PLN")
             {
                 // jeżeli przelew odbywa się w walucie obcej to wyświetlamy przeliczenie walut użytkownikowi
