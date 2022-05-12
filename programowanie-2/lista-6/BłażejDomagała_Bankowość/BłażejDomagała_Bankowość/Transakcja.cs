@@ -87,7 +87,7 @@ namespace BłażejDomagała_Bankowość
             if (!isCorrect)
             {
                 listBox.Items.Add("Błąd w wypełnianiu formularza!");
-                MessageBox.Show("Błąd w wypełnianiu formularza!");
+                MessageBox.Show(@"Błąd w wypełnianiu formularza!");
                 return;
             }
 
@@ -105,7 +105,7 @@ namespace BłażejDomagała_Bankowość
             if (!isCorrect)
             {
                 listBox.Items.Add("Błąd w wypełnianiu formularza!");
-                MessageBox.Show("Błąd w wypełnianiu formularza!");
+                MessageBox.Show(@"Błąd w wypełnianiu formularza!");
                 return;
             }
 
@@ -218,7 +218,7 @@ namespace BłażejDomagała_Bankowość
             }
             catch (Exception)
             {
-                MessageBox.Show("Błąd! Wprowadź liczby!");
+                MessageBox.Show(@"Błąd! Wprowadź liczby!");
                 return 0;
             }
         }
@@ -231,7 +231,7 @@ namespace BłażejDomagała_Bankowość
             }
             catch (Exception)
             {
-                MessageBox.Show("Błąd! Wprowadź liczby!");
+                MessageBox.Show(@"Błąd! Wprowadź liczby!");
                 return 0;
             }
         }
@@ -240,7 +240,7 @@ namespace BłażejDomagała_Bankowość
         {
             if (userFirstName.Length == 0 && userLastName.Length == 0)
             {
-                MessageBox.Show("Wypełnij dane do transakcji!");
+                MessageBox.Show(@"Wypełnij dane do transakcji!");
                 return false;
             }
 
