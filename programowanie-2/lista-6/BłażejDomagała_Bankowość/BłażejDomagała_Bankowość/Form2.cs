@@ -19,7 +19,7 @@ namespace BłażejDomagała_Bankowość
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PrzelewZwykly przelewZwykly = new PrzelewZwykly(textBox1.Text, Transakcja.ConvertToFloat(textBox2.Text), comboBox1.SelectedItem.ToString(), dateTimePicker1.Value, textBox3.Text, textBox4.Text, textBox5.Text, Transakcja.ConvertToInt(textBox6.Text));
+            PrzelewZwykly przelewZwykly = new PrzelewZwykly(textBox1.Text, Transakcja.ConvertToFloat(textBox2.Text), comboBox1.SelectedItem.ToString(), dateTimePicker1.Value, textBox3.Text, textBox4.Text, textBox5.Text, Transakcja.ConvertToInt(textBox6.Text), comboBox2.SelectedIndex);
             przelewZwykly.Write(listBox1);
             przelewZwykly.UpdateData(listBox2);
             //listBox1.Items.Add("");
@@ -36,7 +36,7 @@ namespace BłażejDomagała_Bankowość
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PrzelewZwykly przelewZwykly = new PrzelewZwykly("mBank", 50, "PLN", DateTime.Now,  "Przelew zwykły", "Patryk", "Ignasiak", 1);
+            PrzelewZwykly przelewZwykly = new PrzelewZwykly("mBank", 50, "PLN", DateTime.Now,  "Przelew zwykły", "Patryk", "Ignasiak", 1, 0);
             przelewZwykly.Write(listBox1);
             przelewZwykly.UpdateData(listBox2);
         }
