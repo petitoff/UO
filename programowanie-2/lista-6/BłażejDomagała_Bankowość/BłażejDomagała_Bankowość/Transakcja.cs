@@ -124,6 +124,15 @@ namespace BłażejDomagała_Bankowość
 
         public void UpdatingMoneyInAccount()
         {
+            if (currency == "EUR")
+            {
+                amount *= 4.5F;
+            }
+
+            if (currency == "USD")
+            {
+                amount *= 3.8F;
+            }
             amountMoneyInAccount -= amount;
         }
 
