@@ -39,6 +39,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button5 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -63,7 +66,7 @@
             // 
             // textBox1_2
             // 
-            this.textBox1_2.Location = new System.Drawing.Point(238, 221);
+            this.textBox1_2.Location = new System.Drawing.Point(261, 219);
             this.textBox1_2.Name = "textBox1_2";
             this.textBox1_2.Size = new System.Drawing.Size(100, 20);
             this.textBox1_2.TabIndex = 53;
@@ -72,7 +75,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(89, 225);
+            this.label23.Location = new System.Drawing.Point(112, 223);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(143, 16);
             this.label23.TabIndex = 52;
@@ -80,7 +83,7 @@
             // 
             // textBox1_1
             // 
-            this.textBox1_1.Location = new System.Drawing.Point(238, 190);
+            this.textBox1_1.Location = new System.Drawing.Point(261, 188);
             this.textBox1_1.Name = "textBox1_1";
             this.textBox1_1.Size = new System.Drawing.Size(100, 20);
             this.textBox1_1.TabIndex = 51;
@@ -89,7 +92,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(119, 194);
+            this.label24.Location = new System.Drawing.Point(142, 192);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(113, 16);
             this.label24.TabIndex = 50;
@@ -97,7 +100,7 @@
             // 
             // textBox1_3
             // 
-            this.textBox1_3.Location = new System.Drawing.Point(238, 253);
+            this.textBox1_3.Location = new System.Drawing.Point(261, 251);
             this.textBox1_3.Name = "textBox1_3";
             this.textBox1_3.Size = new System.Drawing.Size(100, 20);
             this.textBox1_3.TabIndex = 55;
@@ -106,7 +109,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(7, 257);
+            this.label25.Location = new System.Drawing.Point(30, 255);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(225, 16);
             this.label25.TabIndex = 54;
@@ -138,16 +141,35 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(10, 25);
+            this.listBox1.Location = new System.Drawing.Point(12, 25);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(446, 84);
+            this.listBox1.Size = new System.Drawing.Size(444, 84);
             this.listBox1.TabIndex = 58;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(638, 427);
+            this.pictureBox1.TabIndex = 59;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(504, 103);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(129, 38);
+            this.button5.TabIndex = 60;
+            this.button5.Text = "Załaduj zdjęcie na okładkę";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 451);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
@@ -159,10 +181,12 @@
             this.Controls.Add(this.label24);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,6 +204,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button5;
     }
 }
 
