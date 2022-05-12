@@ -21,10 +21,10 @@ namespace BłażejDomagała_Bankowość
         private bool isCorrect = false;
 
         // dane użytkownika wyjściowego
-        private float amountMoneyInAccount = 1000;
+        public static float amountMoneyInAccount;
         private int userId; // id użytkownika wysyłającego przelew
-        private string userFirstName; // imie użytkownika wyjściowego
-        private string userLastName; // nazwisko użytkownika wyjściowego
+        public static string userFirstName = ""; // imie użytkownika wyjściowego
+        public static string userLastName = ""; // nazwisko użytkownika wyjściowego
 
         // dane użytkownika wejściowego
         private int endUserId;
@@ -44,23 +44,23 @@ namespace BłażejDomagała_Bankowość
             this.userId = 0;
             this.endUserId = userId;
 
-            this.userFirstName = "-";
-            this.userLastName = "-";
+            //this.userFirstName = "-";
+            //this.userLastName = "-";
             this.endUserFirstName = "-";
             this.endUserLastName = "-";
         }
 
-        public Transakcja(string userFirstName, string userLastName, float amountMoneyInAccount)
+        public Transakcja(string userFirstNameArg, string userLastNameArg, float amountMoneyInAccountArg)
         {
-            this.userFirstName = userFirstName;
-            this.userLastName = userLastName;
-            this.amountMoneyInAccount = amountMoneyInAccount;
+            id += 1;
+            userFirstName = userFirstNameArg;
+            userLastName = userLastNameArg;
+            amountMoneyInAccount = amountMoneyInAccountArg;
         }
 
         public Transakcja(string endBankName, float amount, string currency, DateTime dateofTransaction, string description)
         {
             id += 1;
-            //this.bankName = bankName;
             this.endBankName = endBankName;
             this.amount = amount;
             this.currency = currency;
@@ -85,16 +85,29 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Dzień dobry: {userFirstName} {userLastName}");
             listBox.Items.Add($"Twój numer indentyfikacyjny: {userId}");
             listBox.Items.Add($"Ilość pieniędzy w twoim banku: {amountMoneyInAccount} PLN");
+        }
 
+        public void WriteData(ListBox listBox)
+        {
+            listBox.Items.Clear();
+            CheckingWhetherTransferCanTakePlace();
+            if (!isCorrect)
+            {
+                listBox.Items.Add("Błąd w wypełnianiu formularza!");
+                MessageBox.Show("Błąd w wypełnianiu formularza!");
+                return;
+            }
+
+            listBox.Items.Add($"Nazwa banku do którego wysyłany jest przelew: {endBankName}");
+            listBox.Items.Add($"Kwota przelewu: {amount}");
+            listBox.Items.Add($"Waluta przelewu: {currency}");
+            listBox.Items.Add($"Data przelewu: {dateofTransaction}");
+            listBox.Items.Add($"Opis przelewu: {description}");
         }
 
         private void CheckIsCorrect()
         {
-            //if (!CheckAmount()) return;
-            //if (!CheckDescription()) return;
-
             if (!FormIsFellCorrect()) return;
-
             isCorrect = true;
         }
 
@@ -106,6 +119,16 @@ namespace BłażejDomagała_Bankowość
             }
 
             return false;
+        }
+
+        private void CheckingWhetherTransferCanTakePlace()
+        {
+            isCorrect = false;
+
+            if (!CheckAmount()) return;
+            if (!CheckDescription()) return;
+
+            isCorrect = true;
         }
 
         private bool CheckAmount()
@@ -131,6 +154,17 @@ namespace BłażejDomagała_Bankowość
                 MessageBox.Show("Błąd! Wprowadź liczby!");
                 return 0;
             }
+        }
+
+        public static bool CheckTransaction()
+        {
+            if (userFirstName.Length == 0 && userLastName.Length == 0)
+            {
+                MessageBox.Show("Wypełnij dane do transakcji!");
+                return false;
+            }
+
+            return true;
         }
     }
 }

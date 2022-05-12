@@ -23,13 +23,6 @@ namespace BłażejDomagała_Bankowość
             //form2.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //var transakcja = new Transakcja(textBox2.Text, GetInputValidator.ConvertToFloat(textBox3.Text), comboBox1.Text, GetInputValidator.GetOnlyDDMMYYY(dateTimePicker1), textBox4.Text);
-            //transakcja.Write(listBox1);
-            //listBox1.Items.Add("");
-        }
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -51,6 +44,8 @@ namespace BłażejDomagała_Bankowość
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (!Transakcja.CheckTransaction()) return;
+
             Form form2 = new Form2();
             form2.Show();
         }
