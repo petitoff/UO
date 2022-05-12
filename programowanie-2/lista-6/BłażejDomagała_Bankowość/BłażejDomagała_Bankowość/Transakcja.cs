@@ -254,26 +254,19 @@ namespace BłażejDomagała_Bankowość
         public void LoadImage(PictureBox pb)
         {
             // open file dialog   
-            OpenFileDialog open = new OpenFileDialog();
+            OpenFileDialog open = new OpenFileDialog
+            {
+                Filter = @"Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp"
+            };
             // image filters  
-            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
             if (open.ShowDialog() == DialogResult.OK)
             {
                 // display image in picture box  
                 pb.Image = new Bitmap(open.FileName);
                 // image file path  
-                //textBox1.Text = open.FileName;
-
                 imageBitmap = new Bitmap(open.FileName);
                 pb.Image = imageBitmap;
             }
-
-            //string fileName = "img_forest.jpg";
-            //string path = Path.Combine(Environment.CurrentDirectory, fileName);
-            //imageBitmap = new Bitmap(
-            //    path);
-            //pb.Image = imageBitmap;
-            //pb.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }
