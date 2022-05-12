@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BłażejDomagała_Bankowość 
+namespace BłażejDomagała_Bankowość
 {
     class PrzelewZwykly : Transakcja
     {
-        private List<string> categoriesList = new List<string>{"jedzenie", "zakupy", "paliwo"};
+        private List<string> categoriesList = new List<string> { "jedzenie", "zakupy", "paliwo" };
         private string currency;
         private float amount;
 
@@ -47,12 +47,12 @@ namespace BłażejDomagała_Bankowość
         {
             if (currency == "EUR")
             {
-                return (float) Math.Round((amount * 4.5F),2);
+                return (float)Math.Round((amount * 4.5F), 2);
             }
 
             if (currency == "USD")
             {
-                return (float) Math.Round((amount * 3.8F),2);
+                return (float)Math.Round((amount * 3.8F), 2);
             }
 
             return 0;
