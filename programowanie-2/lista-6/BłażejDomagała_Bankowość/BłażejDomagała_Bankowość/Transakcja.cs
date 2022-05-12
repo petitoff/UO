@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +32,8 @@ namespace BłażejDomagała_Bankowość
         private int endUserId;
         private string endUserFirstName;
         private string endUserLastName;
+
+        private Bitmap imageBitmap;
 
         public Transakcja()
         {
@@ -245,6 +249,31 @@ namespace BłażejDomagała_Bankowość
             }
 
             return true;
+        }
+
+        public void LoadImage(PictureBox pb)
+        {
+            // open file dialog   
+            OpenFileDialog open = new OpenFileDialog();
+            // image filters  
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                // display image in picture box  
+                pb.Image = new Bitmap(open.FileName);
+                // image file path  
+                //textBox1.Text = open.FileName;
+
+                imageBitmap = new Bitmap(open.FileName);
+                pb.Image = imageBitmap;
+            }
+
+            //string fileName = "img_forest.jpg";
+            //string path = Path.Combine(Environment.CurrentDirectory, fileName);
+            //imageBitmap = new Bitmap(
+            //    path);
+            //pb.Image = imageBitmap;
+            //pb.SizeMode = PictureBoxSizeMode.StretchImage;
         }
     }
 }
