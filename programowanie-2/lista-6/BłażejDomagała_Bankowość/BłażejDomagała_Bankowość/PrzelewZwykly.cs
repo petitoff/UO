@@ -12,6 +12,7 @@ namespace BłażejDomagała_Bankowość
         private List<string> categoriesList = new List<string> { "jedzenie", "zakupy", "paliwo" };
         private string currency;
         private float amount;
+        private DateTime dateTransaction;
 
         public PrzelewZwykly()
         {
@@ -21,12 +22,14 @@ namespace BłażejDomagała_Bankowość
         {
             this.amount = amount;
             this.currency = currency;
+            this.dateTransaction = dateofTransaction;
         }
 
         public new void Write(ListBox listBox)
         {
             base.WriteData(listBox);
 
+            listBox.Items.Add($"Przewidywny czas realizacji przelewu {WhenTransferArrives()}");
             if (currency != "PLN")
             {
                 listBox.Items.Add($"Transfer w walucie obcej przeliczone na złotówki: {CurrencyConversion()} PLN");
@@ -38,9 +41,9 @@ namespace BłażejDomagała_Bankowość
             base.Write(listBox);
         }
 
-        private void WhenTransferArrives()
+        private string WhenTransferArrives()
         {
-
+            return dateTransaction.AddDays(3).ToString("dd/MM/yyyy");
         }
 
         private float CurrencyConversion()
