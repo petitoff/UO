@@ -15,7 +15,6 @@ namespace BłażejDomagała_Bankowość
 
         public PrzelewZwykly()
         {
-            this.amount = amount;
         }
 
         public PrzelewZwykly(string endBankName, float amount, string currency, DateTime dateofTransaction, string description, string endUserFirstName, string endUserLastName, int endUserId) : base(endBankName, amount, currency, dateofTransaction, description, endUserFirstName, endUserLastName, endUserId)
