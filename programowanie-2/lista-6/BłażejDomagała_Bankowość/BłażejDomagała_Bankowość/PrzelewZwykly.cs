@@ -32,22 +32,29 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Przewidywny czas realizacji przelewu {WhenTransferArrives()}");
             if (currency != "PLN")
             {
+                // jeżeli przelew odbywa się w walucie obcej to wyświetlamy przeliczenie walut użytkownikowi
                 listBox.Items.Add($"Transfer w walucie obcej przeliczone na złotówki: {CurrencyConversion()} PLN");
             }
         }
 
         public void WriteWidget(ListBox listBox)
         {
+            // aktualizowanie widget'u użytkownika
+            // aktualizacja odnosi się głównie do stanu konta użytkwonika
+
             base.Write(listBox);
         }
 
         private string WhenTransferArrives()
         {
+            // Wyświetlanie informacji, którego dnia użytkownik powinien otrzymać przelew
             return dateTransaction.AddDays(3).ToString("dd/MM/yyyy");
         }
 
         private float CurrencyConversion()
         {
+            // Przeliczanie walut między PLN - EUR oraz PLN - USD
+
             if (currency == "EUR")
             {
                 return (float)Math.Round((amount * 4.5F), 2);
