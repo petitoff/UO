@@ -27,9 +27,8 @@ namespace BłażejDomagała_Bankowość
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            PrzelewZwykly przelewZwykly = new PrzelewZwykly();
-            przelewZwykly.WriteWidget(listBox2);
-            listBox1.Items.Add("");
+            Transakcja transakcja = new Transakcja();
+            transakcja.Write(listBox2);
 
             textBox3.Text = @"Przelew zwykły";
         }

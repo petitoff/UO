@@ -9,11 +9,11 @@ namespace BłażejDomagała_Bankowość
 {
     class PrzelewZwykly : Transakcja
     {
-        private List<string> categoriesList = new List<string> { "jedzenie", "zakupy", "paliwo" };
-        private string currency;
-        private float amount;
+        private readonly List<string> categoriesList = new List<string> { "jedzenie", "zakupy", "paliwo" };
+        private readonly string currency;
+        private readonly float amount;
         private DateTime dateTransaction;
-        private int indexOfCategories;
+        private readonly int indexOfCategories;
 
         public PrzelewZwykly()
         {
@@ -38,14 +38,6 @@ namespace BłażejDomagała_Bankowość
                 // jeżeli przelew odbywa się w walucie obcej to wyświetlamy przeliczenie walut użytkownikowi
                 listBox.Items.Add($"Transfer w walucie obcej przeliczone na złotówki: {CurrencyConversion()} PLN");
             }
-        }
-
-        public void WriteWidget(ListBox listBox)
-        {
-            // aktualizowanie widget'u użytkownika
-            // aktualizacja odnosi się głównie do stanu konta użytkwonika
-
-            base.Write(listBox);
         }
 
         private string WhenTransferArrives()

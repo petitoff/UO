@@ -19,8 +19,11 @@ namespace BłażejDomagała_Bankowość
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Form2 form2 = new Form2();
-            //form2.Show();
+            if (!Transakcja.CheckTransaction()) return;
+            isClicked = true;
+
+            Form form3 = new Form3();
+            form3.Show();
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
