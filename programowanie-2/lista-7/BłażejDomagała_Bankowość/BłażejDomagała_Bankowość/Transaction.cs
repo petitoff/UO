@@ -10,7 +10,7 @@ namespace BłażejDomagała_Bankowość
     abstract class Transaction
     {
         // Global variable
-        public static int id = 0; // id transakcji
+        public static int id = -1; // id transakcji
         public static string UserFirstName = ""; // imie użytkownika wyjściowego
         public static string UserLastName = ""; // nazwisko użytkownika wyjściowego
         public static float AmountMoneyInAccount = 0; // ilośc pieniędzy użytkownika wyjściowego
