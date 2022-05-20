@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace BłażejDomagała_Bankowość
+{
+    abstract class Transaction
+    {
+        // Global variable
+        public static int id = 0; // id transakcji
+        public static string UserFirstName = ""; // imie użytkownika wyjściowego
+        public static string UserLastName = ""; // nazwisko użytkownika wyjściowego
+        public static float AmountMoneyInAccount = 0; // ilośc pieniędzy użytkownika wyjściowego
+
+        public static void GetInfo(ListBox listBox)
+        {
+            listBox.Items.Clear();
+            listBox.Items.Add($"Dzień dobry: {UserFirstName} {UserLastName}");
+            listBox.Items.Add($"Ilość pieniędzy w twoim banku: {AmountMoneyInAccount} PLN");
+        }
+    }
+}
