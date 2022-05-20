@@ -69,5 +69,13 @@ namespace BłażejDomagała_Bankowość
             Transaction.AmountMoneyInAccount = 100F;
             Transaction.GetInfo(listBox1);
         }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
