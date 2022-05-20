@@ -8,6 +8,8 @@ namespace BłażejDomagała_Bankowość
 {
     static class Program
     {
+        public static List<Transaction> Transactions = new List<Transaction>();
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
