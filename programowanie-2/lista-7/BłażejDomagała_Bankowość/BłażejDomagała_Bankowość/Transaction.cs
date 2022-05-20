@@ -21,5 +21,14 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Dzień dobry: {UserFirstName} {UserLastName}");
             listBox.Items.Add($"Ilość pieniędzy w twoim banku: {AmountMoneyInAccount} PLN");
         }
+
+        public static bool CheckIsField()
+        {
+            if (UserFirstName.Length != 0 && UserLastName.Length != 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
