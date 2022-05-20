@@ -32,6 +32,32 @@ namespace BłażejDomagała_Bankowość
             return false;
         }
 
+        public static int ConvertToInt(string s)
+        {
+            try
+            {
+                return int.Parse(s);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(@"Wprowadź liczbę!");
+                return -1;
+            }
+        }
+
+        public static float ConvertToFloat(string s)
+        {
+            try
+            {
+                return float.Parse(s);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(@"Wprowadź liczbę!");
+                return -1;
+            }
+        }
+
         public virtual void Write(ListBox listBox)
         protected virtual void Write(ListBox listBox)
         {
