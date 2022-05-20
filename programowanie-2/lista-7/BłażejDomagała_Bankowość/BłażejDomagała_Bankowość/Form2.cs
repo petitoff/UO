@@ -19,7 +19,7 @@ namespace BłażejDomagała_Bankowość
 
         private void button1_Click(object sender, EventArgs e)
         {
-            StandardTransfer standardTransfer = new StandardTransfer();
+            StandardTransfer standardTransfer = new StandardTransfer(textBox2.Text, textBox1.Text);
             Program.Transactions.Add(standardTransfer);
             Program.Transactions[Program.Transactions.Count - 1].Write(listBox1);
         }
