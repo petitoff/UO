@@ -31,5 +31,10 @@ namespace BłażejDomagała_Bankowość
             MessageBox.Show(@"Wypełnij dane zanim przejdziesz do przelewu!");
             return false;
         }
+
+        public virtual void Write(ListBox listBox)
+        {
+
+        }
     }
 }
