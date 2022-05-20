@@ -65,6 +65,7 @@ namespace BłażejDomagała_Bankowość
         {
             Transaction.UserFirstName = "Błażej";
             Transaction.UserLastName = "Domagała";
+            Transaction.UserId = 0;
             Transaction.AmountMoneyInAccount = 100F;
             Transaction.GetInfo(listBox1);
         }
