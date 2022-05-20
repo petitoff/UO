@@ -82,6 +82,7 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Twoje ID: {UserId}");
             listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
             listBox.Items.Add($"Ilość pieniędzy w twoim banku: {AmountMoneyInAccount} PLN");
+            listBox.Items.Add($"Imię i nazwisko odbiorcy: {endUserFirstName} {endUserLastName}");
         }
     }
 }
