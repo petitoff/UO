@@ -16,6 +16,10 @@ namespace BłażejDomagała_Bankowość
         public static int UserId = 0;
         public static float AmountMoneyInAccount = 0; // ilośc pieniędzy użytkownika wyjściowego
 
+        // Dane odbiorcy
+        private string endUserFirstName;
+        private string endUserLastName;
+
         public Transaction()
         {
             id += 1;
