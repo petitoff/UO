@@ -25,6 +25,13 @@ namespace BłażejDomagała_Bankowość
             id += 1;
         }
 
+        public Transaction(string endUserFirstName, string endUserLastName)
+        {
+            id += 1;
+            this.endUserFirstName = endUserFirstName;
+            this.endUserLastName = endUserLastName;
+        }
+
         public static void GetInfo(ListBox listBox)
         {
             listBox.Items.Clear();
