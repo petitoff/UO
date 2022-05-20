@@ -9,6 +9,7 @@ namespace BłażejDomagała_Bankowość
 {
     class StandardTransfer : Transaction
     {
+        private List<string> Categories = new List<string>{"Jedzenie", "Zakupy","Paliwo"};
         public override void Write(ListBox listBox)
         {
             base.Write(listBox);
