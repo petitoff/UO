@@ -16,5 +16,12 @@ namespace BłażejDomagała_Bankowość
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StandardTransfer standardTransfer = new StandardTransfer();
+            Program.Transactions.Add(standardTransfer);
+            Program.Transactions[Program.Transactions.Count - 1].Write(listBox1);
+        }
     }
 }
