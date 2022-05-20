@@ -12,9 +12,6 @@ namespace BłażejDomagała_Bankowość
 {
     public partial class Form1 : Form
     {
-
-
-
         public Form1()
         {
             InitializeComponent();
@@ -22,8 +19,11 @@ namespace BłażejDomagała_Bankowość
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
-            form2.Show();
+            if (Transaction.CheckIsField())
+            {
+                Form2 form2 = new Form2();
+                form2.Show();
+            }
         }
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
