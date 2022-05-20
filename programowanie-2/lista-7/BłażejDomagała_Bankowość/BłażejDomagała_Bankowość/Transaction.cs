@@ -28,6 +28,7 @@ namespace BłażejDomagała_Bankowość
             {
                 return true;
             }
+            MessageBox.Show(@"Wypełnij dane zanim przejdziesz do przelewu!");
             return false;
         }
     }
