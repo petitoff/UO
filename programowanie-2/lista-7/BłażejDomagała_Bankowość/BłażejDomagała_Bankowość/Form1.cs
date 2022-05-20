@@ -54,6 +54,11 @@ namespace BłażejDomagała_Bankowość
             Transaction.AmountMoneyInAccount = temp2;
 
             Transaction.GetInfo(listBox1);
+
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
         }
 
         private void button5_Click(object sender, EventArgs e)
