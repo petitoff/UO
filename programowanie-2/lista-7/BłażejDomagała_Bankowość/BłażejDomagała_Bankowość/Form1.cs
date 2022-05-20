@@ -44,7 +44,15 @@ namespace BłażejDomagała_Bankowość
         {
             Transaction.UserFirstName = textBox1.Text;
             Transaction.UserLastName = textBox2.Text;
-            Transaction.AmountMoneyInAccount = float.Parse(textBox3.Text);
+            
+            int temp1 = Transaction.ConvertToInt(textBox4.Text);
+            if (temp1 == -1) return;
+            Transaction.UserId = temp1;
+
+            float temp2 = Transaction.ConvertToFloat(textBox3.Text);
+            if (temp2 == -1) return;
+            Transaction.AmountMoneyInAccount = temp2;
+
             Transaction.GetInfo(listBox1);
         }
 
