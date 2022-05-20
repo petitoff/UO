@@ -33,8 +33,10 @@ namespace BłażejDomagała_Bankowość
         }
 
         public virtual void Write(ListBox listBox)
+        protected virtual void Write(ListBox listBox)
         {
-
+            listBox.Items.Add($"Dzień dobry: {UserFirstName} {UserLastName}");
+            listBox.Items.Add($"Ilość pieniędzy w twoim banku: {AmountMoneyInAccount} PLN");
         }
     }
 }
