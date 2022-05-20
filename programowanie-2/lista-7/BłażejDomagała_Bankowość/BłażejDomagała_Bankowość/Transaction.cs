@@ -16,6 +16,11 @@ namespace BłażejDomagała_Bankowość
         public static int UserId = 0;
         public static float AmountMoneyInAccount = 0; // ilośc pieniędzy użytkownika wyjściowego
 
+        public Transaction()
+        {
+            id += 1;
+        }
+
         public static void GetInfo(ListBox listBox)
         {
             listBox.Items.Clear();
