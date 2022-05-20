@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BłażejDomagała_Bankowość
 {
-    class StandardTransfer
+    class StandardTransfer : Transaction
     {
+
     }
 }
