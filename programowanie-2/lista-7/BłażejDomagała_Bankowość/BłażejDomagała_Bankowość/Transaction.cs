@@ -83,6 +83,11 @@ namespace BłażejDomagała_Bankowość
             }
         }
 
+        protected bool CheckIsThereEnoughMoney(float amount)
+        {
+            if (AmountMoneyInAccount - amount < 0) return false;
+            return true;
+        }
         public virtual void Write(ListBox listBox)
         {
             listBox.Items.Add($"Imię i nazwisko: {UserFirstName} {UserLastName}");
