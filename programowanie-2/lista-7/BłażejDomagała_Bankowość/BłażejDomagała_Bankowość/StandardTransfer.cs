@@ -22,8 +22,42 @@ namespace BłażejDomagała_Bankowość
             this.amount = amount;
             this.currency = currency;
         }
+
+        private bool ConvertCurrency()
         {
 
+            if (currency == "PLN")
+            {
+                if (!base.CheckIsThereEnoughMoney(amount))
+                {
+                    MessageTemplate(1);
+                    return false;
+                }
+                return true;
+            }
+
+            if (currency == "USD")
+            {
+                if (!base.CheckIsThereEnoughMoney(amount * usdPrice))
+                {
+                    MessageTemplate(1);
+                    return false;
+                }
+                return true;
+            }
+
+            if (currency == "EUR")
+            {
+                if (!base.CheckIsThereEnoughMoney(amount * eurPrice))
+                {
+                    base.MessageTemplate(1);
+                    return false;
+                }
+                return true;
+            }
+
+            return false;
+        }
         }
 
         public override void Write(ListBox listBox)
