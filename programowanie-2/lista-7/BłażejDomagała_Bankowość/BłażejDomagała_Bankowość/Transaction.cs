@@ -125,6 +125,12 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
             listBox.Items.Add($"Ilość pieniędzy w twoim banku: {AmountMoneyInAccount} PLN");
             listBox.Items.Add($"Imię i nazwisko odbiorcy: {endUserFirstName} {endUserLastName}");
+        public void MessageTemplate(int n)
+        {
+            if (n == 1) MessageBox.Show(@"Nie posiadasz wystarczająco dużo pieniędzy aby wykonać przelew!");
+            if (n == 2) MessageBox.Show(@"Formularz nie został poprawnie wypełniony!");
+            if (n == 3) MessageBox.Show(@"Wartość transakcji musi być większa niż 0!");
+            if (n == 4) MessageBox.Show(@"Opis do przelewu nie może być pusty!");
         }
     }
 }
