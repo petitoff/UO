@@ -88,6 +88,14 @@ namespace BłażejDomagała_Bankowość
             if (AmountMoneyInAccount - amount < 0) return false;
             return true;
         }
+
+        private bool CheckIsCorrect()
+        {
+            if (!CheckIdEndUser()) return false;
+            if (!CheckDescriptionNotEmpty()) return false;
+
+            return true;
+        }
         public virtual void Write(ListBox listBox)
         {
             listBox.Items.Add($"Imię i nazwisko: {UserFirstName} {UserLastName}");
