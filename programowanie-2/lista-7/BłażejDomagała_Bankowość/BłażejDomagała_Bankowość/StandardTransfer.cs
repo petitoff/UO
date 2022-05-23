@@ -58,6 +58,18 @@ namespace BłażejDomagała_Bankowość
 
             return false;
         }
+
+        private bool CheckIsCorrect()
+        {
+            if (amount == 0)
+            {
+                base.MessageTemplate(3);
+                return false;
+            }
+            if (!ConvertCurrency()) return false;
+            return true;
+        }
+
         private DateTime WhenTransactionWillBeCompleted()
         {
             return  DateTime.Now.AddDays(2).Date;
