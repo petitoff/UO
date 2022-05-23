@@ -96,6 +96,16 @@ namespace BłażejDomagała_Bankowość
 
             return true;
         }
+
+        private bool CheckIdEndUser()
+        {
+            if (UserId == endUserId)
+            {
+                MessageBox.Show(@"Nie można dokonać przelewu na to samo konto!");
+                return false;
+            }
+            return true;
+        }
         public virtual void Write(ListBox listBox)
         {
             listBox.Items.Add($"Imię i nazwisko: {UserFirstName} {UserLastName}");
