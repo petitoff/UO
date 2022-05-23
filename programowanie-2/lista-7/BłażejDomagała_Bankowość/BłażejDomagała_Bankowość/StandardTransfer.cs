@@ -73,6 +73,9 @@ namespace BłażejDomagała_Bankowość
             }
 
             AmountMoneyInAccount -= amount;
+
+            listBox.Items.Add($"Kwota transakcji: {amount} {currency}");
+            listBox.Items.Add($"Przelew zostanie zrealizowany w ciągu 2 dni roboczych: {WhenTransactionWillBeCompleted():dd/MM/yyyy}");
             listBox.Items.Add("");
         }
     }
