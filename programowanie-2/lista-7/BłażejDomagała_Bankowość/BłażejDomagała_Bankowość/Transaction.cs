@@ -106,6 +106,18 @@ namespace BłażejDomagała_Bankowość
             }
             return true;
         }
+
+        private bool CheckDescriptionNotEmpty()
+        {
+            if (description.Length == 0)
+            {
+                MessageTemplate(4);
+                return false;
+            }
+
+            return true;
+        }
+
         public virtual void Write(ListBox listBox)
         {
             listBox.Items.Add($"Imię i nazwisko: {UserFirstName} {UserLastName}");
