@@ -71,6 +71,8 @@ namespace BłażejDomagała_Bankowość
                 listBox.Items.Add("Przelew się nieodbyl! Pieniądze nie zostały pobrane!");
                 return;
             }
+
+            AmountMoneyInAccount -= amount;
             listBox.Items.Add("");
         }
     }
