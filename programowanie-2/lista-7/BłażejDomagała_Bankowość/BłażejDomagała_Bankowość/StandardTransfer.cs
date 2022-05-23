@@ -63,6 +63,14 @@ namespace BłażejDomagała_Bankowość
         public override void Write(ListBox listBox)
         {
             base.Write(listBox);
+            if (!base.isCorrect) return;
+
+            if (!CheckIsCorrect())
+            {
+                MessageTemplate(2);
+                listBox.Items.Add("Przelew się nieodbyl! Pieniądze nie zostały pobrane!");
+                return;
+            }
             listBox.Items.Add("");
         }
     }
