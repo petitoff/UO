@@ -11,6 +11,11 @@ namespace BłażejDomagała_Bankowość
     {
         private List<string> Categories = new List<string>{"Jedzenie", "Zakupy","Paliwo"};
         public StandardTransfer(string endUserFirstName, string endUserLastName) : base(endUserFirstName, endUserLastName)
+        private List<string> Categories = new List<string> { "Jedzenie", "Zakupy", "Paliwo" };
+        private float amount;
+        private string currency;
+        private float usdPrice = 3.5F;
+        private float eurPrice = 4.3F;
         {
 
         }
