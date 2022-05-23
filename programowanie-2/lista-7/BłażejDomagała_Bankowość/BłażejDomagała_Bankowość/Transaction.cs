@@ -21,6 +21,10 @@ namespace BłażejDomagała_Bankowość
         private string endUserLastName;
         private int endUserId;
 
+        // Dane transakcji
+        private string description;
+        protected bool isCorrect;
+
         public Transaction()
         {
             id += 1;
