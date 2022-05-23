@@ -19,6 +19,7 @@ namespace BłażejDomagała_Bankowość
         // Dane odbiorcy
         private string endUserFirstName;
         private string endUserLastName;
+        private int endUserId;
 
         public Transaction()
         {
