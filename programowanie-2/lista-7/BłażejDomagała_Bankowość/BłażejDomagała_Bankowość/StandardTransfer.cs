@@ -58,6 +58,9 @@ namespace BłażejDomagała_Bankowość
 
             return false;
         }
+        private DateTime WhenTransactionWillBeCompleted()
+        {
+            return  DateTime.Now.AddDays(2).Date;
         }
 
         public override void Write(ListBox listBox)
