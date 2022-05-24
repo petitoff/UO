@@ -142,7 +142,7 @@ namespace BłażejDomagała_Bankowość
                 return;
             }
 
-            isCorrect = true;
+            
 
             listBox.Items.Add($"Imię i nazwisko: {UserFirstName} {UserLastName}");
             listBox.Items.Add($"Twoje ID: {UserId}");
