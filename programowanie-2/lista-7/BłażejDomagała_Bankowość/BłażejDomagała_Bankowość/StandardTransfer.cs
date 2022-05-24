@@ -61,7 +61,7 @@ namespace BłażejDomagała_Bankowość
             return false;
         }
 
-        private bool CheckIsCorrect()
+        public override void CheckIsCorrect()
         {
             if (amount == 0)
             {
