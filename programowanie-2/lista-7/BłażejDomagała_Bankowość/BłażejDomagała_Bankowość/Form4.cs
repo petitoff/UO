@@ -42,8 +42,6 @@ namespace BłażejDomagała_Bankowość
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Program.Transactions[Program.Transactions.Count - 1].Write(listBox1);
-            Program.Transactions[Program.Transactions.Count - 1].LoadImage(pictureBox1);
         }
     }
 }
