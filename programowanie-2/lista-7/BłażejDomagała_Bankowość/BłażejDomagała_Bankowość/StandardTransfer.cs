@@ -51,7 +51,7 @@ namespace BłażejDomagała_Bankowość
             {
                 if (!base.CheckIsThereEnoughMoney(amount * eurPrice))
                 {
-                    base.MessageTemplate(1);
+                    MessageTemplate(1);
                     return false;
                 }
                 return true;
@@ -64,7 +64,7 @@ namespace BłażejDomagała_Bankowość
         {
             if (amount == 0)
             {
-                base.MessageTemplate(3);
+                MessageTemplate(3);
                 return false;
             }
             if (!ConvertCurrency()) return false;
