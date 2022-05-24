@@ -92,13 +92,13 @@ namespace BłażejDomagała_Bankowość
             return true;
         }
 
-        private bool CheckIsCorrect()
+        public virtual void CheckIsCorrect()
         {
-            if (!CheckIdEndUser()) return false;
-            if (!CheckDescriptionNotEmpty()) return false;
-            if (!CheckIsImageLoaded()) return false;
+            if (!CheckIdEndUser()) return;
+            if (!CheckDescriptionNotEmpty()) return ;
+            if (!CheckIsImageLoaded()) return;
 
-            return true;
+            isCorrect = true;
         }
 
         private bool CheckIdEndUser()
