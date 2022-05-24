@@ -27,6 +27,7 @@ namespace BłażejDomagała_Bankowość
 
         private Bitmap imageBitmap;
 
+        public Transaction(string endUserFirstName, string endUserLastName, int endUserId, string description, Bitmap imageBitmap, float AmountMoneyInAccount)
         {
             id += 1;
         }
