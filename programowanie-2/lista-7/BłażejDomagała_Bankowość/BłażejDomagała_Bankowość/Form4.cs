@@ -42,6 +42,8 @@ namespace BłażejDomagała_Bankowość
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            Execute();
+        }
         }
     }
 }
