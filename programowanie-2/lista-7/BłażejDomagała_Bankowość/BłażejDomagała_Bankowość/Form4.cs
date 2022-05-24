@@ -17,6 +17,8 @@ namespace BłażejDomagała_Bankowość
             InitializeComponent();
         }
 
+        private int indexStart;
+        private int index;
         private void button1_Click(object sender, EventArgs e)
         {
             Program.Transactions[Program.Transactions.Count - 1].Write(listBox1);
