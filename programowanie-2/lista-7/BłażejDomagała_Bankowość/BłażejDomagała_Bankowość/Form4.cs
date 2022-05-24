@@ -44,6 +44,19 @@ namespace BłażejDomagała_Bankowość
         {
             Execute();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (index - 1 < 0)
+            {
+                button3.Enabled = true;
+                MessageBox.Show("Nie posiadasz już więcej transakcji do przeglądania!");
+                button2.Enabled = false;
+                return;
+            }
+            index--;
+            Execute();
+        }
         }
     }
 }
