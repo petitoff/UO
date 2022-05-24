@@ -63,6 +63,9 @@ namespace BłażejDomagała_Bankowość
 
         public override void CheckIsCorrect()
         {
+            base.CheckIsCorrect();
+            if (!base.isCorrect) return;
+
             if (amount == 0)
             {
                 MessageTemplate(3);
