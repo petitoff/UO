@@ -151,6 +151,7 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Imię i nazwisko odbiorcy: {endUserFirstName} {endUserLastName}");
             listBox.Items.Add($"Numer indentyfikacyjny odbiorcy: {endUserId}");
             listBox.Items.Add($"Opis do przelewu: {description}");
+            listBox.Items.Add($"Data przelewu: {DateTime.Now:d}");
         }
 
         protected static void MessageTemplate(int n)
