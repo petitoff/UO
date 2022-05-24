@@ -134,7 +134,7 @@ namespace BłażejDomagała_Bankowość
 
         public virtual void Write(ListBox listBox)
         {
-            if (!CheckIsCorrect())
+            if (!isCorrect)
             {
                 MessageTemplate(2);
                 listBox.Items.Add("Przelew się nieodbyl! Pieniądze nie zostały pobrane!");
