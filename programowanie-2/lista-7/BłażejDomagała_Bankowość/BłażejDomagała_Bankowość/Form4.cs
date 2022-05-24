@@ -17,11 +17,13 @@ namespace BłażejDomagała_Bankowość
             InitializeComponent();
         }
 
-        private int indexStart;
-        private int index;
+        private int indexStart; // wielkość listy Program.Transactions
+        private int index; // aktualny wybrany index z listy Program.Transactions
 
         private void Execute()
         {
+            // metoda ładuje z listy Program.Transactions odpowiednie metody za pomocą polimorfizmu
+            // metoda posiada walidacje dzięki której jeżeli dany index nie istnieje to nie powoduje to błędu programu
             try
             {
                 listBox1.Items.Clear();
