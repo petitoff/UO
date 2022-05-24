@@ -68,8 +68,9 @@ namespace BłażejDomagała_Bankowość
 
             if (amount == 0)
             {
+                // jeżeli użytkownik próbuje dokonać przelewu na kwotę 0 to wyrzuć wyjątek
                 MessageTemplate(3);
-                return false;
+                return;
             }
             if (!ConvertCurrency()) return false;
             return true;
