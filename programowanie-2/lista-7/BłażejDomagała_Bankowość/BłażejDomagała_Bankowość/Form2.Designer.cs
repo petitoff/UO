@@ -74,7 +74,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(109, 53);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Zrealizuj przelew zwykły testowy";
+            this.button2.Text = "Uzupełnij";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -200,6 +200,7 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
+            "brak",
             "jedzenie",
             "paliwo",
             "zakupy"});
@@ -207,6 +208,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(125, 21);
             this.comboBox2.TabIndex = 20;
+            this.comboBox2.Text = "brak";
             // 
             // Form2
             // 
