@@ -25,7 +25,7 @@ namespace BłażejDomagała_Bankowość
             float temp2 = Transaction.ConvertToFloat(textBox4.Text);
             if (temp2 == -1) return;
                 
-            StandardTransfer standardTransfer = new StandardTransfer(textBox2.Text, textBox1.Text, temp1, temp2, comboBox1.SelectedItem.ToString(), textBox6.Text);
+            StandardTransfer standardTransfer = new StandardTransfer(textBox2.Text, textBox1.Text, temp1, temp2, comboBox1.SelectedItem.ToString(), textBox6.Text, comboBox2.SelectedItem.ToString());
             Program.Transactions.Add(standardTransfer);
             Program.Transactions[Program.Transactions.Count - 1].Write(listBox1);
         }
