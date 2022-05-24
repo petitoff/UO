@@ -156,10 +156,25 @@ namespace BłażejDomagała_Bankowość
 
         protected static void MessageTemplate(int n)
         {
-            if (n == 1) MessageBox.Show(@"Nie posiadasz wystarczająco dużo pieniędzy aby wykonać przelew!");
-            if (n == 2) MessageBox.Show(@"Formularz nie został poprawnie wypełniony!");
-            if (n == 3) MessageBox.Show(@"Wartość transakcji musi być większa niż 0!");
-            if (n == 4) MessageBox.Show(@"Opis do przelewu nie może być pusty!");
+            switch (n)
+            {
+                case 1:
+                    MessageBox.Show(@"Nie posiadasz wystarczająco dużo pieniędzy aby wykonać przelew!");
+                    break;
+                case 2:
+                    MessageBox.Show(@"Formularz nie został poprawnie wypełniony!");
+                    break;
+                case 3:
+                    MessageBox.Show(@"Wartość transakcji musi być większa niż 0!");
+                    break;
+                case 4:
+                    MessageBox.Show(@"Opis do przelewu nie może być pusty!");
+                    break;
+                case 5:
+                    MessageBox.Show(@"Wczytaj zdjęcie do przelewu!");
+                    break;
+            }
+        }
         }
     }
 }
