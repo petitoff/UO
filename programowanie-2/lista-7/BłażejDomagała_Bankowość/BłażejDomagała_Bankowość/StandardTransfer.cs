@@ -72,8 +72,7 @@ namespace BłażejDomagała_Bankowość
                 MessageTemplate(3);
                 return;
             }
-            if (!ConvertCurrency()) return false;
-            return true;
+            if (!ConvertCurrency()) return;
         }
 
         private DateTime WhenTransactionWillBeCompleted()
