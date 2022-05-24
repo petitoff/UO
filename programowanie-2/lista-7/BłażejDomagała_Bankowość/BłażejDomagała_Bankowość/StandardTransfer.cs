@@ -9,7 +9,7 @@ namespace BłażejDomagała_Bankowość
 {
     class StandardTransfer : Transaction
     {
-        private List<string> Categories = new List<string> { "Jedzenie", "Zakupy", "Paliwo" };
+        //private List<string> Categories = new List<string> { "Jedzenie", "Zakupy", "Paliwo" };
         private float amount;
         private string currency;
         private float usdPrice = 3.5F;
