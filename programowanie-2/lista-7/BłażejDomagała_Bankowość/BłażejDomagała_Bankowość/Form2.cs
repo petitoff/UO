@@ -29,5 +29,16 @@ namespace BłażejDomagała_Bankowość
             Program.Transactions.Add(standardTransfer);
             Program.Transactions[Program.Transactions.Count - 1].Write(listBox1);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = "Błażej";
+            textBox1.Text = "Domagała";
+            textBox3.Text = "1";
+            textBox4.Text = "20";
+            comboBox1.Text = "PLN";
+            textBox6.Text = "Przelew zwykły";
+            comboBox2.Text = "Jedzenie";
+        }
     }
 }
