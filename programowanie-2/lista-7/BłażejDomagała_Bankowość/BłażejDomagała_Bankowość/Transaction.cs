@@ -34,6 +34,11 @@ namespace BłażejDomagała_Bankowość
             this.endUserId = endUserId;
             this.description = description;
             this.imageBitmap = imageBitmap;
+            this.AmountMoneyInAccount = AmountMoneyInAccount;
+            this.UserFirstName = Form1.UserFirstName;
+            this.UserLastName = Form1.UserLastName;
+            Form1.Id++;
+            this.id = Form1.Id;
         }
 
         public static void GetInfo(ListBox listBox)
