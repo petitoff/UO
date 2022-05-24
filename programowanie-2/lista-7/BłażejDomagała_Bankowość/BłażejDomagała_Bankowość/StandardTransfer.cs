@@ -93,8 +93,8 @@ namespace BłażejDomagała_Bankowość
                 return;
             }
 
-            AmountMoneyInAccount -= amount;
-
+            if (!base.isCorrect) return;
+            base.Write(listBox);
             listBox.Items.Add($"Kwota transakcji: {amount} {currency}");
             listBox.Items.Add($"Przelew zostanie zrealizowany w ciągu 2 dni roboczych: {WhenTransactionWillBeCompleted():dd/MM/yyyy}");
             listBox.Items.Add($"Kategoria przelewu: {categories}");
