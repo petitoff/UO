@@ -27,7 +27,6 @@ namespace BłażejDomagała_Bankowość
 
         private Bitmap imageBitmap;
 
-        public Transaction()
         {
             id += 1;
         }
