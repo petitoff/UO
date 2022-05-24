@@ -95,7 +95,7 @@ namespace BłażejDomagała_Bankowość
         public virtual void CheckIsCorrect()
         {
             if (!CheckIdEndUser()) return;
-            if (!CheckDescriptionNotEmpty()) return ;
+            if (!CheckDescriptionNotEmpty()) return;
             if (!CheckIsImageLoaded()) return;
 
             isCorrect = true;
@@ -142,7 +142,7 @@ namespace BłażejDomagała_Bankowość
                 return;
             }
 
-            
+
 
             listBox.Items.Add($"Imię i nazwisko: {UserFirstName} {UserLastName}");
             listBox.Items.Add($"Twoje ID: {UserId}");
