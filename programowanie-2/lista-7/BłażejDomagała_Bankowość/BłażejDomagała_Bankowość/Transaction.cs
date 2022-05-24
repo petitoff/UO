@@ -175,6 +175,11 @@ namespace BłażejDomagała_Bankowość
                     break;
             }
         }
+
+        public void LoadImage(PictureBox pb)
+        {
+            pb.Image = imageBitmap;
+            isCorrect = true;
         }
     }
 }
