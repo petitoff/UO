@@ -135,6 +135,10 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
             listBox.Items.Add($"Ilość pieniędzy w twoim banku: {AmountMoneyInAccount} PLN");
             listBox.Items.Add($"Imię i nazwisko odbiorcy: {endUserFirstName} {endUserLastName}");
+            listBox.Items.Add($"Numer indentyfikacyjny odbiorcy: {endUserId}");
+            listBox.Items.Add($"Opis do przelewu: {description}");
+        }
+
         public void MessageTemplate(int n)
         {
             if (n == 1) MessageBox.Show(@"Nie posiadasz wystarczająco dużo pieniędzy aby wykonać przelew!");
