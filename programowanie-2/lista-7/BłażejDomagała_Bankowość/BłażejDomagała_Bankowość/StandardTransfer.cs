@@ -16,10 +16,11 @@ namespace BłażejDomagała_Bankowość
         private float eurPrice = 4.3F;
         private string categories;
 
-        public StandardTransfer(string endUserFirstName, string endUserLastName, int endUserId, float amount, string currency, string description) : base(endUserFirstName, endUserLastName, endUserId, description)
+        public StandardTransfer(string endUserFirstName, string endUserLastName, int endUserId, float amount, string currency, string description, string categories) : base(endUserFirstName, endUserLastName, endUserId, description)
         {
             this.amount = amount;
             this.currency = currency;
+            this.categories = categories;
         }
 
         private bool ConvertCurrency()
