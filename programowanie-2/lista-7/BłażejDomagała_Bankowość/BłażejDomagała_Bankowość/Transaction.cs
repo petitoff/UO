@@ -88,6 +88,7 @@ namespace BłażejDomagała_Bankowość
         protected bool CheckIsThereEnoughMoney(float amount)
         {
             if (AmountMoneyInAccount - amount < 0) return false;
+
             return true;
         }
 
