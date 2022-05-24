@@ -48,18 +48,18 @@ namespace BłażejDomagała_Bankowość
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Transaction.UserFirstName = textBox1.Text;
-            Transaction.UserLastName = textBox2.Text;
-            
+            UserFirstName = textBox1.Text;
+            UserLastName = textBox2.Text;
+
             int temp1 = Transaction.ConvertToInt(textBox4.Text);
             if (temp1 == -1) return;
-            Transaction.UserId = temp1;
+            UserId = temp1;
 
             float temp2 = Transaction.ConvertToFloat(textBox3.Text);
             if (temp2 == -1) return;
-            Transaction.AmountMoneyInAccount = temp2;
+            AmountMoneyInAccount = temp2;
 
-            Transaction.GetInfo(listBox1);
+            Transaction.GetInfo(listBox1, UserFirstName, UserLastName, UserId, AmountMoneyInAccount);
 
             textBox1.Clear();
             textBox2.Clear();
