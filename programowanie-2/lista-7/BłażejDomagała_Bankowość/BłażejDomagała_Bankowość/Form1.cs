@@ -25,7 +25,7 @@ namespace BłażejDomagała_Bankowość
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Transaction.CheckIsField())
+            if (Transaction.CheckIsField(UserFirstName, UserLastName))
             {
                 Form2 form2 = new Form2();
                 form2.Show();
