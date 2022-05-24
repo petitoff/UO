@@ -154,7 +154,7 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Opis do przelewu: {description}");
         }
 
-        public void MessageTemplate(int n)
+        protected static void MessageTemplate(int n)
         {
             if (n == 1) MessageBox.Show(@"Nie posiadasz wystarczająco dużo pieniędzy aby wykonać przelew!");
             if (n == 2) MessageBox.Show(@"Formularz nie został poprawnie wypełniony!");
