@@ -63,8 +63,8 @@ namespace BłażejDomagała_Bankowość
 
         public override void CheckIsCorrect()
         {
-            base.CheckIsCorrect();
-            if (!base.isCorrect) return;
+            base.CheckIsCorrect(); // walidacja z kalsy bazowej
+            if (!base.isCorrect) return; // jeżeli nie przebiegła pomyślnie to wstrzymaj działanie programu
 
             if (amount == 0)
             {
