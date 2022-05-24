@@ -63,11 +63,10 @@ namespace BłażejDomagała_Bankowość
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Transaction.UserFirstName = "Błażej";
-            Transaction.UserLastName = "Domagała";
-            Transaction.UserId = 0;
-            Transaction.AmountMoneyInAccount = 100F;
-            Transaction.GetInfo(listBox1);
+            textBox1.Text = "Błażej";
+            textBox2.Text = "Domagała";
+            textBox3.Text = @"100";
+            textBox4.Text = @"0";
         }
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
