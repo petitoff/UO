@@ -26,6 +26,8 @@ namespace BłażejDomagała_Bankowość
         private string description;
         protected bool isCorrect;
 
+        private Bitmap imageBitmap;
+
         public Transaction()
         {
             id += 1;
