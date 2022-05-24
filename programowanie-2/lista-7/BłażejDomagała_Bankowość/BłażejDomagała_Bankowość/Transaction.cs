@@ -29,12 +29,6 @@ namespace BłażejDomagała_Bankowość
 
         public Transaction(string endUserFirstName, string endUserLastName, int endUserId, string description, Bitmap imageBitmap, float AmountMoneyInAccount)
         {
-            id += 1;
-        }
-
-        public Transaction(string endUserFirstName, string endUserLastName, int endUserId, string description, Bitmap imageBitmap)
-        {
-            id += 1;
             this.endUserFirstName = endUserFirstName;
             this.endUserLastName = endUserLastName;
             this.endUserId = endUserId;
