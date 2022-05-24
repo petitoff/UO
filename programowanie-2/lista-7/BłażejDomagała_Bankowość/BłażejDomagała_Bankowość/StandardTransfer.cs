@@ -73,6 +73,10 @@ namespace BłażejDomagała_Bankowość
                 return;
             }
             if (!ConvertCurrency()) return;
+
+            base.AmountMoneyInAccount -= amount;
+            Form1.AmountMoneyInAccount = AmountMoneyInAccount;
+            isCorrectSt = true;
         }
 
         private DateTime WhenTransactionWillBeCompleted()
