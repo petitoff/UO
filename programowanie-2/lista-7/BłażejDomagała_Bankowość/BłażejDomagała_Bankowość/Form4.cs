@@ -19,6 +19,25 @@ namespace BłażejDomagała_Bankowość
 
         private int indexStart;
         private int index;
+
+        private void Execute()
+        {
+            try
+            {
+                listBox1.Items.Clear();
+                Program.Transactions[index].Write(listBox1);
+                Program.Transactions[index].LoadImage(pictureBox1);
+
+                button2.Enabled = true;
+                button3.Enabled = true;
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                MessageBox.Show(@"Nie posiadasz żadych transakcji do wyświetlenia!");
+                button2.Enabled = false;
+                button3.Enabled = false;
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Program.Transactions[Program.Transactions.Count - 1].Write(listBox1);
