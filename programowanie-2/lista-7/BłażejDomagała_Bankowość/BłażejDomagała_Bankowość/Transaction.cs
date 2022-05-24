@@ -120,6 +120,16 @@ namespace BłażejDomagała_Bankowość
 
         public virtual void Write(ListBox listBox)
         {
+            if (!CheckIsCorrect())
+            {
+                MessageTemplate(2);
+                listBox.Items.Add("Przelew się nieodbyl! Pieniądze nie zostały pobrane!");
+                listBox.Items.Add("");
+                return;
+            }
+
+            isCorrect = true;
+
             listBox.Items.Add($"Imię i nazwisko: {UserFirstName} {UserLastName}");
             listBox.Items.Add($"Twoje ID: {UserId}");
             listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
