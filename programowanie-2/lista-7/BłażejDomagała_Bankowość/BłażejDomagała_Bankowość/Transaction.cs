@@ -97,6 +97,7 @@ namespace BłażejDomagała_Bankowość
         {
             if (!CheckIdEndUser()) return false;
             if (!CheckDescriptionNotEmpty()) return false;
+            if (!CheckIsImageLoaded()) return false;
 
             return true;
         }
@@ -119,6 +120,16 @@ namespace BłażejDomagała_Bankowość
                 return false;
             }
 
+            return true;
+        }
+
+        private bool CheckIsImageLoaded()
+        {
+            if (imageBitmap == null)
+            {
+                MessageTemplate(5);
+                return false;
+            }
             return true;
         }
 
