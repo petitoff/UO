@@ -17,6 +17,12 @@ namespace BłażejDomagała_Bankowość
             InitializeComponent();
         }
 
+        public static string UserFirstName = ""; // imie użytkownika wyjściowego
+        public static string UserLastName = ""; // nazwisko użytkownika wyjściowego
+        public static int UserId = 0;
+        public static float AmountMoneyInAccount = 0F; // ilośc pieniędzy użytkownika wyjściowego
+        public static int Id = 0;
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (Transaction.CheckIsField())
