@@ -16,6 +16,7 @@ namespace BłażejDomagała_Bankowość
         private float usdPrice = 3.5F;
         private float eurPrice = 4.3F;
         private string categories;
+        private bool isCorrectSt = false;
 
         public StandardTransfer(string endUserFirstName, string endUserLastName, int endUserId, float amount, string currency, string description, string categories, Bitmap imageBitmap) : base(endUserFirstName, endUserLastName, endUserId, description, imageBitmap)
         {
