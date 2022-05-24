@@ -41,7 +41,7 @@ namespace BłażejDomagała_Bankowość
             this.id = Form1.Id;
         }
 
-        public static void GetInfo(ListBox listBox)
+        public static void GetInfo(ListBox listBox, string UserFirstName, string UserLastName, int UserId, float AmountMoneyInAccount)
         {
             listBox.Items.Clear();
             listBox.Items.Add($"Dzień dobry: {UserFirstName} {UserLastName}");
@@ -49,7 +49,7 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Ilość pieniędzy w twoim banku: {AmountMoneyInAccount} PLN");
         }
 
-        public static bool CheckIsField()
+        public static bool CheckIsField(string UserFirstName, string UserLastName)
         {
             if (UserFirstName.Length != 0 && UserLastName.Length != 0)
             {
