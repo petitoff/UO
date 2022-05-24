@@ -41,5 +41,14 @@ namespace BłażejDomagała_Bankowość
             comboBox2.Text = "Jedzenie";
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap f = new Bitmap(open.OpenFile());
+                pictureBox1.Image = f;
+            }
+        }
     }
 }
