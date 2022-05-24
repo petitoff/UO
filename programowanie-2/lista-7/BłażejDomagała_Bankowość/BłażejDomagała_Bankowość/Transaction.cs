@@ -33,13 +33,14 @@ namespace BłażejDomagała_Bankowość
             id += 1;
         }
 
-        public Transaction(string endUserFirstName, string endUserLastName, int endUserId, string description)
+        public Transaction(string endUserFirstName, string endUserLastName, int endUserId, string description, Bitmap imageBitmap)
         {
             id += 1;
             this.endUserFirstName = endUserFirstName;
             this.endUserLastName = endUserLastName;
             this.endUserId = endUserId;
             this.description = description;
+            this.imageBitmap = imageBitmap;
         }
 
         public static void GetInfo(ListBox listBox)
