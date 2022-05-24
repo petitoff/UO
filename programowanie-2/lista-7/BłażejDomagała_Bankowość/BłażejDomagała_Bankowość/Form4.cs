@@ -70,6 +70,11 @@ namespace BłażejDomagała_Bankowość
             index++;
             Execute();
         }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            indexStart = Program.Transactions.Count - 1;
+            index = indexStart;
         }
     }
 }
