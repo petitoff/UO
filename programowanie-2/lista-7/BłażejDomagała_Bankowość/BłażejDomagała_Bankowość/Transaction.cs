@@ -173,6 +173,9 @@ namespace BłażejDomagała_Bankowość
                 case 5:
                     MessageBox.Show(@"Wczytaj zdjęcie do przelewu!");
                     break;
+                case 6:
+                    MessageBox.Show(@"Możesz zaplanować przelew z minimum jednodnowium opóźnieniem!");
+                    break;
             }
         }
 
