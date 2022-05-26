@@ -184,5 +184,15 @@ namespace BłażejDomagała_Bankowość
             pb.Image = imageBitmap;
             isCorrect = true;
         }
+
+        public static void LoadImageDialog(PictureBox pb)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap f = new Bitmap(open.OpenFile());
+                pb.Image = f;
+            }
+        }
     }
 }
