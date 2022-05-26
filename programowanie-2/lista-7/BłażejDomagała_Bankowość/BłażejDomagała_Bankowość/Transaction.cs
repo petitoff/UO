@@ -142,8 +142,6 @@ namespace BłażejDomagała_Bankowość
                 return;
             }
 
-
-
             listBox.Items.Add($"Imię i nazwisko: {UserFirstName} {UserLastName}");
             listBox.Items.Add($"Twoje ID: {UserId}");
             listBox.Items.Add($"Numer indentyfikacyjny transakcji: {id}");
