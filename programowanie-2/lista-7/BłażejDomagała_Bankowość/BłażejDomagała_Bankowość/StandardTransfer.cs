@@ -18,7 +18,7 @@ namespace BłażejDomagała_Bankowość
         private string categories;
         private bool isCorrectSt = false;
 
-        public StandardTransfer(string endUserFirstName, string endUserLastName, int endUserId, float amount, string currency, string description, string categories, Bitmap imageBitmap, float AmountMoneyInAccount) : base(endUserFirstName, endUserLastName, endUserId, description, imageBitmap, AmountMoneyInAccount)
+        public StandardTransfer(string endUserFirstName, string endUserLastName, int endUserId, float amount, string currency, string description, string categories, Bitmap imageBitmap, float AmountMoneyInAccount) : base(endUserFirstName, endUserLastName, endUserId, description, imageBitmap)
         {
             this.amount = amount;
             this.currency = currency;
