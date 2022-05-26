@@ -10,5 +10,8 @@ namespace BłażejDomagała_Bankowość
 {
     class ScheduledTransfer : Transaction
     {
+        private float amount;
+        private bool isCorrectSt;
+        private DateTime dateOfTransfer;
     }
 }
