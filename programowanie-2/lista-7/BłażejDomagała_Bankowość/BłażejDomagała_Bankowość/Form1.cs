@@ -88,5 +88,15 @@ namespace BłażejDomagała_Bankowość
             Form4 form4 = new Form4();
             form4.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (Transaction.CheckIsField(UserFirstName, UserLastName))
+            {
+                // jeżeli dane o koncie nie zostały podane to formatka przelewu stałego się nie uruchomi
+                Form3 form3 = new Form3();
+                form3.Show();
+            }
+        }
     }
 }
