@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace BłażejDomagała_Bankowość
 {
-    class ScheduledTransfer
+    class ScheduledTransfer : Transaction
     {
     }
 }
