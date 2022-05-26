@@ -54,9 +54,18 @@ namespace BłażejDomagała_Bankowość
 
             Transaction.LoadImageDialog(pictureBox1);
         }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')
             {
-                Bitmap f = new Bitmap(open.OpenFile());
-                pictureBox1.Image = f;
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if (e.KeyChar == ',' && (sender as TextBox).Text.IndexOf(',') > -1)
+            {
+                e.Handled = true;
             }
         }
     }
