@@ -37,5 +37,14 @@ namespace BłażejDomagała_Bankowość
         {
             Transaction.LoadImageDialog(pictureBox1);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "Błażej";
+            textBox2.Text = "Domagała";
+            textBox3.Text = "1";
+            textBox4.Text = "20";
+            textBox5.Text = "Przelew stały";
+        }
     }
 }
