@@ -49,5 +49,22 @@ namespace BłażejDomagała_Bankowość
             isCorrectSt = true;
         }
 
+        public override void Write(ListBox listBox)
+        {
+            if (!isCorrectSt)
+            {
+                MessageTemplate(2);
+                listBox.Items.Add("Przelew się nieodbyl! Pieniądze nie zostały pobrane!");
+                return;
+            }
+
+            if (!base.isCorrect) return;
+            base.Write(listBox);
+            listBox.Items.Add($"Kwota transakcji: {amount} PLN");
+            //listBox.Items.Add($"Przelew zostanie zrealizowany w ciągu 2 dni roboczych: {WhenTransactionWillBeCompleted():dd/MM/yyyy}");
+            listBox.Items.Add($"Typ przelewu: Przelew stały");
+            listBox.Items.Add($"Data kiedy przelew zostanie zrealizowany: {dateOfTransfer:d}");
+            listBox.Items.Add("");
+        }
     }
 }
