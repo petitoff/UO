@@ -42,6 +42,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -174,11 +175,22 @@
             this.textBox4.TabIndex = 2;
             this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(476, 151);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(123, 34);
+            this.button6.TabIndex = 13;
+            this.button6.Text = "Funkcje operatorowe";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 450);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button5);
@@ -216,6 +228,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button button6;
     }
 }
 
