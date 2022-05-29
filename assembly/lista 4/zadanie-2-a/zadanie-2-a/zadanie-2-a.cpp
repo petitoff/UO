@@ -15,6 +15,7 @@ int main()
 	__asm
 	{
 		// dodawanie
+
 		xor EAX, EAX
 		xor EDX, EDX
 		xor ECX, ECX
