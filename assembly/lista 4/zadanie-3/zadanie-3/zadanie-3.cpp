@@ -42,7 +42,7 @@ int main()
 							 xor EDX, EDX
 
 							 pop EAX
-							 
+
 							 mov pomoc, EAX
 
 							 FILD pomoc
