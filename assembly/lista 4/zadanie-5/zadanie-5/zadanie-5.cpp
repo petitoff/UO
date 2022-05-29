@@ -44,7 +44,6 @@ int main()
 			koniecP :
 	}
 
-	std::cout << suma << std::endl;
-	std::cout << koniec;
+	std::cout << suma;
 	std::cin.get();
 }
