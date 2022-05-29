@@ -1,10 +1,10 @@
 ﻿
 #include "stdafx.h"
 
-__int16 a = 3;
-__int16 b = 5;
+__int16 a = 1;
+__int16 b = 6;
 
-__int16 c = 0;
+__int16 c = 2;
 __int16 d = 6;
 
 __int16 licznik;
@@ -35,7 +35,7 @@ int main()
 		mov CX, c
 		mul CX
 
-		mov mianownik, CX
+		mov mianownik, AX
 
 		koniec :
 
