@@ -5,6 +5,7 @@ function wynik = rzedyTrzyNaTrzy(m1)
 
   [a,b] = size(m1);
 
+  # obliczanie wyznacznika metodą trójkąta
   wyzniacznik = 0;
   wyzniacznik += m1(1,1) * m1(2,2) * m1(3,3);
   wyzniacznik += m1(1,2) * m1(2,3) * m1(3,1);
