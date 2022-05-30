@@ -22,7 +22,6 @@ function wynik = rzedyTrzyNaTrzy(m1)
 
   # w przeciwnym razie przechodzimy do kolejnego kroku
   boolSpr = 0;
-  loopCount = 4;
 
   for i=1:a - 1
     for j = 1:b - 1
