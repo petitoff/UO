@@ -130,6 +130,7 @@ namespace BłażejDomagała_Bankowość
         {
             float usdPrice = 3.5f;
             StandardTransfer standardTransfer = new StandardTransfer();
+
             if ((standardTransfer1.a * usdPrice) == standardTransfer2.a) standardTransfer.b = true;
             else standardTransfer.b = false;
 
