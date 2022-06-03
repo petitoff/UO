@@ -11,7 +11,7 @@ namespace BłażejDomagała_Bankowość
     class ScheduledTransfer : Transaction
     {
         private float amount;
-        private bool isCorrectSt;
+        public bool isCorrectSt;
         private DateTime dateOfTransfer;
 
         public ScheduledTransfer(float amount, DateTime dateOfTransfer, string endUserFirstName, string endUserLastName, int endUserId, string description, Bitmap imageBitmap) : base(endUserFirstName, endUserLastName, endUserId, description, imageBitmap)

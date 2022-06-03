@@ -16,7 +16,7 @@ namespace BłażejDomagała_Bankowość
         private float usdPrice = 3.5F;
         private float eurPrice = 4.3F;
         private string categories;
-        private bool isCorrectSt = false;
+        public bool isCorrectSt = false;
 
         public float a;
         public bool b;
