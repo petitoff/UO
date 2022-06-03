@@ -56,8 +56,8 @@ namespace BłażejDomagała_Bankowość
 
         private void button3_Click(object sender, EventArgs e)
         {
-            float temp1 = Transaction.ConvertToFloat(numericUpDown5.Text);
-            float temp2 = Transaction.ConvertToFloat(numericUpDown6.Text);
+            float temp1 = Transaction.ConvertToFloat(numericUpDown6.Text);
+            float temp2 = Transaction.ConvertToFloat(numericUpDown5.Text);
 
             if (temp1 == -1 || temp2 == -2) return;
 
