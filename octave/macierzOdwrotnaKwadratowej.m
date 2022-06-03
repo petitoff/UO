@@ -1,4 +1,7 @@
 function wynik = macierzOdwrotnaKwadratowej(m1)
+  # lista - Macierze odwrotne
+  # zadanie - Ogólne macierzy 3x3 (50%)
+
   [a,b] = size(m1);
 
   if(a != b)

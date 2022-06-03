@@ -1,4 +1,7 @@
 function wynik = macierzOdwrotnaDwaNaDwa(m1)
+  # lista - Macierze odwrotne
+  # zadanie - Dwa wiersze i dwie kolumny
+
   [a,b] = size(m1);
 
   if(a != 2 && b != 2)

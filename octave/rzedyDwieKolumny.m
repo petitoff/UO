@@ -1,4 +1,6 @@
 function wynik = rzedyDwieKolumny(m1)
+  # lista - Rzedy
+  # zadanie - Dwie kolumny
 
   # a - wiersze
   # b - kolumny

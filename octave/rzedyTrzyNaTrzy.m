@@ -1,4 +1,6 @@
 function wynik = rzedyTrzyNaTrzy(m1)
+  # lista - Rzedy
+  # zadanie - Trzy wiersi i trzy kolumny
 
   # a - wiersze
   # b - kolumny
