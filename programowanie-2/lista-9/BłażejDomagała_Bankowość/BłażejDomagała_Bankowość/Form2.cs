@@ -30,6 +30,11 @@ namespace BłażejDomagała_Bankowość
             Program.Transactions.Add(standardTransfer);
             Program.Transactions[Program.Transactions.Count - 1].CheckIsCorrect();
             Program.Transactions[Program.Transactions.Count - 1].Write(listBox1);
+
+            if (!standardTransfer.isCorrectSt)
+            {
+                Program.Transactions.RemoveAt(Program.Transactions.Count - 1);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
