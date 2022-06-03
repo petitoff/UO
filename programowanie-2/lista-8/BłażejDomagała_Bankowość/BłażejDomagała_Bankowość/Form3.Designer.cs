@@ -159,7 +159,7 @@
             this.button3.Location = new System.Drawing.Point(700, 245);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(109, 46);
-            this.button3.TabIndex = 25;
+            this.button3.TabIndex = 18;
             this.button3.Text = "Wczytaj okładkę do przelewu";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -189,7 +189,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(609, 170);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 27;
+            this.dateTimePicker1.TabIndex = 18;
             // 
             // label6
             // 

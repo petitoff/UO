@@ -18,6 +18,19 @@ namespace BłażejDomagała_Bankowość
         private string categories;
         private bool isCorrectSt = false;
 
+        public float a;
+        public bool b;
+
+        public StandardTransfer()
+        {
+
+        }
+
+        public StandardTransfer(float a)
+        {
+            this.a = a;
+        }
+
         public StandardTransfer(string endUserFirstName, string endUserLastName, int endUserId, float amount, string currency, string description, string categories, Bitmap imageBitmap, float AmountMoneyInAccount) : base(endUserFirstName, endUserLastName, endUserId, description, imageBitmap)
         {
             this.amount = amount;
@@ -100,6 +113,36 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Kategoria przelewu: {categories}");
             listBox.Items.Add($"Typ przelewu: Przelew zwykły");
             listBox.Items.Add("");
+        }
+
+        public static StandardTransfer operator ==(StandardTransfer standardTransfer1,
+            StandardTransfer standardTransfer2)
+        {
+            StandardTransfer standardTransfer = new StandardTransfer();
+            if (standardTransfer1.a == standardTransfer2.a) standardTransfer.b = false;
+            else standardTransfer.b = true;
+
+            return standardTransfer;
+        }
+
+        public static StandardTransfer operator !=(StandardTransfer standardTransfer1,
+            StandardTransfer standardTransfer2)
+        {
+            float usdPrice = 3.5f;
+            StandardTransfer standardTransfer = new StandardTransfer();
+            if ((standardTransfer1.a * usdPrice) == standardTransfer2.a) standardTransfer.b = false;
+            else standardTransfer.b = true;
+
+            return standardTransfer;
+        }
+
+        public static StandardTransfer operator *(StandardTransfer standardTransfer1,
+            StandardTransfer standardTransfer2)
+        {
+            StandardTransfer sum = new StandardTransfer();
+            sum.a = standardTransfer1.a * (standardTransfer2.a / 100);
+
+            return sum;
         }
     }
 }

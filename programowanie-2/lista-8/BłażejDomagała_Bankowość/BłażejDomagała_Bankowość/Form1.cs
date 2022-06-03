@@ -101,8 +101,11 @@ namespace BłażejDomagała_Bankowość
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Form5 form5 = new Form5();
-            form5.Show();
+            if (Transaction.CheckIsField(UserFirstName, UserLastName))
+            {
+                Form5 form5 = new Form5();
+                form5.Show();
+            }
         }
     }
 }

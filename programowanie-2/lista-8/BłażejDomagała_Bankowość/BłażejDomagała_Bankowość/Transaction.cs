@@ -27,6 +27,10 @@ namespace BłażejDomagała_Bankowość
 
         private Bitmap imageBitmap;
 
+        protected Transaction()
+        {
+        }
+
         public Transaction(string endUserFirstName, string endUserLastName, int endUserId, string description, Bitmap imageBitmap)
         {
             this.endUserFirstName = endUserFirstName;
