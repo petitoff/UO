@@ -45,13 +45,6 @@ namespace BłażejDomagała_Bankowość
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //OpenFileDialog open = new OpenFileDialog();
-            //if (open.ShowDialog() == DialogResult.OK)
-            //{
-            //    Bitmap f = new Bitmap(open.OpenFile());
-            //    pictureBox1.Image = f;
-            //}
-
             Transaction.LoadImageDialog(pictureBox1);
         }
 
