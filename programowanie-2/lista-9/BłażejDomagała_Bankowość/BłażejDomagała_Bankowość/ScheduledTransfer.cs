@@ -62,5 +62,17 @@ namespace BłażejDomagała_Bankowość
             listBox.Items.Add($"Data kiedy przelew zostanie zrealizowany: {dateOfTransfer:d}");
             listBox.Items.Add("");
         }
+
+        public override void WriteToFile(StreamWriter streamWriter)
+        {
+            streamWriter.WriteLine("--------------------");
+            streamWriter.WriteLine("Zaplanowany transfer");
+
+            base.WriteToFile(streamWriter);
+            streamWriter.WriteLine($"Kwota transakcji: {amount} PLN");
+            streamWriter.WriteLine($"Typ przelewu: Przelew stały");
+            streamWriter.WriteLine($"Data kiedy przelew zostanie zrealizowany: {dateOfTransfer:d}");
+            streamWriter.WriteLine("");
+        }
     }
 }
