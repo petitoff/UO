@@ -15,6 +15,12 @@ namespace BłażejDomagała_Bankowość
         private int indexStart; // wielkość listy Program.Transactions
         private int index; // aktualny wybrany index z listy Program.Transactions
 
+        private void UpdateIndex()
+        {
+            indexStart = Program.Transactions.Count - 1;
+            index = indexStart;
+        }
+
         private void Execute()
         {
             // metoda ładuje z listy Program.Transactions odpowiednie metody za pomocą polimorfizmu
