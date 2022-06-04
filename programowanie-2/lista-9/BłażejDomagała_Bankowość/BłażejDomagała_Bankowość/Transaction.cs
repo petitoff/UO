@@ -23,7 +23,7 @@ namespace BłażejDomagała_Bankowość
 
         // Dane transakcji
         private string description;
-        protected bool isCorrect;
+        protected bool IsCorrect;
 
         private Bitmap imageBitmap;
 
@@ -102,7 +102,7 @@ namespace BłażejDomagała_Bankowość
             if (!CheckDescriptionNotEmpty()) return;
             if (!CheckIsImageLoaded()) return;
 
-            isCorrect = true;
+            IsCorrect = true;
         }
 
         private bool CheckIdEndUser()
@@ -138,7 +138,7 @@ namespace BłażejDomagała_Bankowość
 
         public virtual void Write(ListBox listBox)
         {
-            if (!isCorrect)
+            if (!IsCorrect)
             {
                 MessageTemplate(2);
                 listBox.Items.Add("Przelew się nieodbyl! Pieniądze nie zostały pobrane!");
@@ -184,7 +184,7 @@ namespace BłażejDomagała_Bankowość
         public void LoadImage(PictureBox pb)
         {
             pb.Image = imageBitmap;
-            isCorrect = true;
+            IsCorrect = true;
         }
 
         public static void LoadImageDialog(PictureBox pb)

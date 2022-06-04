@@ -77,7 +77,7 @@ namespace BłażejDomagała_Bankowość
         public override void CheckIsCorrect()
         {
             base.CheckIsCorrect(); // walidacja z kalsy bazowej
-            if (!base.isCorrect) return; // jeżeli nie przebiegła pomyślnie to wstrzymaj działanie programu
+            if (!base.IsCorrect) return; // jeżeli nie przebiegła pomyślnie to wstrzymaj działanie programu
 
             if (amount == 0)
             {
@@ -106,7 +106,7 @@ namespace BłażejDomagała_Bankowość
                 return;
             }
 
-            if (!base.isCorrect) return;
+            if (!base.IsCorrect) return;
             base.Write(listBox);
             listBox.Items.Add($"Kwota transakcji: {amount} {currency}");
             listBox.Items.Add($"Przelew zostanie zrealizowany w ciągu 2 dni roboczych: {WhenTransactionWillBeCompleted():dd/MM/yyyy}");
