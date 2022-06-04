@@ -88,5 +88,93 @@ namespace BłażejDomagała_Bankowość
                 streamWriter.Close();
             }
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Plik tekstowy|*.txt";
+
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            StreamReader streamReader = new StreamReader(openFileDialog.FileName);
+            List<string> lineOfText = new List<string>();
+
+            string line;
+            bool first = true;
+            bool temp1 = false;
+            bool temp2 = false;
+            bool temp3 = false;
+
+            while ((line = streamReader.ReadLine()) != null)
+            {
+                if (first)
+                {
+                    first = false; continue;
+                }
+
+                if (line == "")
+                {
+                    temp1 = false;
+                    if (temp2)
+                    {
+                        StandardTransfer standardTransfer = new StandardTransfer();
+                        standardTransfer.ReadFromFile(lineOfText);
+                        if(standardTransfer.isCorrectSt)
+                            Program.Transactions.Add(standardTransfer);
+
+                        lineOfText.Clear();
+                    }
+                }
+
+                if (line == "")
+                {
+                    temp1 = false;
+                    if (temp3)
+                    {
+                        ScheduledTransfer scheduledTransfer = new ScheduledTransfer();
+                        scheduledTransfer.ReadFromFile(lineOfText);
+
+                        if(scheduledTransfer.isCorrectSt)
+                            Program.Transactions.Add(scheduledTransfer);
+
+                        lineOfText.Clear();
+                    }
+                }
+
+                if (line == "Standardowy transfer")
+                {
+                    temp1 = true;
+                    temp2 = true;
+                    temp3 = false;
+                }
+
+                if (line == "Zaplanowany transfer")
+                {
+                    temp1 = true;
+                    temp2 = false;
+                    temp3 = true;
+                }
+
+                if (temp1 && temp2)
+                {
+                    lineOfText.Add(line);
+                }
+
+                if (temp1 && temp3)
+                {
+                    lineOfText.Add(line);
+                }
+
+
+                //lineOfText.Add(line);
+
+
+            }
+            indexStart = Program.Transactions.Count - 1;
+            index = indexStart;
+        }
     }
 }
