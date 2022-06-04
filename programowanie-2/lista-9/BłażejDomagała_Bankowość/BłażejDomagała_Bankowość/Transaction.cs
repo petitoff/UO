@@ -216,5 +216,10 @@ namespace BłażejDomagała_Bankowość
             streamWriter.WriteLine($"Opis do przelewu: {description}");
             streamWriter.WriteLine($"Data przelewu: {DateTime.Now:d}");
         }
+
+        public virtual void ReadFromFile(StreamReader streamReader)
+        {
+
+        }
     }
 }
