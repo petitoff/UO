@@ -70,5 +70,23 @@ namespace BłażejDomagała_Bankowość
             indexStart = Program.Transactions.Count - 1;
             index = indexStart;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Plik tekstowy|*.txt";
+            saveFileDialog.Title = "Podaj nazwę pliku do zapisu danych";
+
+            saveFileDialog.ShowDialog();
+            if (saveFileDialog.FileName != "")
+            {
+                StreamWriter streamWriter = new StreamWriter(saveFileDialog.FileName);
+                foreach (Transaction transaction in Program.Transactions)
+                {
+                    transaction.WriteToFile(streamWriter);
+                }
+                streamWriter.Close();
+            }
+        }
     }
 }
