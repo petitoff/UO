@@ -107,5 +107,11 @@ namespace BłażejDomagała_Bankowość
                 form5.Show();
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form6 form6 = new Form6();
+            form6.Show();
+        }
     }
 }
