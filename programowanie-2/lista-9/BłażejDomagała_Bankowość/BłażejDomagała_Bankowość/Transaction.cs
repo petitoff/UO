@@ -14,7 +14,7 @@ namespace BłażejDomagała_Bankowość
         private string UserFirstName = ""; // imie użytkownika wyjściowego
         private string UserLastName = ""; // nazwisko użytkownika wyjściowego
         private int UserId = 0;
-        protected float AmountMoneyInAccount = 0; // ilośc pieniędzy użytkownika wyjściowego
+        protected float AmountMoneyInAccount = 0; // ilość pieniędzy użytkownika wyjściowego
 
         // Dane odbiorcy
         private string endUserFirstName;
