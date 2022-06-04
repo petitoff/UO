@@ -128,7 +128,7 @@ namespace BłażejDomagała_Bankowość
                     {
                         StandardTransfer standardTransfer = new StandardTransfer();
                         standardTransfer.ReadFromFile(lineOfText);
-                        if(standardTransfer.isCorrectSt)
+                        if (standardTransfer.isCorrectSt)
                             Program.Transactions.Add(standardTransfer);
 
                         lineOfText.Clear();
@@ -143,7 +143,7 @@ namespace BłażejDomagała_Bankowość
                         ScheduledTransfer scheduledTransfer = new ScheduledTransfer();
                         scheduledTransfer.ReadFromFile(lineOfText);
 
-                        if(scheduledTransfer.isCorrectSt)
+                        if (scheduledTransfer.isCorrectSt)
                             Program.Transactions.Add(scheduledTransfer);
 
                         lineOfText.Clear();
