@@ -257,5 +257,10 @@ namespace BłażejDomagała_Bankowość
             endUserId = ConvertToInt(stringList[8]);
             description = stringList[9];
         }
+
+        public virtual float GetAmount()
+        {
+            return 0;
+        }
     }
 }

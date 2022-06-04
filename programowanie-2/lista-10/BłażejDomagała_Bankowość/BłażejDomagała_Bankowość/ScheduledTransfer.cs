@@ -23,6 +23,11 @@ namespace BłażejDomagała_Bankowość
             this.dateOfTransfer = dateOfTransfer;
         }
 
+        public override float GetAmount()
+        {
+            return amount;
+        }
+
         public override void CheckIsCorrect()
         {
             base.CheckIsCorrect();

@@ -36,6 +36,11 @@ namespace BłażejDomagała_Bankowość
             this.categories = categories;
         }
 
+        public override float GetAmount()
+        {
+            return amount;
+        }
+
         private bool ConvertCurrency()
         {
 
