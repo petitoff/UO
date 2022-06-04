@@ -142,5 +142,21 @@ namespace BłażejDomagała_Bankowość
 
             return sum;
         }
+
+        public override void WriteToFile(StreamWriter streamWriter)
+        {
+            //base.WriteToFile(streamWriter);
+
+            streamWriter.WriteLine("--------------------");
+            streamWriter.WriteLine("Standardowy transfer");
+
+            base.WriteToFile(streamWriter);
+
+            streamWriter.WriteLine($"Kwota transakcji: {amount} {currency}");
+            streamWriter.WriteLine($"Przelew zostanie zrealizowany w ciągu 2 dni roboczych: {WhenTransactionWillBeCompleted():dd/MM/yyyy}");
+            streamWriter.WriteLine($"Kategoria przelewu: {categories}");
+            streamWriter.WriteLine("Typ przelewu: Przelew zwykły");
+            streamWriter.WriteLine("");
+        }
     }
 }
