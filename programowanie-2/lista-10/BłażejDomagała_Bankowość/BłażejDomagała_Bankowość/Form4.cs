@@ -74,8 +74,7 @@ namespace BłażejDomagała_Bankowość
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            indexStart = Program.Transactions.Count - 1;
-            index = indexStart;
+            UpdateIndex();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -180,8 +179,8 @@ namespace BłażejDomagała_Bankowość
 
 
             }
-            indexStart = Program.Transactions.Count - 1;
-            index = indexStart;
+            UpdateIndex();
+        }
         }
     }
 }
