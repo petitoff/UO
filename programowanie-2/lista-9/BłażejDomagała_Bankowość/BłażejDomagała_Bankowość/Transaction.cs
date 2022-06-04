@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -186,40 +187,84 @@ namespace BłażejDomagała_Bankowość
 
         public static void LoadImageDialog(PictureBox pb)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            if (open.ShowDialog() == DialogResult.OK)
+            try
             {
-                Bitmap f = new Bitmap(open.OpenFile());
-                pb.Image = f;
+                OpenFileDialog open = new OpenFileDialog();
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    Bitmap f = new Bitmap(open.OpenFile());
+                    pb.Image = f;
+                }
+            }
+            catch (System.ArgumentException e)
+            {
+                MessageBox.Show($"Możliwe wczytywanie jest tylko zdjęć!\n\n Kod błędu: {e}");
             }
         }
 
         private void SaveImageToFile()
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = @"JPG(*.JPG)|*.jpg";
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = @"JPG(*.JPG)|*.jpg";
 
-            if(saveFileDialog.ShowDialog() == DialogResult.OK)
-                imageBitmap.Save(saveFileDialog.FileName);
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    imageBitmap.Save(saveFileDialog.FileName);
+            }
+            catch (System.Runtime.InteropServices.ExternalException e)
+            {
+                MessageBox.Show($"Bład podczas zapisu zdjęcia! Kod błędu: {e}");
+            }
         }
 
         public virtual void WriteToFile(StreamWriter streamWriter)
         {
             SaveImageToFile();
 
-            streamWriter.WriteLine($"Imię i nazwisko: {UserFirstName} {UserLastName}");
-            streamWriter.WriteLine($"Twoje ID: {UserId}");
-            streamWriter.WriteLine($"Numer indentyfikacyjny transakcji: {id}");
-            streamWriter.WriteLine($"Ilość pieniędzy w twoim banku: {AmountMoneyInAccount} PLN");
-            streamWriter.WriteLine($"Imię i nazwisko odbiorcy: {endUserFirstName} {endUserLastName}");
-            streamWriter.WriteLine($"Numer indentyfikacyjny odbiorcy: {endUserId}");
-            streamWriter.WriteLine($"Opis do przelewu: {description}");
-            streamWriter.WriteLine($"Data przelewu: {DateTime.Now:d}");
+            //streamWriter.WriteLine($"Imię i nazwisko: {UserFirstName} {UserLastName}");
+            //streamWriter.WriteLine($"Twoje ID: {UserId}");
+            //streamWriter.WriteLine($"Numer indentyfikacyjny transakcji: {id}");
+            //streamWriter.WriteLine($"Ilość pieniędzy w twoim banku: {AmountMoneyInAccount} PLN");
+            //streamWriter.WriteLine($"Imię i nazwisko odbiorcy: {endUserFirstName} {endUserLastName}");
+            //streamWriter.WriteLine($"Numer indentyfikacyjny odbiorcy: {endUserId}");
+            //streamWriter.WriteLine($"Opis do przelewu: {description}");
+            //streamWriter.WriteLine($"Data przelewu: {DateTime.Now:d}");
+
+            streamWriter.WriteLine(UserFirstName);
+            streamWriter.WriteLine(UserLastName);
+            streamWriter.WriteLine(UserId);
+            streamWriter.WriteLine(id);
+            streamWriter.WriteLine(AmountMoneyInAccount);
+            streamWriter.WriteLine(endUserFirstName);
+            streamWriter.WriteLine(endUserLastName);
+            streamWriter.WriteLine(endUserId);
+            streamWriter.WriteLine(description);
         }
 
-        public virtual void ReadFromFile(StreamReader streamReader)
+        public virtual void ReadFromFile(List<string> stringList)
         {
+            IsCorrect = true;
 
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = @"JPG(*.JPG)|*.jpg|PNG|*.png";
+            open.Title = "Wczytaj zdjęcie";
+
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap f = new Bitmap(open.OpenFile());
+                imageBitmap = f;
+            }
+
+            UserFirstName = stringList[1];
+            UserLastName = stringList[2];
+            UserId = ConvertToInt(stringList[3]);
+            id = ConvertToInt(stringList[4]);
+            AmountMoneyInAccount = ConvertToFloat(stringList[5]);
+            endUserFirstName = stringList[6];
+            endUserLastName = stringList[7];
+            endUserId = ConvertToInt(stringList[8]);
+            description = stringList[9];
         }
     }
 }

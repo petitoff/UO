@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -10,6 +11,11 @@ namespace BłażejDomagała_Bankowość
         private float amount;
         public bool isCorrectSt;
         private DateTime dateOfTransfer;
+
+        public ScheduledTransfer()
+        {
+
+        }
 
         public ScheduledTransfer(float amount, DateTime dateOfTransfer, string endUserFirstName, string endUserLastName, int endUserId, string description, Bitmap imageBitmap) : base(endUserFirstName, endUserLastName, endUserId, description, imageBitmap)
         {
@@ -69,10 +75,26 @@ namespace BłażejDomagała_Bankowość
             streamWriter.WriteLine("Zaplanowany transfer");
 
             base.WriteToFile(streamWriter);
-            streamWriter.WriteLine($"Kwota transakcji: {amount} PLN");
-            streamWriter.WriteLine($"Typ przelewu: Przelew stały");
-            streamWriter.WriteLine($"Data kiedy przelew zostanie zrealizowany: {dateOfTransfer:d}");
+            streamWriter.WriteLine(amount);
+            streamWriter.WriteLine($"{dateOfTransfer:d}");
+
             streamWriter.WriteLine("");
+        }
+
+        public override void ReadFromFile(List<string> stringList)
+        {
+            try
+            {
+                base.ReadFromFile(stringList);
+                amount = ConvertToFloat(stringList[11]);
+                dateOfTransfer = Convert.ToDateTime(stringList[12]);
+
+                isCorrectSt = true;
+            }
+            catch (System.ArgumentOutOfRangeException e)
+            {
+                MessageBox.Show($"Błąd przy wczytywaniu pliku!\n\n Kod błędu {e}");
+            }
         }
     }
 }

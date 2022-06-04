@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -152,11 +153,35 @@ namespace BłażejDomagała_Bankowość
 
             base.WriteToFile(streamWriter);
 
-            streamWriter.WriteLine($"Kwota transakcji: {amount} {currency}");
-            streamWriter.WriteLine($"Przelew zostanie zrealizowany w ciągu 2 dni roboczych: {WhenTransactionWillBeCompleted():dd/MM/yyyy}");
-            streamWriter.WriteLine($"Kategoria przelewu: {categories}");
-            streamWriter.WriteLine("Typ przelewu: Przelew zwykły");
+            //streamWriter.WriteLine($"Kwota transakcji: {amount} {currency}");
+            //streamWriter.WriteLine($"Przelew zostanie zrealizowany w ciągu 2 dni roboczych: {WhenTransactionWillBeCompleted():dd/MM/yyyy}");
+            //streamWriter.WriteLine($"Kategoria przelewu: {categories}");
+            //streamWriter.WriteLine("Typ przelewu: Przelew zwykły");
+            //streamWriter.WriteLine("");
+
+            streamWriter.WriteLine(amount);
+            streamWriter.WriteLine(currency);
+            streamWriter.WriteLine(categories);
+
             streamWriter.WriteLine("");
+        }
+
+        public override void ReadFromFile(List<string> stringList)
+        {
+            try
+            {
+                base.ReadFromFile(stringList);
+                amount = ConvertToFloat(stringList[10]);
+                currency = stringList[11];
+                categories = stringList[12];
+
+                isCorrectSt = true;
+            }
+            catch (System.ArgumentOutOfRangeException e)
+            {
+                MessageBox.Show($"Błąd przy wczytywaniu pliku!\n\n Kod błędu {e}");
+            }
+
         }
     }
 }
