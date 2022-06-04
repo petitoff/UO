@@ -74,5 +74,32 @@ namespace BłażejDomagała_Bankowość
                 e.Handled = true;
             }
         }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+                MessageBox.Show(@"Nie wprowadziłeś danych!");
+        }
+
+        private void pictureBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            var data = e.Data.GetData(DataFormats.FileDrop);
+            if (data != null)
+            {
+                var fileNames = data as string[];
+                if (fileNames.Length > 0)
+                    pictureBox1.Image = Image.FromFile(fileNames[0]);
+            }
+        }
+
+        private void pictureBox1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            pictureBox1.AllowDrop = true;
+        }
     }
 }
