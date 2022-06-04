@@ -181,6 +181,20 @@ namespace BłażejDomagała_Bankowość
             }
             UpdateIndex();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (Program.Transactions.Count == 0)
+            {
+                MessageBox.Show("Brak obiektu do usunięcia!");
+                return;
+            }
+
+            Program.Transactions.RemoveAt(index);
+            UpdateIndex();
+            listBox1.Items.Clear();
+            pictureBox1.Image = null;
+            MessageBox.Show("Pomyślnie usunięto obiekt!");
         }
     }
 }
