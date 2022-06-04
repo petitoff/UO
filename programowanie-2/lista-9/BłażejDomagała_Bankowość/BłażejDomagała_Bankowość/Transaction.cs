@@ -202,5 +202,19 @@ namespace BłażejDomagała_Bankowość
             if(saveFileDialog.ShowDialog() == DialogResult.OK)
                 imageBitmap.Save(saveFileDialog.FileName);
         }
+
+        public virtual void WriteToFile(StreamWriter streamWriter)
+        {
+            SaveImageToFile();
+
+            streamWriter.WriteLine($"Imię i nazwisko: {UserFirstName} {UserLastName}");
+            streamWriter.WriteLine($"Twoje ID: {UserId}");
+            streamWriter.WriteLine($"Numer indentyfikacyjny transakcji: {id}");
+            streamWriter.WriteLine($"Ilość pieniędzy w twoim banku: {AmountMoneyInAccount} PLN");
+            streamWriter.WriteLine($"Imię i nazwisko odbiorcy: {endUserFirstName} {endUserLastName}");
+            streamWriter.WriteLine($"Numer indentyfikacyjny odbiorcy: {endUserId}");
+            streamWriter.WriteLine($"Opis do przelewu: {description}");
+            streamWriter.WriteLine($"Data przelewu: {DateTime.Now:d}");
+        }
     }
 }
