@@ -193,5 +193,14 @@ namespace BłażejDomagała_Bankowość
                 pb.Image = f;
             }
         }
+
+        private void SaveImageToFile()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = @"JPG(*.JPG)|*.jpg";
+
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                imageBitmap.Save(saveFileDialog.FileName);
+        }
     }
 }
