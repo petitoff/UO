@@ -67,7 +67,7 @@ namespace BłażejDomagała_Bankowość
             {
                 return int.Parse(s);
             }
-            catch (Exception)
+            catch (FormatException)
             {
                 MessageBox.Show(@"Wprowadź liczbę!");
                 return -1;
@@ -80,7 +80,7 @@ namespace BłażejDomagała_Bankowość
             {
                 return float.Parse(s);
             }
-            catch (Exception)
+            catch (FormatException)
             {
                 MessageBox.Show(@"Wprowadź liczbę!");
                 return -1;
