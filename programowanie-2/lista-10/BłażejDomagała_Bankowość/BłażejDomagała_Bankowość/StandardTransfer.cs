@@ -90,6 +90,8 @@ namespace BłażejDomagała_Bankowość
             }
             if (!ConvertCurrency()) return;
 
+            if (currency == "USD") amount *= usdPrice;
+            if (currency == "EUR") amount *= eurPrice;
             base.AmountMoneyInAccount -= amount;
             Form1.AmountMoneyInAccount = base.AmountMoneyInAccount;
             isCorrectSt = true;
