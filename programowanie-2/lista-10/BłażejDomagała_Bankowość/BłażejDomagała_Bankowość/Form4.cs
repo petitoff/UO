@@ -180,6 +180,7 @@ namespace BłażejDomagała_Bankowość
 
             }
             UpdateIndex();
+            MessageBox.Show("Wczytywanie zakończone!");
         }
 
         private void button6_Click(object sender, EventArgs e)

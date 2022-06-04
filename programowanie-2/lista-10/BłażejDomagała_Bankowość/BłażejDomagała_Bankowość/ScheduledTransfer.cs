@@ -12,6 +12,8 @@ namespace BłażejDomagała_Bankowość
         public bool isCorrectSt;
         private DateTime dateOfTransfer;
 
+        public bool FileCorrectOperation = false;
+
         public ScheduledTransfer()
         {
 
@@ -94,6 +96,7 @@ namespace BłażejDomagała_Bankowość
                 amount = ConvertToFloat(stringList[11]);
                 dateOfTransfer = Convert.ToDateTime(stringList[12]);
 
+                if (amount == -1) return;
                 isCorrectSt = true;
             }
             catch (System.ArgumentOutOfRangeException e)

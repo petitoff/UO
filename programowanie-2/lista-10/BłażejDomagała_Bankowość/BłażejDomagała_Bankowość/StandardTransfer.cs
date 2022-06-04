@@ -14,11 +14,12 @@ namespace BłażejDomagała_Bankowość
         private float usdPrice = 3.5F;
         private float eurPrice = 4.3F;
         private string categories;
-        public bool isCorrectSt = false;
+        public bool isCorrectSt;
 
         public float a;
         public bool b;
 
+        public bool FileCorrectOperation;
         public StandardTransfer()
         {
 
@@ -174,13 +175,13 @@ namespace BłażejDomagała_Bankowość
                 currency = stringList[11];
                 categories = stringList[12];
 
+                if (amount == -1) return;
                 isCorrectSt = true;
             }
             catch (System.ArgumentOutOfRangeException e)
             {
                 MessageBox.Show($"Błąd przy wczytywaniu pliku!\n\n Kod błędu {e}");
             }
-
         }
     }
 }
