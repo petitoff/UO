@@ -101,5 +101,13 @@ namespace BłażejDomagała_Bankowość
         {
             pictureBox1.AllowDrop = true;
         }
+
+        private void textBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                textBox1.Text = @"Domagała";
+            }
+        }
     }
 }
