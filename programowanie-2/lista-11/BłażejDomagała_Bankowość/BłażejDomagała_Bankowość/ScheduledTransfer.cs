@@ -93,8 +93,8 @@ namespace BłażejDomagała_Bankowość
             try
             {
                 base.ReadFromFile(stringList);
-                amount = ConvertToFloat(stringList[11]);
-                dateOfTransfer = Convert.ToDateTime(stringList[12]);
+                amount = ConvertToFloat(stringList[10]);
+                dateOfTransfer = Convert.ToDateTime(stringList[11]);
 
                 if (amount == -1) return;
                 isCorrectSt = true;
