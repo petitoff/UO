@@ -5,3 +5,8 @@ FROM products, categories, suppliers
 WHERE categories.CategoryName = "Beverages" AND suppliers.Country = "USA"
 GROUP BY products.ProductID;
 
+-- zadanie 8
+SELECT *
+FROM employees
+WHERE LastName IS NOT NULL;
+
