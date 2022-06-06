@@ -88,7 +88,16 @@ namespace BłażejDomagała_Bankowość
             {
                 var fileNames = data as string[];
                 if (fileNames.Length > 0)
-                    pictureBox1.Image = Image.FromFile(fileNames[0]);
+                {
+                    try
+                    {
+                        pictureBox1.Image = Image.FromFile(fileNames[0]);
+                    }
+                    catch (System.OutOfMemoryException)
+                    {
+                        MessageBox.Show("Błąd podczas wczytywania zdjęcia!");
+                    }
+                }
             }
         }
 
