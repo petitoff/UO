@@ -8,5 +8,5 @@ GROUP BY products.ProductID;
 -- zadanie 8
 SELECT *
 FROM employees
-WHERE LastName IS NOT NULL;
+WHERE ReportsTo IS NULL;
 
