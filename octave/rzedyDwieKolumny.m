@@ -1,31 +1,19 @@
-function wynik = rzedyDwieKolumny(m1)
-  # lista - Rzedy
-  # zadanie - Dwie kolumny
-
-  # a - wiersze
-  # b - kolumny
-
-  [a,b] = size(m1);
-  spr1 = 0;
-  spr2 = 0;
-
-  # sprawdzanie czy podana macierz posiada dwie kolumny
-  if(b != 2)
+function wynik=rzedyDwieKolumny(m1)
+  [a,b]=size(m1);
+    if(b != 2)
     wynik = "Podałeś nieprawidołową macierz!";
     return;
   endif
 
-  wierszeG = 1;
-  wierszeD = 2;
+  spr1=0;
+  spr2=0;
 
-  while(wierszeD < a)
 
-    wyznacznikMacierza2x2 = m1(wierszeG,1) * m1(wierszeD,2) - m1(wierszeG,2) * m1(wierszeD,1);
-    if(wyznacznikMacierza2x2 != 0)
-      spr2 = 1;
+  for i=1:a-1
+    if((m1(i,1)*m1(i+1,2))-(m1(i+1,1)*m1(i,2))!=0)
+      spr2=1;
     endif
-
-    if(spr2 == 0)
+    if(spr2==0)
       for i=1:a
         if(m1(i,1)!=0)
           spr1=1;
@@ -35,21 +23,14 @@ function wynik = rzedyDwieKolumny(m1)
         endif
       endfor
     endif
-
-    wierszeG = wierszeG + 1;
-    wierszeD = wierszeD + 1;
-  endwhile
-
-  if(spr2 == 1)
-    wynik = 2;
-    return;
-  endif
-
-  if(spr1 == 1)
-    wynik = 1;
-    return;
+  endfor
+  if(spr2==1)
+    wynik=2;
   else
-    wynik = 0;
-    return;
+    if(spr1==1)
+      wynik=1;
+    else
+      wynik=0;
+    endif
   endif
 endfunction
