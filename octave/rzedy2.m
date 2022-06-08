@@ -10,7 +10,6 @@ function wynik = rzedy2(m1)
   spr2 = 0;
 
   # sprawdzanie czy są tylko 0
-
   for i=1:a
     for j=1:b
       if(m1(i,j)!= 0)
