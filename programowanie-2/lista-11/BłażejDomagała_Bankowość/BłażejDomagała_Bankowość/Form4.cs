@@ -51,7 +51,7 @@ namespace BłażejDomagała_Bankowość
             if (index - 1 < 0)
             {
                 button3.Enabled = true;
-                MessageBox.Show("Nie posiadasz już więcej transakcji do przeglądania!");
+                // MessageBox.Show("Nie posiadasz już więcej transakcji do przeglądania!");
                 button2.Enabled = false;
                 return;
             }
@@ -64,7 +64,7 @@ namespace BłażejDomagała_Bankowość
             button2.Enabled = true;
             if (index + 1 > indexStart)
             {
-                MessageBox.Show("Nie posiadasz już więcej transakcji do przeglądania!");
+                // MessageBox.Show("Nie posiadasz już więcej transakcji do przeglądania!");
                 button3.Enabled = false;
                 return;
             }
