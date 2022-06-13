@@ -29,3 +29,12 @@ WHERE c.Country = 'France'
 GROUP BY c.CustomerID
 HAVING liczbaZamowien > 1;
 
+-- zadanie 13
+SELECT COUNT(c.CustomerID) as liczbaZamowien
+FROM customers as c INNER JOIN orders AS o ON c.CustomerID = o.CustomerID
+WHERE c.Country = 'France';
+
+-- zadanie 14
+SELECT *
+FROM employees
+WHERE City = (SELECT City FROM employees WHERE LastName = 'King' AND FirstName = 'Robert');
