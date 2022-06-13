@@ -23,7 +23,7 @@ FROM customers as c INNER JOIN orders AS o ON c.CustomerID = o.CustomerID
 WHERE c.Country = 'France';
 
 -- zadanie 12
-SELECT c.CustomerID, COUNT(c.CustomerID) as liczbaZamowien, c.ContactName
+SELECT c.CustomerID, COUNT(c.OrderID) as liczbaZamowien, c.ContactName
 FROM customers as c INNER JOIN orders AS o ON c.CustomerID = o.CustomerID
 WHERE c.Country = 'France'
 GROUP BY c.CustomerID
