@@ -17,3 +17,8 @@ FROM employees as e1 INNER JOIN employees as e2 ON e1.ReportsTo = e2.EmployeeID;
 SELECT e1.EmployeeID, e1.LastName, e1.FirstName, e2.*
 FROM employees as e1 LEFT OUTER JOIN employees as e2 ON e1.ReportsTo = e2.EmployeeID;
 
+-- zadanie 11
+SELECT c.*, o.*
+FROM customers as c INNER JOIN orders AS o ON c.CustomerID = o.CustomerID
+WHERE c.Country = 'France';
+
