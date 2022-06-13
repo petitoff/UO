@@ -243,8 +243,16 @@ namespace BłażejDomagała_Bankowość
 
             if (open.ShowDialog() == DialogResult.OK)
             {
-                Bitmap f = new Bitmap(open.OpenFile());
-                imageBitmap = f;
+                try
+                {
+                    Bitmap f = new Bitmap(open.OpenFile());
+                    imageBitmap = f;
+                }
+                catch (System.ArgumentException)
+                {
+                    MessageBox.Show("Błąd podczas wczytywania pliku!");
+                    return;
+                }
             }
 
             UserFirstName = stringList[1];
