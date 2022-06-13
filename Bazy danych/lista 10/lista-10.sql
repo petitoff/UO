@@ -41,3 +41,7 @@ FROM employees
 WHERE City = (SELECT City FROM employees WHERE LastName = 'King' AND FirstName = 'Robert');
 
 -- zadanie 15
+SELECT *
+FROM orders
+WHERE CustomerID IN (SELECT CustomerID FROM customers WHERE Country = 'France' group by CustomerID)
+GROUP BY OrderID;
