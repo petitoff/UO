@@ -30,9 +30,10 @@ GROUP BY c.CustomerID
 HAVING liczbaZamowien > 1;
 
 -- zadanie 13
-SELECT COUNT(c.CustomerID) as liczbaZamowien
-FROM customers as c INNER JOIN orders AS o ON c.CustomerID = o.CustomerID
-WHERE c.Country = 'France';
+SELECT c.CustomerID, Count(o.OrderID)
+FROM orders as o RIGHT OUTER JOIN customers as c on c.CustomerID = o.CustomerID
+WHERE c.Country = 'France'
+GROUP BY c.CustomerID;
 
 -- zadanie 14
 SELECT *
