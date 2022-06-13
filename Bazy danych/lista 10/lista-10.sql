@@ -39,3 +39,5 @@ GROUP BY c.CustomerID;
 SELECT *
 FROM employees
 WHERE City = (SELECT City FROM employees WHERE LastName = 'King' AND FirstName = 'Robert');
+
+-- zadanie 15
