@@ -66,5 +66,5 @@ FROM (SELECT City, count(City) as liczba FROM employees GROUP BY City) AS t1 INN
 WHERE t1.City != t2.City;
 
 -- zaadanie 19
-SELECT categories.CategoryID, categories.CategoryName, t1.liczba, t1.ProductID
+SELECT categories.CategoryID, categories.CategoryName, t1.cena, t1.ProductID
 FROM (SELECT CategoryID, MAX(UnitPrice) as cena, ProductID FROM products GROUP BY CategoryID) as t1 INNER JOIN categories ON t1.CategoryID = categories.CategoryID;
