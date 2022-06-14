@@ -68,3 +68,7 @@ WHERE t1.City != t2.City;
 -- zaadanie 19
 SELECT categories.CategoryID, categories.CategoryName, t1.cena, t1.ProductID
 FROM (SELECT CategoryID, MAX(UnitPrice) as cena, ProductID FROM products GROUP BY CategoryID) as t1 INNER JOIN categories ON t1.CategoryID = categories.CategoryID;
+
+-- zadanie 20
+SELECT t1.OrderID, t1.CenaMax, t2.CenaMin
+FROM (SELECT OrderID, max(UnitPrice) as CenaMax FROM orderdetails group by OrderID) as t1 INNER JOIN (SELECT OrderID, min(UnitPrice) as CenaMin FROM orderdetails group by OrderID) as t2 on t1. OrderID = t2.OrderID;
