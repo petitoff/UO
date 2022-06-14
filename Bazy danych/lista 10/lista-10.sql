@@ -50,3 +50,8 @@ SELECT *
 FROM orders
 WHERE CustomerID IN (SELECT CustomerID FROM customers WHERE Country = 'France' group by CustomerID)
 GROUP BY OrderID;
+
+-- zadanie 16
+SELECT EmployeeID, LastName, FirstName
+FROM employees
+WHERE EmployeeID NOT IN(SELECT ReportsTo FROM employees WHERE ReportsTo IS NOT null);
