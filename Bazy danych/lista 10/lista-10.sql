@@ -64,3 +64,7 @@ FROM suppliers Inner JOIN (SELECT SupplierID FROM products INNER JOIN orderdetai
 SELECT *
 FROM (SELECT City, count(City) as liczba FROM employees GROUP BY City) AS t1 INNER JOIN (SELECT City, count(City) as liczba FROM employees GROUP BY City) AS t2 ON t1.liczba = t2.liczba
 WHERE t1.City != t2.City;
+
+-- zaadanie 19
+SELECT *
+FROM (SELECT CategoryID, MAX(UnitPrice) as liczba FROM products GROUP BY CategoryID) as t1 INNER JOIN categories ON t1.CategoryID = categories.CategoryID;
