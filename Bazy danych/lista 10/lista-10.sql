@@ -54,4 +54,6 @@ GROUP BY OrderID;
 -- zadanie 16
 SELECT EmployeeID, LastName, FirstName
 FROM employees
-WHERE EmployeeID NOT IN(SELECT ReportsTo FROM employees WHERE ReportsTo IS NOT null);
+WHERE EmployeeID NOT IN(SELECT ReportsTo FROM employees WHERE ReportsTo IS NOT null);WHERE EmployeeID NOT IN(SELECT ReportsTo FROM employees WHERE ReportsTo IS NOT null);
+SELECT suppliers.SupplierID, suppliers.ContactName
+FROM suppliers Inner JOIN (SELECT SupplierID FROM products INNER JOIN orderdetails on products.ProductID = orderdetails.ProductID where orderdetails.OrderID > 11000) as t2 on suppliers.SupplierID = t2.SupplierID;
