@@ -1,3 +1,8 @@
+-- zadanie 5
+SELECT s.SupplierID, s.ContactName, p.ProductID, p.ProductName
+FROM products AS p INNER JOIN suppliers as s ON p.SupplierID = s.SupplierID
+WHERE s.Country = 'USA' AND p.UnitPrice > 20;
+
 -- zadanie 7
 SELECT products.ProductID, products.ProductName, categories.CategoryName, suppliers.Country
 FROM products, categories, suppliers
