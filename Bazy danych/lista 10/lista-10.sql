@@ -59,3 +59,8 @@ WHERE EmployeeID NOT IN(SELECT ReportsTo FROM employees WHERE ReportsTo IS NOT n
 -- zadanie 17
 SELECT suppliers.SupplierID, suppliers.ContactName
 FROM suppliers Inner JOIN (SELECT SupplierID FROM products INNER JOIN orderdetails on products.ProductID = orderdetails.ProductID where orderdetails.OrderID > 11000) as t2 on suppliers.SupplierID = t2.SupplierID;
+
+-- zadanie 18
+SELECT *
+FROM (SELECT City, count(City) as liczba FROM employees GROUP BY City) AS t1 INNER JOIN (SELECT City, count(City) as liczba FROM employees GROUP BY City) AS t2 ON t1.liczba = t2.liczba
+WHERE t1.City != t2.City;
