@@ -43,10 +43,11 @@ function wynik = rzedy3(m1)
 
   m3 = m2;
   r2 = m2(2,2);
-  for j=1:a
-
-    m2(3,j) -= (m3(3,2)* m3(2,j))/r2;
-  endfor
+  if(r2!=0)
+    for j=1:a
+      m2(3,j) -= (m3(3,2)* m3(2,j))/r2;
+    endfor
+  endif
 
   # zliczanie niezerowych wierszy
   spr2 = 0;
