@@ -31,8 +31,13 @@ function wynik = rzedy3(m1)
   # m1([2],:) = []; # usuwanie wierszy
   # m1(:,[1]) = []; # usuwanie kolumn
 
-  r1 = m1(1,1);
   m2 = m1;
+  if(m1(1,1) == 0)
+    m2([1],:) = m1([2],:)
+    m2([2],:) = m1([1],:)
+  endif
+  r1 = m1(1,1);
+
   for j=1:a
     m2(2,j) -= m1(2,1)/r1 * m1(1,j);
   endfor
