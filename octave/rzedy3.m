@@ -31,15 +31,12 @@ function wynik = rzedy3(m1)
   m2 = m1; # kopiowanie macierzy
   petlalicz = 3; # ile razy ma się wykonac petla i
 
-
   for k=1:a
     if(k >= 3)
       break;
     endif
 
-
     for i=1:a
-      koniecPetliNatychmiast = 0;
       m3 = m2; # kopiowanie macierzy m2
 
       if(i >= petlalicz)
@@ -47,6 +44,7 @@ function wynik = rzedy3(m1)
       endif
 
       # przechwytywanie wyjątek jeżeli zostały zera w 2 ostatnich wierszach
+      koniecPetliNatychmiast = 0;
       for ii=2:a
         for jj=1:a
           if(m2(ii,jj) != 0)
