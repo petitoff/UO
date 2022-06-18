@@ -30,28 +30,41 @@ function wynik = rzedy3(m1)
   # m1([2],:) = []; # usuwanie wierszy
   # m1(:,[1]) = []; # usuwanie kolumn
 
-  m2 = m1;
-  if(m1(1,1) == 0)
-    m2([1],:) = m1([2],:)
-    m2([2],:) = m1([1],:)
-  endif
-  r1 = m1(1,1);
+  m2 = m1; # kopiowanie macierzy
+  petlalicz = 3; # ile razy ma się wykonac petla i
 
-  for j=1:a
-    m2(2,j) -= m1(2,1)/r1 * m1(1,j);
-  endfor
+  for k=1:a
+    if(k >= 3)
+      break;
+    endif
 
-  for j=1:a
-    m2(3,j) -= m1(3,1)/r1 * m1(1,j);
-  endfor
+    for i=1:a
+      m3 = m2; # kopiowanie macierzy m2
 
-  m3 = m2;
-  r2 = m2(2,2);
-  if(r2!=0)
-    for j=1:a
-      m2(3,j) -= (m3(3,2)* m3(2,j))/r2;
+      if(i >= petlalicz)
+        break;
+      endif
+
+
+      prawyIndexq = 1; # kolumna
+
+      if (m3(i+k,1) == 0)
+        prawyIndexq += 1; # jeżeli w pierwszej kolumnie wystąpiło zero to przejdź do kolejnej kolumny
+      endif
+
+      q = m3(i+k,prawyIndexq);
+      r1 = m2(k,prawyIndexq);
+
+      for j=1:a
+        m2(i+k,j) -= q/r1 * m3(k,j)
+      endfor
     endfor
-  endif
+
+    petlalicz -= 1;
+  endfor
+
+
+
 
   # zliczanie niezerowych wierszy
   spr2 = 0;
