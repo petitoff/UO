@@ -26,9 +26,7 @@ function wynik = rzedy3(m1)
     return;
   endif
 
-  # szukamy czy jest zero w macierzy
-  # m1([2],:) = []; # usuwanie wierszy
-  # m1(:,[1]) = []; # usuwanie kolumn
+  #############
 
   m2 = m1; # kopiowanie macierzy
   petlalicz = 3; # ile razy ma się wykonac petla i
@@ -81,9 +79,7 @@ function wynik = rzedy3(m1)
     petlalicz -= 1;
   endfor
 
-
-
-
+  ###############################
   # zliczanie niezerowych wierszy
   spr2 = 0;
   wynik = 3;
