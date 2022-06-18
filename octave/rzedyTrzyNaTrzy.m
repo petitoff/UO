@@ -1,43 +1,101 @@
-function wynik = rzedyTrzyNaTrzy(m1)
-  # lista - Rzedy
-  # zadanie - Trzy wiersi i trzy kolumny
-
-  # a - wiersze
-  # b - kolumny
+function wynik = rzedy3(m1)
+  # brudnopis do zadania z rzędami 3x3
 
   [a,b] = size(m1);
 
-  # obliczanie wyznacznika metodą trójkąta
-  wyzniacznik = 0;
-  wyzniacznik += m1(1,1) * m1(2,2) * m1(3,3);
-  wyzniacznik += m1(1,2) * m1(2,3) * m1(3,1);
-  wyzniacznik += m1(1,3) * m1(2,1) * m1(3,2);
-
-  wyzniacznik -= m1(1,3) * m1(2,2) * m1(3,1);
-  wyzniacznik -= m1(1,1) * m1(2,3) * m1(3,2);
-  wyzniacznik -= m1(1,2) * m1(2,1) * m1(3,3);
-
-  if(wyzniacznik != 0)
-    # jeżeli wyzniacznik jest różny od 0 to wynikiem jest 3
-    wynik = 3;
+  if(a!=b)
+    disp("Macierz nie jest kwadratowa!");
     return;
   endif
 
-  # w przeciwnym razie przechodzimy do kolejnego kroku
-  boolSpr = 0;
+  if(a!=3)
+    disp("Macierz nie jest 3x3");
+    return;
+  endif
 
-  for i=1:a - 1
-    for j = 1:b - 1
-      spr = m1(i,j) * m1(i+1,j+1) - m1(i,j+1) * m1(i+1,j);
-      if(spr != 0)
-        boolSpr += 1;
+  # sprawdzenie czy nie ma samych zer w macierzy
+
+  spr1 = 0;
+  for i=1:a
+    for j=1:a
+      if(m1(i,j) != 0)
+        spr1 = 1;
       endif
     endfor
   endfor
 
-  if(boolSpr == 0)
-    wynik = 1
-  else
-    wynik = 2;
+  if(spr1 == 0)
+    wynik = 0;
+    return;
   endif
+
+  # szukamy czy jest zero w macierzy
+  # m1([2],:) = []; # usuwanie wierszy
+  # m1(:,[1]) = []; # usuwanie kolumn
+
+  m2 = m1;
+  spr3 = 0;
+  for i = 1:a
+    if(m1(i,1) != 0)
+      spr3 += 1;
+    endif
+  endfor
+
+  if(spr3 != 0)
+    if(m1(1,1) == 0)
+      m2([1],:) = m1([2],:);
+      m2([2],:) = m1([1],:);
+    endif
+    r1 = m1(1,1);
+  else
+    r1 = m1(1,2);
+  endif
+
+  r1
+
+  if(spr3 !=0)
+    for j=1:a
+      m2(2,j) -= (m1(2,1) * m1(1,j))/r1
+    endfor
+
+    for j=1:a
+      m2(3,j) -= m1(3,1)/r1 * m1(1,j)
+    endfor
+  else
+    for j=1:a
+      m2(2,j) -= (m1(2,2) * m1(1,j))/r1
+    endfor
+
+    for j=1:a
+      m2(3,j) -= m1(3,2)/r1 * m1(1,j)
+    endfor
+  endif
+
+  for j=1:a
+    m2(3,j) -= m1(3,1)/r1 * m1(1,j)
+  endfor
+
+  m3 = m2;
+  r2 = m2(2,2);
+  if(r2!=0)
+    for j=1:a
+      m2(3,j) -= (m3(3,2)* m3(2,j))/r2
+    endfor
+  endif
+
+  # zliczanie niezerowych wierszy
+  spr2 = 0;
+  wynik = 3;
+  for i=1:a
+    for j=1:a
+      if (m2(i,j) != 0)
+        spr2 = 1;
+      endif
+    endfor
+    if(spr2 == 0)
+      wynik -= 1;
+    endif
+    spr2 = 0;
+  endfor
+
 endfunction
