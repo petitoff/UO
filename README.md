@@ -16,10 +16,16 @@ Jestem studentem informatyki i rozwijam się w stronę inżynierii programowania
 
 ##### Języki programistyczne:
 - JavaScript
-- HTML & CSS (😉)
 - C#
 - C++
 - Python
+
+#### Tworzenie stron
+- HTML & CSS
+- PHP
+
+#### Bazy danych
+- MySQL
 
 ##### Notuję w:
 - Inkdrop
