@@ -59,6 +59,7 @@ function wynik = rzedy3(m1)
         break;
       endif
 
+      # przechwytywanie wyjątku jeżeli w wierszu są zera
 
       prawyIndexq = 1; # kolumna
 
