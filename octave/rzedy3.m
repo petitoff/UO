@@ -12,7 +12,6 @@ function wynik = rzedy3(m1)
   endif
 
   # sprawdzenie czy nie ma samych zer w macierzy
-
   spr1 = 0;
   for i=1:a
     for j=1:a
