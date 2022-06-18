@@ -33,13 +33,28 @@ function wynik = rzedy3(m1)
   m2 = m1; # kopiowanie macierzy
   petlalicz = 3; # ile razy ma się wykonac petla i
 
+
   for k=1:a
     if(k >= 3)
       break;
     endif
 
+
     for i=1:a
+      koniecPetliNatychmiast = 0;
       m3 = m2; # kopiowanie macierzy m2
+
+      for ii=2:a
+        for jj=1:a
+          if(m2(ii,jj) != 0)
+            koniecPetliNatychmiast += 1;
+          endif
+        endfor
+      endfor
+
+      if(koniecPetliNatychmiast == 0)
+        break;
+      endif
 
       if(i >= petlalicz)
         break;
@@ -56,10 +71,13 @@ function wynik = rzedy3(m1)
       r1 = m2(k,prawyIndexq);
 
       for j=1:a
-        m2(i+k,j) -= q/r1 * m3(k,j)
+        m2(i+k,j) -= q/r1 * m3(k,j);
       endfor
     endfor
 
+    if(koniecPetliNatychmiast == 0)
+      break;
+    endif
     petlalicz -= 1;
   endfor
 
