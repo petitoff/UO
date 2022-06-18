@@ -42,6 +42,11 @@ function wynik = rzedy3(m1)
       koniecPetliNatychmiast = 0;
       m3 = m2; # kopiowanie macierzy m2
 
+      if(i >= petlalicz)
+        break;
+      endif
+
+      # przechwytywanie wyjątek jeżeli zostały zera w 2 ostatnich wierszach
       for ii=2:a
         for jj=1:a
           if(m2(ii,jj) != 0)
@@ -51,10 +56,6 @@ function wynik = rzedy3(m1)
       endfor
 
       if(koniecPetliNatychmiast == 0)
-        break;
-      endif
-
-      if(i >= petlalicz)
         break;
       endif
 
