@@ -1,32 +1,13 @@
 #include "stdafx.h"
+#include <random>
 
-__int8 wynik;
 
 int main()
 {
-	__asm
-	{
-	RANDSTART:
-		MOV AH, 00h
+	std::random_device dev;
+	std::mt19937 rng(dev());
+	std::uniform_int_distribution<std::mt19937::result_type> dist6(0,1);
 
-		INT 1AH; 
-
-		MOV BH, 57
-		MOV AH, DL
-		CMP AH, BH
-		JA RANDSTART;
-
-		MOV BH, 49
-		MOV AH, DL
-		CMP AH, BH
-		JB RANDSTART;
-
-
-
-		mov ah, 2h
-		int 21h
-
-	}
-	std::cout << wynik << std::endl;
+	std::cout << dist6(rng) << std::endl;
 	std::cin.get();
 }

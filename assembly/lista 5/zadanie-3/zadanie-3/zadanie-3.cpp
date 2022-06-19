@@ -29,14 +29,8 @@ int main()
 		FMUL liczba1
 
 		FADD ST(0), ST(1)
-
-		// FTST
-		// FST wynik
-
-		// fstsw ax
-		// jz   st0_zero
-		// mov wynik2, AX
-
+		
+		// sprawdzenie jaka wyszła delta
 		ftst
 		fstsw ax
 		fwait
