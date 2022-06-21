@@ -63,6 +63,10 @@ function wynik = rzedy3(m1)
 
       if (m3(i+k,1) == 0)
         prawyIndexq += 1; # jeżeli w pierwszej kolumnie wystąpiło zero to przejdź do kolejnej kolumny
+
+        if (m3(i+k,2) == 0)
+          prawyIndexq += 1; # jeżeli w drugiej kolumnie wystąpiło zero to przejdź do kolejnej kolumny
+        endif
       endif
 
       q = m3(i+k,prawyIndexq);
