@@ -1,4 +1,4 @@
-const findBiggestNumber = (numbers) => {
+const findBiggestNumber = (numbers = []) => {
   if (numbers.length === 0) {
     return "error";
   }
