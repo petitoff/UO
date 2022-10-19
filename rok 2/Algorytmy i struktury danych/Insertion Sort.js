@@ -32,7 +32,6 @@ const insertionSort = (arr = []) => {
 const arr = Array.from({ length: 10000 }, () =>
   Math.floor(Math.random() * 1000)
 );
-console.log(insertionSort(arr));
+console.log(insertionSort([8, 2, 4, 1, 3]));
 
-// S: O(1)
 // T: O(n^2)
