@@ -1,12 +1,12 @@
-for gap = floor(n / 2) to gap > 0
-    for i = gap to i < n
+for gap = floor(n / 2) until gap > 0
+    for i = gap until i < n
         curr = arr[i]
 
-        for j = i to j >= gap && arr[j-gap] > curr
+        for j = i until j >= gap && arr[j-gap] > curr
             arr[j] = arr[j-gap]
             j = j - gap
         
         arr[j] = curr
         i = i + 1
     
-    gap = floor(n / 2)
+    gap = floor(gap / 2)

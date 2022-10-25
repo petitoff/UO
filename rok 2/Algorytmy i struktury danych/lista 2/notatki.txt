@@ -1,0 +1,4 @@
+## Średnia wartość współczyninnika
+n = 1000
+t = 7701
+a = Średnia wartość: 0.007701

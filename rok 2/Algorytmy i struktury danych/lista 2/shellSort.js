@@ -1,4 +1,18 @@
+const printArray = (arr = [], howManyElements) => {
+  console.log("====================================");
+  arr.slice(0, howManyElements).forEach((element) => {
+    console.log(element);
+  });
+  console.log("====================================");
+};
+
+const roundNumber = (num) => {
+  return Math.round((num + Number.EPSILON) * 100) / 100;
+};
+
 function shellSort(arr = []) {
+  printArray(arr, 50);
+  const startTime = performance.now();
   if (arr.length == 0) {
     console.log("====================================");
     console.log("Tablica nie może być pusta!");
@@ -23,10 +37,17 @@ function shellSort(arr = []) {
     }
   }
 
-  console.log(`Liczba porównań: ${numbersOfComparisons}`);
+  const endTime = performance.now();
+  var seconds = ((endTime - startTime) % 60000) / 1000;
+  console.log(`Call took ${roundNumber(endTime - startTime)} milliseconds`);
+  console.log(`Call took ${roundNumber(seconds)} seconds`);
+
+  console.log(`Number of comparisons: ${numbersOfComparisons}`);
   console.log(
-    `Średnia wartość: ${numbersOfComparisons / Math.pow(arr.length, 2)}`
+    `Average value: ${numbersOfComparisons / Math.pow(arr.length, 2)}`
   );
+
+  printArray(arr, 50);
   return arr;
 }
 
