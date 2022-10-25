@@ -32,6 +32,9 @@ const insertionSort = (arr = []) => {
 const arr = Array.from({ length: 10000 }, () =>
   Math.floor(Math.random() * 1000)
 );
-console.log(insertionSort([8, 2, 4, 1, 3]));
+
+const sample1 = [9, 5, 16, 8, 13, 6, 12, 10, 4, 2, 3];
+console.log(arr);
+console.log(insertionSort(arr));
 
 // T: O(n^2)

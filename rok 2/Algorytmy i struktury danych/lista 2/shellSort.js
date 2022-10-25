@@ -20,20 +20,20 @@ function shellSort(arr = []) {
       }
 
       arr[j] = curr;
-
-      console.log("====================================");
-      console.log(arr);
-      console.log("====================================");
     }
   }
 
   console.log(`Liczba porównań: ${numbersOfComparisons}`);
   console.log(
-    `Średnia wartość: ${
-      Math.round((numbersOfComparisons / Math.pow(arr.length, 2)) * 100) / 100
-    }`
+    `Średnia wartość: ${numbersOfComparisons / Math.pow(arr.length, 2)}`
   );
   return arr;
 }
 
-console.log(shellSort([8, 2, 4, 1, 3]));
+const arr = Array.from({ length: 10000 }, () =>
+  Math.floor(Math.random() * 1000)
+);
+
+const sample1 = [9, 5, 16, 8, 13, 6, 12, 10, 4, 2, 3];
+
+console.log(shellSort(arr));
