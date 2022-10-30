@@ -11,7 +11,9 @@ namespace Z2
         static void Main(string[] args)
         {
             ThreadWithState threadWithState = new ThreadWithState();
+            threadWithState.ThreadProc();
 
+            Console.Read();
         }
     }
 }
