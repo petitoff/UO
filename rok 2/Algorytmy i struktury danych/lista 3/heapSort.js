@@ -92,6 +92,3 @@ const heapSort = (arr) => {
 const arr = [9, 6, 8, 2, 1, 4, 3];
 
 console.log(heapSort(arr));
-
-// T: O(n log n)
-// S: O(1)

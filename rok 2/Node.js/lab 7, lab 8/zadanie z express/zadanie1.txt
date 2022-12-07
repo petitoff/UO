@@ -1,0 +1,6 @@
+# fastify
+Fastify to jedna z najszybszych rozszerzalnych platform internetowych, której celem jest zapewnienie najlepszego doświadczenia programisty przy jak najmniejszym obciążeniu.
+
+Wydajny serwer oznacza niższy koszt infrastruktury, lepszą responsywność pod obciążeniem i zadowolonych użytkowników. Jak efektywnie zarządzać zasobami swojego serwera, wiedząc, że obsługujesz największą możliwą liczbę żądań, nie rezygnując z walidacji bezpieczeństwa i wygodnego programowania?
+
+Fastify to platforma internetowa, która jest bardzo skoncentrowana na zapewnianiu najlepszych doświadczeń programistów przy najmniejszym obciążeniu i potężnej architekturze wtyczek, inspirowanej Hapi i Express. O ile mi wiadomo, jest to jeden z najszybszych frameworków internetowych.

@@ -1,13 +1,16 @@
 
-
+N <- 100000
+kostka <- c(1,2,3,4,5,6)
 nr_partii <- 0
-wynik <- rep(0, nr_partii)
+wyniki <- rep(0, N)
 
-
-for (i in 0:1000) {
-  nr <- sample(1:6, 1)
-  wynik[i] <- nr
+7
+for (i in 0:N) {
+  wyniki[i] <- sample(kostka, 1)
 }
 
-
-hist(wynik, col = "red", main = "Histogram", xlab = "nr partii", ylab = "liczba wystąpień")
+hist(wyniki)
+x <- seq(0, 30, length.out = 100)
+y <- dnorm(x, mean = 15, sd = 5)
+par(new=T)
+plot(x, y, type = "l", lwd = 2, col = "red")

@@ -1,17 +1,19 @@
 
+N <- 10000
+kostka <- c(1,2,3,4,5,6)
 
 nr_partii <- 0
-wynik <- 0
+wyniki <- rep(0, N)
 
 
-for (i in 1:10000) {
-  nr <- sample(1:6, 1)
-  nr2 <- sample(1:6, 1)
-  nr3 <- sample(1:6, 1)
-  nr4 <- sample(1:6, 1)
-  nr5 <- sample(1:6, 1)
-  wynik[i] <- nr + nr2 + nr3 + nr4 + nr5
+for (i in 0:N) {
+  pierwsza <- sample(kostka, 1)
+  druga <- sample(kostka, 1)
+  trzecia <- sample(kostka, 1)
+  czwarta <- sample(kostka, 1)
+  piata <- sample(kostka, 1)
+  
+  wyniki[i] <- pierwsza + druga + trzecia + czwarta + piata
 }
 
-
-hist(wynik, breaks = 6, col = "red", main = "Histogram", xlab = "nr partii", ylab = "liczba wystąpień")
+hist(wyniki)
