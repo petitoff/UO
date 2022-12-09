@@ -1,28 +1,20 @@
-const readline = require("readline");
 var query = require("cli-interact").question;
 
-var go, head, ilosc, key, nameOfChar, nxt, option, prv, tail;
-
-function is_int(text) {
-  try {
-    Number.parseInt(text);
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
+const key = new Array(100);
+const prev = new Array(100);
+const next = new Array(100);
+let head = undefined;
+let tail = undefined;
+let ilosc = 0;
+let isShowOptions = true;
 
 const input = (text) => {
-  const answer = query(text || "");
-
   isShowOptions = true;
-  return answer.toString();
+  return query(text);
 };
 
-function string_max(str1, str2) {
-  if (str1 === undefined || str2 === undefined) return false;
-
-  var lenght, shortNumber;
+const stringMax = (str1, str2) => {
+  let lenght, shortNumber;
   str1 = str1.toLowerCase();
   str2 = str2.toLowerCase();
 
@@ -38,33 +30,22 @@ function string_max(str1, str2) {
     shortNumber = str1.length;
   }
 
-  for (var i = 0, _pj_a = lenght; i < _pj_a; i += 1) {
+  for (let i = 0; i < lenght; i++) {
     if (i < shortNumber) {
       if (str1[i] < str2[i]) {
         return true;
-      } else {
-        if (str1[i] > str2[i]) {
-          return false;
-        }
+      } else if (str1[i] > str2[i]) {
+        return false;
       }
     } else {
-      if (shortNumber === str1.length) {
+      if (shortNumber == str1.length) {
         return true;
       } else {
         return false;
       }
     }
   }
-}
-
-key = [null] * 100;
-prv = [null] * 100;
-nxt = [null] * 100;
-head = null;
-tail = null;
-ilosc = 0;
-
-let isShowOptions = true;
+};
 
 const mainFunc = () => {
   while (true) {
@@ -76,7 +57,6 @@ const mainFunc = () => {
       console.log("3.Drukowanie Nazwisk Alfabetycznie Z-A");
       console.log("4.Drukowanie Nazwisk od litery");
       console.log("5.Wyjście");
-
       console.log();
       option = query("Wybierz opcje: ");
       isShowOptions = false;
@@ -94,40 +74,33 @@ const mainFunc = () => {
             );
           } else {
             key[ilosc] = input("Podaj Nazwisko: ");
-
-            if (string_max(key[ilosc], key[head])) {
-              prv[head] = ilosc;
-              nxt[ilosc] = head;
+            if (stringMax(key[ilosc], key[head])) {
+              prev[head] = ilosc;
+              next[ilosc] = head;
               head = ilosc;
             } else {
-              go = nxt[head];
-
-              while (go !== null) {
-                if (string_max(key[ilosc], key[go])) {
-                  nxt[prv[go]] = ilosc;
-                  nxt[ilosc] = go;
-                  prv[ilosc] = prv[go];
-                  prv[go] = ilosc;
+              let go = next[head];
+              while (go !== undefined) {
+                if (stringMax(key[ilosc], key[go])) {
+                  next[prev[go]] = ilosc;
+                  next[ilosc] = go;
+                  prev[ilosc] = prev[go];
+                  prev[go] = ilosc;
                   break;
                 }
-
-                if (nxt[go] === null) {
-                  prv[ilosc] = go;
-                  nxt[go] = ilosc;
+                if (next[go] === undefined) {
+                  prev[ilosc] = go;
+                  next[go] = ilosc;
                   break;
                 }
-
-                go = nxt[go];
+                go = next[go];
               }
             }
-
             ilosc += 1;
-            go = head;
-
-            while (nxt[go] !== null) {
-              go = nxt[go];
-
-              if (nxt[go] === null) {
+            let go = head;
+            while (next[go] !== undefined) {
+              go = next[go];
+              if (next[go] === undefined) {
                 tail = go;
                 break;
               }
@@ -135,74 +108,64 @@ const mainFunc = () => {
           }
         }
       } else {
+        isShowOptions = true;
         if (option === "2") {
           if (ilosc > 0) {
             console.log(`${key[head]}`);
-            go = nxt[head];
-
-            for (var i = 0, _pj_a = ilosc - 1; i < _pj_a; i += 1) {
+            let go = next[head];
+            for (let i = 0; i < ilosc - 1; i++) {
               console.log(`${key[go]}`);
-              go = nxt[go];
+              go = next[go];
             }
           } else {
             console.log("====================================");
             console.log(`Brak elementów na liście`);
             console.log("====================================");
           }
-
           input("Naciśij dowoly klawisz aby wyjść");
         } else {
           if (option === "3") {
             if (ilosc > 0) {
               console.log(`${key[tail]}`);
-              go = prv[tail];
-
+              let go = prev[tail];
               for (var i = 0, _pj_a = ilosc - 1; i < _pj_a; i += 1) {
                 console.log(`${key[go]}`);
-                go = prv[go];
+                go = prev[go];
               }
             } else {
               console.log("Brak elementów na liście");
             }
-
             input("Naciśij dowoly klawisz aby wyjść");
           } else {
             if (option === "4") {
-              clear();
-
               if (ilosc > 0) {
-                nameOfChar = input("Od jakiej litery drukować: ");
-
+                const nameOfChar = input("Od jakiej litery drukować: ");
                 if (nameOfChar.length === 1) {
                   go = head;
-
-                  if (go !== null) {
-                    while (string_max(key[go][0], nameOfChar)) {
-                      go = nxt[go];
-
-                      if (go === null) {
+                  if (go !== undefined) {
+                    while (stringMax(key[go][0], nameOfChar)) {
+                      go = next[go];
+                      if (go === undefined) {
                         break;
                       }
                     }
                   }
-
-                  if (go !== null) {
-                    while (go !== null) {
+                  if (go !== undefined) {
+                    while (go !== undefined) {
                       console.log(`${key[go]}`);
-                      go = nxt[go];
+                      go = next[go];
                     }
                   } else {
-                    console.log(`
-      Brak nazwisk zaczynających się po literze ${nameOfChar}`);
+                    console.log(
+                      `\nBrak nazwisk zaczynających się po literze ${nameOfChar}`
+                    );
                   }
                 } else {
-                  console.log(`
-      Błąd ${nameOfChar} to nie litera`);
+                  console.log(`\nBłąd ${nameOfChar} to nie litera`);
                 }
               } else {
                 console.log("Brak elementów na liście");
               }
-
               input("Naciśij dowoly klawisz aby wyjść");
             } else {
               if (option === "5") {
@@ -215,5 +178,4 @@ const mainFunc = () => {
     }
   }
 };
-
 mainFunc();
