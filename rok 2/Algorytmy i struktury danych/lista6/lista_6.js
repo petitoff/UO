@@ -1,3 +1,6 @@
+const readline = require("readline");
+var query = require("cli-interact").question;
+
 var go, head, ilosc, key, nameOfChar, nxt, option, prv, tail;
 
 function is_int(text) {
@@ -9,21 +12,11 @@ function is_int(text) {
   }
 }
 
-const input = async (text) => {
-  while (true) {
-    const readline = require("readline").createInterface({
-      input: process.stdin,
-      output: process.stdout,
-    });
+const input = (text) => {
+  const answer = query(text || "");
 
-    return new Promise((resolve) => {
-      isShowOptions = false;
-      readline.question(text, (name) => {
-        readline.close();
-        resolve(name);
-      });
-    });
-  }
+  isShowOptions = true;
+  return answer.toString();
 };
 
 function string_max(str1, str2) {
@@ -73,18 +66,21 @@ ilosc = 0;
 
 let isShowOptions = true;
 
-const mainFunc = async () => {
+const mainFunc = () => {
   while (true) {
     if (isShowOptions) {
-      console.log("Wybierz Opcje i naciśnij enter:");
-      console.log("1.Czytanie Nazwiska:");
-      console.log("2.Drukowanie Nazwisk Alfabetycznie A-Z:");
-      console.log("3.Drukowanie Nazwisk Alfabetycznie Z-A:");
-      console.log("4.Drukowanie Nazwisk pocz\u0105wszy od litery:");
-      console.log("5.Wyj\u015bcie:");
-      option = await input("");
+      console.log("====================================");
+      console.log("Wybierz Opcje i naciśnij enter");
+      console.log("1.Czytanie Nazwiska");
+      console.log("2.Drukowanie Nazwisk Alfabetycznie A-Z");
+      console.log("3.Drukowanie Nazwisk Alfabetycznie Z-A");
+      console.log("4.Drukowanie Nazwisk od litery");
+      console.log("5.Wyjście");
+
+      console.log();
+      option = query("Wybierz opcje: ");
+      isShowOptions = false;
     } else {
-      isShowOptions = true;
       if (option === "1") {
         if (ilosc === 0) {
           key[0] = input("Podaj Nazwisko: ");
@@ -94,7 +90,7 @@ const mainFunc = async () => {
         } else {
           if (ilosc === 100) {
             console.log(
-              "Nie mo\u017cna doda\u0107 elementu do listy osi\u0105gni\u0119to 100 element\u00f3w"
+              "Nie można dodać więcej elementów do listy, lista jest pełna"
             );
           } else {
             key[ilosc] = input("Podaj Nazwisko: ");
