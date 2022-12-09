@@ -1,62 +1,94 @@
-const podzial = (l, r) => {
-  const p = l;
-  let i = l - 1;
-  let j = r + 1;
+let numberOfComparisons = 0;
+
+const partion = (array, left, right) => {
+  const pivot = array[left];
+  let i = left - 1;
+  let j = right + 1;
 
   while (i < j) {
     do {
-      i++;
-    } while (arr[i] < p);
+      j--;
+      numberOfComparisons++;
+    } while (array[j] > pivot);
 
     do {
-      j--;
-    } while (arr[j] > p);
+      i++;
+      numberOfComparisons++;
+    } while (array[i] < pivot);
 
     if (i < j) {
-      // swap arr[i] and arr[j]
-      const temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
+      // swap array[i] and array[j]
+      let temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
     }
   }
+
   return j;
 };
 
-const wybor = (l, r, k) => {
-  if (l < r) {
-    const j = podzialLos(l, r);
-    const m = j - l + 1;
+const partionRandom = (array, left, right) => {
+  const i = Math.random(left, right + 1);
+  // swap array[i] and array[left]
+  let temp = array[i];
+  array[i] = array[left];
+  array[left] = temp;
+
+  temp = partion(array, left, right);
+  return temp;
+};
+
+const hoareChoice = (array, left, right, k) => {
+  if (left < right) {
+    const j = partionRandom(array, left, right);
+    const m = j - left + 1;
+
     if (k <= m) {
-      wybor(l, j, k);
+      return hoareChoice(array, left, j, k);
     } else {
-      wybor(j + 1, r, k - m);
+      return hoareChoice(array, j + 1, right, k - m);
     }
   } else {
-    console.log(arr);
-    return arr[l];
+    return array[left];
   }
 };
 
-const podzialLos = (l, r) => {
-  const i = Math.random(l, r);
+const hoareAlgorithm = (array, k) => {
+  const n = array.length;
 
-  // swap arr[l] and arr[i]
-  const temp = arr[l];
-  arr[l] = arr[i];
-  arr[i] = temp;
+  if (n <= 100) {
+    for (let i = 0; i < n; i++) {
+      console.log(array[i]);
+    }
+  }
 
-  return podzial(l, r);
+  if (n > 100) {
+    for (let i = 0; i < n; i++) {
+      console.log(array[i]);
+    }
+  }
+
+  let left = 0;
+  let right = n - 1;
+
+  const result = hoareChoice(array, left, right, k, 0);
+
+  return result;
 };
 
-const swap = (arr, i, j) => {
-  const temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-};
+const randomNumbers = 100000;
+const array = Array.from({ length: randomNumbers }, () =>
+  Math.floor(Math.random() * randomNumbers)
+);
 
-// const arr = [10, 9, 12, 9, 6, 10, 1, 15, 17, 14];
-const arr = [1, 2, 3];
+const array2 = [-146, -642, -239, -850, 127];
 
-console.log(wybor(0, arr.length - 1, 3));
+let numbers = array2;
 
-// console.log(podzial(0, arr.length - 1));
+const start = new Date().getTime();
+console.log(`Wynik: ${hoareAlgorithm(numbers, 0)}`);
+
+const end = new Date().getTime();
+console.log(`Time taken: ${(end - start) / 1000} seconds`);
+console.log(`liczba porównań: ${numberOfComparisons}`);
+console.log(`t/n: ${numberOfComparisons / numbers.length}`);

@@ -4,9 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt"
+        xmlns:converter="clr-namespace:Projekt.Converter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow"
+        Height="800"
+        Width="1200">
+
+    <Window.Resources>
+        <converter:StringToImageConverter x:Key="StringToImageConverter" />
+    </Window.Resources>
+
+    <Canvas Name="FrontCanvas">
+        <Canvas.Background>
+            <ImageBrush ImageSource="{Binding Path=BGImage, Converter={StaticResource StringToImageConverter}}" />
+        </Canvas.Background>
+    </Canvas>
 </Window>
