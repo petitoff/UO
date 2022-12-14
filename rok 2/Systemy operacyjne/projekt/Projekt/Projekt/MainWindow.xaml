@@ -14,9 +14,22 @@
         <converter:StringToImageConverter x:Key="StringToImageConverter" />
     </Window.Resources>
 
-    <Canvas Name="FrontCanvas">
-        <Canvas.Background>
-            <ImageBrush ImageSource="{Binding Path=BGImage, Converter={StaticResource StringToImageConverter}}" />
-        </Canvas.Background>
-    </Canvas>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <StackPanel>
+                <Button Command="{Binding StartAnimation}" Content="Start"/>
+            </StackPanel>
+        </Grid>
+
+        <Canvas Name="FrontCanvas" Grid.Row="1">
+            <Canvas.Background>
+                <ImageBrush ImageSource="{Binding Path=BGImage, Converter={StaticResource StringToImageConverter}}" />
+            </Canvas.Background>
+        </Canvas>
+    </Grid>
 </Window>

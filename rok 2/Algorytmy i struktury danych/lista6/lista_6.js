@@ -3,7 +3,7 @@ var query = require("cli-interact").question;
 const key = new Array(100);
 const prev = new Array(100);
 const next = new Array(100);
-let head = undefined;
+let head = 0;
 let tail = undefined;
 let ilosc = 0;
 let isShowOptions = true;
@@ -109,6 +109,7 @@ const mainFunc = () => {
         }
       } else {
         isShowOptions = true;
+
         if (option === "2") {
           if (ilosc > 0) {
             console.log(`${key[head]}`);
@@ -123,56 +124,50 @@ const mainFunc = () => {
             console.log("====================================");
           }
           input("Naciśij dowoly klawisz aby wyjść");
-        } else {
-          if (option === "3") {
-            if (ilosc > 0) {
-              console.log(`${key[tail]}`);
-              let go = prev[tail];
-              for (var i = 0, _pj_a = ilosc - 1; i < _pj_a; i += 1) {
-                console.log(`${key[go]}`);
-                go = prev[go];
-              }
-            } else {
-              console.log("Brak elementów na liście");
+        } else if (option === "3") {
+          if (ilosc > 0) {
+            console.log(`${key[tail]}`);
+            let go = prev[tail];
+            for (let i = 0, _pj_a = ilosc - 1; i < _pj_a; i += 1) {
+              console.log(`${key[go]}`);
+              go = prev[go];
             }
-            input("Naciśij dowoly klawisz aby wyjść");
           } else {
-            if (option === "4") {
-              if (ilosc > 0) {
-                const nameOfChar = input("Od jakiej litery drukować: ");
-                if (nameOfChar.length === 1) {
-                  go = head;
-                  if (go !== undefined) {
-                    while (stringMax(key[go][0], nameOfChar)) {
-                      go = next[go];
-                      if (go === undefined) {
-                        break;
-                      }
-                    }
+            console.log("Brak elementów na liście");
+          }
+          input("Naciśij dowoly klawisz aby wyjść");
+        } else if (option === "4") {
+          if (ilosc > 0) {
+            const nameOfChar = input("Od jakiej litery drukować: ");
+            if (nameOfChar.length === 1) {
+              go = head;
+              if (go !== undefined) {
+                while (stringMax(key[go][0], nameOfChar)) {
+                  go = next[go];
+                  if (go === undefined) {
+                    break;
                   }
-                  if (go !== undefined) {
-                    while (go !== undefined) {
-                      console.log(`${key[go]}`);
-                      go = next[go];
-                    }
-                  } else {
-                    console.log(
-                      `\nBrak nazwisk zaczynających się po literze ${nameOfChar}`
-                    );
-                  }
-                } else {
-                  console.log(`\nBłąd ${nameOfChar} to nie litera`);
+                }
+              }
+              if (go !== undefined) {
+                while (go !== undefined) {
+                  console.log(`${key[go]}`);
+                  go = next[go];
                 }
               } else {
-                console.log("Brak elementów na liście");
+                console.log(
+                  `\nBrak nazwisk zaczynających się po literze ${nameOfChar}`
+                );
               }
-              input("Naciśij dowoly klawisz aby wyjść");
             } else {
-              if (option === "5") {
-                return;
-              }
+              console.log(`\nBłąd ${nameOfChar} to nie litera`);
             }
+          } else {
+            console.log("Brak elementów na liście");
           }
+          input("Naciśij dowoly klawisz aby wyjść");
+        } else if (option === "5") {
+          return;
         }
       }
     }
