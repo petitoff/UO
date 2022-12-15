@@ -21,9 +21,7 @@
         </Grid.RowDefinitions>
 
         <Grid>
-            <StackPanel>
                 <Button Command="{Binding StartAnimation}" Content="Start"/>
-            </StackPanel>
         </Grid>
 
         <Canvas Name="FrontCanvas" Grid.Row="1">

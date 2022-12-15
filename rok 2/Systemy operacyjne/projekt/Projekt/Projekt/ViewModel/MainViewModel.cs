@@ -7,6 +7,7 @@ using System;
 using System.Windows.Input;
 using Projekt.Command;
 using System.Windows.Media.Media3D;
+using System.Threading;
 
 namespace Projekt.ViewModel
 {
@@ -14,10 +15,12 @@ namespace Projekt.ViewModel
     {
         private string _BGImage = @"C:\Users\petit\Desktop\repos\UO\rok 2\Systemy operacyjne\projekt\Projekt\Projekt\Assets\Image\mapa_v3.png";
         private readonly MainWindow _mainWindow;
-        
+
         //Canvas canvas = new Canvas();
         Rectangle _carRect;
-        
+        TranslateTransform carPos = new TranslateTransform();
+        RotateTransform carRot = new RotateTransform();
+
 
         public MainViewModel(MainWindow mainWindow)
         {
@@ -31,49 +34,126 @@ namespace Projekt.ViewModel
 
         public void CreateCar()
         {
+
             // Create a Rectangle to represent the car
-            _carRect.Width = 100;
-            _carRect.Height = 50;
+            _carRect.Width = 50;
+            _carRect.Height = 25;
             _carRect.Fill = Brushes.Red;
+            Canvas.SetLeft(_carRect, 0);
+            Canvas.SetTop(_carRect, 215);
+            _mainWindow.FrontCanvas.Children.Add(_carRect);
 
-            // Create TranslateTransform and RotateTransform objects for the car
-            TranslateTransform carPos = new TranslateTransform();
-            RotateTransform carRot = new RotateTransform();
 
+
+            // Create a TranslateTransform and a RotateTransform to adjust the car's position and orientation
+
+
+            // Set the car's position and orientation using the TranslateTransform and RotateTransform
             // Set the car's initial position and orientation
-            carPos.X = 100;
-            carPos.Y = 100;
             carRot.Angle = 0;
 
             // Apply the transforms to the car Rectangle
-            _carRect.RenderTransform = carPos;
             _carRect.RenderTransformOrigin = new Point(0.5, 0.5);
             _carRect.RenderTransform = carRot;
 
-            // Add the car Rectangle to the Canvas
-            _mainWindow.FrontCanvas.Children.Add(_carRect);
+            // Change the direction of the moving car
+            //carPos.X += 10; // move the car to the right
+            //carRot.Angle += 10; // rotate the car 90 degrees to the right
 
-            // Create a DoubleAnimation to move the car
-            DoubleAnimation moveCar = new DoubleAnimation();
-            moveCar.From = 0;
-            moveCar.To = 500;
-            moveCar.Duration = new Duration(TimeSpan.FromSeconds(1));
-
-            _carRect.BeginAnimation(Canvas.LeftProperty, moveCar);
-
-            carRot.Angle += 5;
-            carPos.X -= 10;
-
-
-            // Handle user input events to determine the car's movement and rotation
-            // and update the car's TranslateTransform and RotateTransform properties accordingly
-
-            // For example, you could use the KeyDown event to handle keyboard input:
+            Thread t1 = new Thread(MoveCar);
+            t1.Start();
         }
 
         private void MoveCar()
         {
+            for (int i = 0; i < 838; i++)
+            {
+                Thread.Sleep(5);
+                _mainWindow.Dispatcher.Invoke(() =>
+                {
+                    Canvas.SetLeft(_carRect, Canvas.GetLeft(_carRect) + 1);
+                });
+            }
 
+            TurningCarRight();
+            MoveCarLeft();
+            TurningCarLeft();
+        }
+
+        private void TurningCarRight()
+        {
+            for (int i = 0; i < 300; i++)
+            {
+                Thread.Sleep(5);
+                _mainWindow.Dispatcher.Invoke(() =>
+                {
+                    if (Canvas.GetTop(_carRect) < 363)
+                    {
+                        Canvas.SetTop(_carRect, Canvas.GetTop(_carRect) + 0.8);
+
+                    }
+                    
+                    if (carRot.Angle > 90)
+                    {
+                        Canvas.SetLeft(_carRect, Canvas.GetLeft(_carRect) - 0.8);
+
+                    }
+                    else
+                    {
+                        Canvas.SetLeft(_carRect, Canvas.GetLeft(_carRect) + 0.4);
+                    }
+
+                    if (carRot.Angle < 180)
+                    {
+                        carRot.Angle += 1;
+
+                    }
+                });
+            }
+        }
+
+        private void MoveCarLeft()
+        {
+            for (int i = 0; i < 480; i++)
+            {
+                Thread.Sleep(5);
+                _mainWindow.Dispatcher.Invoke(() =>
+                {
+                    Canvas.SetLeft(_carRect, Canvas.GetLeft(_carRect) - 1);
+                });
+            }
+        }
+
+        private void TurningCarLeft()
+        {
+            for (int i = 0; i < 300; i++)
+            {
+                Thread.Sleep(5);
+                _mainWindow.Dispatcher.Invoke(() =>
+                {
+                    if (Canvas.GetTop(_carRect) < 593)
+                    {
+                        Canvas.SetTop(_carRect, Canvas.GetTop(_carRect) + 0.8);
+
+                    }
+
+                    if (carRot.Angle > 90)
+                    {
+                        Canvas.SetLeft(_carRect, Canvas.GetLeft(_carRect) - 0.4);
+
+                    }
+                    else
+                    {
+                        Canvas.SetLeft(_carRect, Canvas.GetLeft(_carRect) + 0.8);
+                    }
+
+                    if (carRot.Angle > 0)
+                    {
+                        carRot.Angle -= 1;
+
+                    }
+                });
+            }
         }
 
         public void CreateAnimation()
