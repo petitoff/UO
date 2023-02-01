@@ -49,7 +49,9 @@ function findKnightPath(chessboard, start, end) {
     // Iteracja po wszystkich możliwych ruchach konia
     for (const move of moves) {
       const [newRow, newColumn] = move;
+      // Sprawdzenie, czy pole na szachownicy o współrzędnych 'newRow' i 'newColumn' nie zostało jeszcze odwiedzone
       if (!chessboard[newRow][newColumn]) {
+        // Ustawienie pola na szachownicy o współrzędnych 'newRow' i 'newColumn' jako odwiedzone
         chessboard[newRow][newColumn] = true;
         path.push([newRow, newColumn]);
         queue.push([newRow, newColumn]);
