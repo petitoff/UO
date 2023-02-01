@@ -1,5 +1,23 @@
 var query = require("cli-interact").question;
 
+// Uwaga dla uruchamiającego program:
+// W tym programie używam dwóch tablic, które są ze sobą powiązane.
+// W tablicy key przechowuję nazwiska, a w tablicy next przechowuję indeksy kolejnych nazwisk.
+// W tablicy prev przechowuję indeksy poprzednich nazwisk.
+// W zmiennej head przechowuję indeks pierwszego nazwiska w liście.
+// W zmiennej tail przechowuję indeks ostatniego nazwiska w liście.
+// W zmiennej ilosc przechowuję ilość nazwisk w liście.
+// W zmiennej isShowOptions przechowuję informację, czy program ma wyświetlać opcje do wyboru.
+
+// Informacja jak poprawnie uruchomić program
+// JavaScript nie wspiera domyślnie czytania z klawiatury, dlatego musimy użyć dodatkowej biblioteki.
+// W tym programie używam biblioteki cli-interact, która jest dostępna w npm.
+// Aby uruchomić program, należy wpisać w konsoli: yarn
+// Bądź: npm install
+// A następnie: node lista_6.js
+// Należy mieć zainstalowanego Node.js oraz Yarn lub NPM.
+
+// Deklaracja tablic i zmiennych
 const key = new Array(100);
 const prev = new Array(100);
 const next = new Array(100);

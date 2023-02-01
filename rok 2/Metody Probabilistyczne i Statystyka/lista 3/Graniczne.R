@@ -1,23 +1,36 @@
-# Wykonujemy rzut dwoma monetami
-coin1 <- sample(c(0, 1), 1)
-coin2 <- sample(c(0, 1), 1)
+library(stats)
 
-# Sprawdzamy, czy uzyskaliśmy dwie reszki
-if (coin1 == 1 && coin2 == 1) {
-  # Jeśli tak, to wykonujemy rzut wadliwą kostką
-  roll <- sample(c(0, 2, 2, 4, 4, 6), 1)
-} else {
-  # W przeciwnym razie wykonujemy rzut zwykłą sześcienną kostką
-  roll <- sample(1:6, 1)
-}
+mean1 <- 3.375
 
-# Obliczamy wartość oczekiwaną
-expected_value <- mean(roll)
+# Obliczamy wartość kwantyla dla prawdopodobieństwa 0.9
+quantile <- qnorm(0.9)
 
-# Oszacowujemy, ile razy trzeba powtórzyć doświadczenie, aby prawdopodobieństwo
-# różnicy między wartością oczekiwaną a rzeczywistą liczbą oczek była nie mniejsza niż 0,9
-n <- 1
-while (pnorm(abs(expected_value - mean(roll)), lower.tail = FALSE) < 0.9) {
-  n <- n + 1
-  roll <- c(roll, sample(1:6, 1))
-}
+# Obliczamy odchylenie standardowe dla rzutu kostką
+sd <- sqrt((1/6) * (0^2 + 2^2 + 2^2 + 4^2 + 4^2 + 6^2) - mean1^2)
+
+# Obliczamy liczbę prób potrzebną do osiągnięcia poziomu ufności 0.9
+# i precyzji 0.1
+
+n <- (quantile * sd / 0.1)^2
+
+print(paste("Wynik:", n))
+
+
+# Sprawozdanie
+
+# Powyższy kod jest programem napisanym w języku R, który służy do oszacowania 
+# liczby prób potrzebnych do osiągnięcia poziomu ufności co najmniej 0,9
+# i precyzji co najmniej 0,1 w doświadczeniu polegającym na rzucie dwiema monetami 
+# i użyciu kostki do gry.
+
+# Program rozpoczyna się od załadowania pakietu stats, który zawiera 
+# funkcję qnorm, która jest używana do obliczenia kwantyla dla danej 
+# wartości prawdopodobieństwa z rozkładu normalnego. 
+# Następnie ustawiana jest wartość oczekiwana, która wynosi 3.375, 
+# a następnie obliczany jest kwantyl dla prawdopodobieństwa 0,9.
+
+# Następnie obliczane jest odchylenie standardowe dla rzutu kostką, a 
+# następnie liczba prób potrzebna do osiągnięcia poziomu ufności 0,9
+# i precyzji 0,1 jest obliczana za pomocą odpowiedniej formuły.
+# Na końcu program wyświetla wynik, czyli liczbę prób potrzebną
+# do osiągnięcia poziomu ufności 0,9 i precyzji 0,1.

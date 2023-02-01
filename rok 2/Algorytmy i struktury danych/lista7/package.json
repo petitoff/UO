@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "cli-interact": "^0.1.9"
+  }
+}
