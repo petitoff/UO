@@ -21,7 +21,7 @@ public class Uczen {
     }
 
     public Uczen(String imie, int ocena, String ulubionyKolor, int rok) {
-        this();
+        this.rok = rok;
         setImie(imie);
         setOcena(ocena);
         setUlubionyKolor(ulubionyKolor);
@@ -52,10 +52,10 @@ public class Uczen {
     }
 
     public void printAllProperty() {
-        System.out.println(getImie());
-        System.out.println(Uczen.numerKursu);
-        System.out.println(rok);
-        System.out.println(getOcena());
-        System.out.println(getUlubionyKolor());
+        System.out.println("imie: " + getImie());
+        System.out.println("numer kursu: " + Uczen.numerKursu);
+        System.out.println("rok: " + rok);
+        System.out.println("ocena: " + getOcena());
+        System.out.println("ulubiony kolor: " + getUlubionyKolor());
     }
 }
