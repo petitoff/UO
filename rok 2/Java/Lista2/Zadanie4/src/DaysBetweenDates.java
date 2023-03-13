@@ -4,20 +4,20 @@ public class DaysBetweenDates {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Podaj pierwszą datę w formacie YYYY-MM-DD:");
-        String date1Str = scanner.nextLine();
-        System.out.println("Podaj drugą datę w formacie YYYY-MM-DD:");
-        String date2Str = scanner.nextLine();
+        System.out.print("Podaj pierwszą datę w formacie DD-MM-YYYY: ");
+        String date1Str = scanner.next();
+        System.out.print("Podaj drugą datę w formacie DD-MM-YYYY: ");
+        String date2Str = scanner.next();
 
-        int year1 = Integer.parseInt(date1Str.substring(0, 4));
-        int month1 = Integer.parseInt(date1Str.substring(5, 7));
-        int day1 = Integer.parseInt(date1Str.substring(8, 10));
+        int day1 = Integer.parseInt(date1Str.substring(0, 2));
+        int month1 = Integer.parseInt(date1Str.substring(3, 5));
+        int year1 = Integer.parseInt(date1Str.substring(6, 10));
 
-        int year2 = Integer.parseInt(date2Str.substring(0, 4));
-        int month2 = Integer.parseInt(date2Str.substring(5, 7));
-        int day2 = Integer.parseInt(date2Str.substring(8, 10));
+        int day2 = Integer.parseInt(date2Str.substring(0, 2));
+        int month2 = Integer.parseInt(date2Str.substring(3, 5));
+        int year2 = Integer.parseInt(date2Str.substring(6, 10));
 
-        int diff = daysBetweenDates(year1, month1, day1, year2, month2, day2);
+        int diff = daysBetweenDates(day1, month1, year1, day2, month2, year2);
 
         System.out.println("Liczba dni między dwiema datami to: " + diff);
     }
