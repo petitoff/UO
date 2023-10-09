@@ -2,32 +2,31 @@
 
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        double x = 1.0;  // Wartość, dla której chcesz obliczyć e^x
-        double epsilon = 0.0001;  // Tolerancja błędu
-        double result = CalculateExponential(x, epsilon);
-        Console.WriteLine(result);
+        double x = 1.0;
+        double epsilon = 0.0001;
+        Console.WriteLine(ComputeExponential(x, epsilon));
     }
 
-    static double CalculateExponential(double x, double epsilon)
+    static double ComputeExponential(double x, double epsilon)
     {
-        double sum = 1.0;  // Początkowa suma (pierwszy składnik szeregu Taylora)
-        double term = 1.0;  // Początkowy składnik szeregu Taylora
-        int n = 1;  // Licznik składników
+        double sum = 1.0;  // Początkowa suma szeregu Taylora (0! = 1)
+        double term = 1.0; // Pierwszy wyraz szeregu (x^0/0! = 1)
+        int n = 1;         // Licznik wyrazów szeregu
 
-        // Kontynuuj dodawanie składników, aż różnica będzie mniejsza niż epsilon
         while (true)
         {
-            term *= x / n;  // Oblicz kolejny składnik szeregu
-            double newSum = sum + term;  // Oblicz nową sumę
+            term *= x / n; // Obliczanie kolejnego wyrazu szeregu
+            sum += term;   // Dodawanie wyrazu do sumy
 
-            // Sprawdź, czy różnica jest mniejsza niż epsilon
-            if (Math.Abs(newSum - sum) < epsilon)
+            // Sprawdzanie warunku zbieżności
+            if (Math.Abs(term / sum) < epsilon)
+            {
                 break;
+            }
 
-            sum = newSum;  // Zaktualizuj sumę
-            n++;  // Zwiększ licznik składników
+            n++;
         }
 
         return sum;
