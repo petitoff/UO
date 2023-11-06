@@ -2,31 +2,35 @@
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        double x = 1.0;
-        double epsilon = 0.0001;
-        Console.WriteLine(ComputeExponential(x, epsilon));
+        double x = 1.0;             // Wartość, dla której chcesz obliczyć e^x
+        double epsilon = 0.0001;    // Tolerancja błędu
+
+        if (x > 0)
+        {
+            Console.WriteLine("Błąd jest względny");
+        }
+        else if (x < 0)
+        {
+            Console.WriteLine("Błąd jest bezwzględny");
+        }
+
+        double result = CalculateExponential(x, epsilon);
+        Console.WriteLine(result);
     }
 
-    static double ComputeExponential(double x, double epsilon)
+    static double CalculateExponential(double x, double epsilon)
     {
-        double sum = 1.0;  // Początkowa suma szeregu Taylora (0! = 1)
-        double term = 1.0; // Pierwszy wyraz szeregu (x^0/0! = 1)
-        int n = 1;         // Licznik wyrazów szeregu
+        double sum = 1.0;
+        double term = x;
+        int n = 1;
 
-        while (true)
+        while (Math.Abs(term) >= epsilon)
         {
-            term *= x / n; // Obliczanie kolejnego wyrazu szeregu
-            sum += term;   // Dodawanie wyrazu do sumy
-
-            // Sprawdzanie warunku zbieżności
-            if (Math.Abs(term / sum) < epsilon)
-            {
-                break;
-            }
-
+            sum += term;
             n++;
+            term *= x / n;
         }
 
         return sum;
