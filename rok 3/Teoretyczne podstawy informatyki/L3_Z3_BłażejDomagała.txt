@@ -1,1 +1,4 @@
+Wyrażenie regularne, który akceptuje to samo słowo co podany DFA:
+
 ((a+bb)*baa*b)*(a+bb)*baa*
+
