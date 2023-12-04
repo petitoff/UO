@@ -1,35 +1,22 @@
-R=8.3145;
-P=1.0133*10^5;
-T=303;
-N=0.22722;
-a=0.364*10^-12;
-b=42.67*10^-6;
+% Stałe
+R = 8.3145; % J/(mol*K)
+P = 1.0133e5; % N/m^2
+T = 303; % Kelvin
+N = 0.22722; % mol
+a = 0.364e-12; % J*m^3/mol^2
+b = 42.67e-6; % m^3/mol
 
-%fun = @(V) (P + (N^2 * a) / V^2) * (V - N * b) - N * R * T;
-%fun = @(V) (P.* (V.^2) + (N.^2 .* a))  .* (V - N .* b) - (N .* R .* T).*(V.^2);
-fun = @(V) (-P*V^3 + N*R*T*V^2 + b*N*P*V^2 - a*N^2*V -a*b*N^3);
+% Definicja funkcji
+fun = @(V) (a*b*N^3 - a*N^2*V + b*N*P*V^2 + N*R*T*V^2 - P*V^3);
 
-c=[-P,(N*R*T)+(P*N*b),-a*(N^2),-a*b*(N^3)]
-pier = roots(c)
+% Wartości początkowe i obliczenia
+v_guess = 0.1;
+c2 = [-P, N*R*T + b*N*P, -a*N^2, a*b*N^3];
+roots_vals = roots(c2);
+[V_sol, fzp, info, out] = fzero(fun, v_guess);
 
-NRPT = fsolve(fun,((N.*R.*T)./P));
-NRPT
-printf("\n\n")
+% Wyświetlanie wyników
+for V = roots_vals'
+    disp(['Dla V = ', num2str(V), ', wynik: ', num2str((P + (N^2*a)/V^2)*(V-N*b) - N*R*T)]);
+end
 
-[wynik,fx,info,out] = fzero(fun,pier(1));
-
-wynik
-blad=out.bracketx(2)-out.bracketx(1)
-printf("\n\n")
-
-[wynik,fx,info,out] = fzero(fun,pier(2));
-
-wynik
-blad=out.bracketx(2)-out.bracketx(1)
-printf("\n\n")
-
-[wynik,fx,info,out] = fzero(fun,pier(3));
-
-wynik
-blad=out.bracketx(2)-out.bracketx(1)
-printf("\n\n")

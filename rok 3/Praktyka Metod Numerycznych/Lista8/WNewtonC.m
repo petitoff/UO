@@ -1,3 +1,4 @@
+% Funkcja obliczająca współczynniki dla metody Newtona
 function C = WNewtonC(X, Y)
     n = length(X);
     C = Y;

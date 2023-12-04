@@ -1,10 +1,9 @@
-function WY = WNewton(x, X, C, n)
-    WY = zeros(size(x));
-    for k = 1:length(x)
-        temp = C(n);
-        for j = n-1:-1:1
-            temp = temp * (x(k) - X(j)) + C(j);
-        end
-        WY(k) = temp;
+function result = WNewton(x, X, C, k)
+    result = C(1);
+    term = 1;
+    for j = 2:k
+        term = term .* (x - X(j-1));
+        result = result + C(j) * term;
     end
 end
+

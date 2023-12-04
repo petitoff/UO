@@ -1,15 +1,15 @@
-function LY = LLagrange(x, X, Y)
+% Funkcja obliczająca wartości wielomianu Lagrange'a
+function result = LLagrange(x, X, Y, k)
     n = length(X);
-    LY = zeros(size(x));
-    for k = 1:length(x)
+    result = zeros(size(x));
+    for j = 1:n
+        term = ones(size(x));
         for i = 1:n
-            p = 1;
-            for j = 1:n
-                if i ~= j
-                    p = p * (x(k) - X(j))/(X(i) - X(j));
-                end
+            if i ~= j
+                term = term .* (x - X(i)) / (X(j) - X(i));
             end
-            LY(k) = LY(k) + Y(i) * p;
         end
+        result = result + term * Y(j);
     end
 end
+
