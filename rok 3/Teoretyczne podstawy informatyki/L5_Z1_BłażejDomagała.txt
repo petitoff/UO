@@ -1,0 +1,22 @@
+Definicja gramatyki bezkontekstowej (G), generującej język opisany przez wyrażenie regularne (a(a^*+b^*)b):
+
+Niech (G = (N, Sigma, P, S)) będzie gramatyką bezkontekstową, gdzie:
+- (N = {S, X}) to zbiór nieterminali,
+- (Sigma = {a, b}) to zbiór terminali,
+- (P) to zbiór produkcji, a
+- (S) to symbol startowy.
+
+Produkcje gramatyki (G) są zdefiniowane następująco:
+1. (S rightarrow aXb)
+2. (X rightarrow aX | bX | varepsilon)
+
+Wyrażenie regularne (a(a^*+b^*)b) opisuje język generowany przez gramatykę (G). Gramatyka ta umożliwia konstrukcję ciągów, które rozpoczynają się od (a), zawierają dowolną kombinację liter (a) i (b) (włączając pusty ciąg) oraz kończą się na (b).
+
+Przykłady ciągów generowanych przez tę gramatykę obejmują, lecz nie są ograniczone do:
+1. (aXb)
+2. (aab)
+3. (abb)
+4. (aaabb)
+5. (ab)
+
+W ten sposób gramatyka (G) zgodna jest z wymaganiami wyrażenia regularnego, generując ciągi zgodne z opisem języka (a(a^*+b^*)b).

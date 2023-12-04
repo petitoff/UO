@@ -11,4 +11,5 @@ for(i=1:M)
   y=A\x;
   x=y/norm(y);
 endfor
-  x=x/sum(x)
+
+x=x/sum(x)

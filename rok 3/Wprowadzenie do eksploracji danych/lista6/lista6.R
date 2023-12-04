@@ -1,0 +1,82 @@
+library(datasets)
+#install.packages("infotheo")
+library(infotheo)
+#install.packages("MASS")
+library(MASS)
+
+# Ustawienie ścieżki dostępu do danych
+path = "C:\\Users\\petit\\Desktop\\repos\\UO\\rok 3\\Wprowadzenie do eksploracji danych\\lista6\\"
+setwd(path)
+
+# Wczytanie danych
+wine <- read.csv('wine\\wine.data', header = FALSE)
+wine_features <- wine[, -1]
+
+# utworzenie macierzy korelacji
+cor_matrix <- cor(wine_features)
+print(cor_matrix)
+
+# Obliczanie i wydrukowanie indeksów oraz rang cech:
+pearson_corr <- sapply(wine_features, function(x) cor(x, wine[, 1]))
+pearson_rank <- order(-abs(pearson_corr))
+print(pearson_corr)
+print(pearson_rank)
+
+# Utworzenie tablicy 2D z rangami:
+ranks_matrix <- data.frame(pearson = pearson_rank)
+rownames(ranks_matrix) <- colnames(wine_features)
+print(ranks_matrix)
+
+# Dodanie kolumny ze średnią wartością rangi:
+ranks_matrix$average_rank <- rowMeans(ranks_matrix, na.rm = TRUE)
+print(ranks_matrix)
+
+# Sortowanie cech według wartości średniej rangi:
+sorted_ranks <- ranks_matrix[order(ranks_matrix$average_rank), ]
+print(sorted_ranks)
+
+# Spearman Correlation
+spearman_corr <- sapply(wine_features, function(x) cor(x, wine[, 1], method = "spearman"))
+spearman_rank <- order(-abs(spearman_corr))
+ranks_matrix$spearman <- spearman_rank
+print(spearman_corr)
+print(spearman_rank)
+
+# Kendall Correlation
+kendall_corr <- sapply(wine_features, function(x) cor(x, wine[, 1], method = "kendall"))
+kendall_rank <- order(-abs(kendall_corr))
+ranks_matrix$kendall <- kendall_rank
+print(kendall_corr)
+print(kendall_rank)
+
+# Mutual Information
+mi_scores <- sapply(wine_features, function(x) mutinformation(discretize(x), discretize(wine[, 1])))
+mi_rank <- order(-mi_scores)
+ranks_matrix$MI <- mi_rank
+print(mi_scores)
+print(mi_rank)
+
+# PCA - pierwsza główna składowa
+pca_result <- prcomp(wine_features, scale. = TRUE)
+pca_rank <- order(-abs(pca_result$rotation[, 1]))
+ranks_matrix$PCA <- pca_rank
+print(pca_result$rotation[, 1])
+print(pca_rank)
+
+# LDA
+lda_result <- lda(wine[, 1] ~ ., data = wine_features)
+lda_rank <- order(-abs(lda_result$scaling[, 1]))
+ranks_matrix$LDA <- lda_rank
+print(lda_result$scaling[, 1])
+print(lda_rank)
+
+# Chi-Square Test
+# Uwaga: Ten test ma sens tylko dla cech kategorialnych.
+
+# Aktualizacja średniej rangi
+ranks_matrix$average_rank <- rowMeans(ranks_matrix[, -1], na.rm = TRUE)
+print(ranks_matrix$average_rank)
+
+# Sortowanie cech według wartości średniej rangi
+sorted_ranks <- ranks_matrix[order(ranks_matrix$average_rank), ]
+print(sorted_ranks)
