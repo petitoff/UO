@@ -1,5 +1,6 @@
 # Biblioteka datasets
 library(datasets)
+library(ggplot2)
 
 # Ustawienie ścieżki dostępu do danych
 path = "C:\\Users\\petit\\Desktop\\repos\\UO\\rok 3\\Wprowadzenie do eksploracji danych\\lista5\\"
@@ -7,59 +8,52 @@ setwd(path)
 
 # -------------- Zadanie 2a: Wczytanie i identyfikacja punktów oddalonych -------------- #
 # Wczytanie danych
-wine_data <- read.csv('wine\\wine.data', header = FALSE)
+wine <- read.csv('wine\\wine.data', header = FALSE)
 
-# Funkcja do identyfikacji i zliczania punktów oddalonych przy użyciu IQR
-identify_outliers <- function(data) {
-  quantiles <- quantile(data, c(.25, .75), na.rm = TRUE)
-  iqr <- IQR(data, na.rm = TRUE)
-  lower_bound <- quantiles[1] - 1.5 * iqr
-  upper_bound <- quantiles[2] + 1.5 * iqr
-  outliers <- data[data < lower_bound | data > upper_bound]
-  return(list("dolna_granica" = lower_bound, "gorna_granica" = upper_bound, "punkty_oddalone" = outliers))
+# a) Wyszukiwanie punktów oddalonych dla każdej zmiennej
+outliers <- list()
+for (i in 1:ncol(wine)) {
+  Q1 <- quantile(wine[[i]], 0.25)
+  Q3 <- quantile(wine[[i]], 0.75)
+  IQR <- Q3 - Q1
+  lower_bound <- Q1 - 1.5 * IQR
+  upper_bound <- Q3 + 1.5 * IQR
+  
+  outliers[[i]] <- which(wine[[i]] < lower_bound | wine[[i]] > upper_bound)
+  cat("Variable", i, ": Number of outliers =", length(outliers[[i]]), "\n")
 }
 
-# Część a: Wykrywanie punktów oddalonych dla każdej zmiennej
-outliers_info <- lapply(wine_data, identify_outliers)
-
-# Dodanie sztucznego punktu oddalonego, jeśli nie istnieje
-for (i in 1:length(outliers_info)) {
-  if (length(outliers_info[[i]]$punkty_oddalone) == 0) {
-    wine_data[i][1] <- outliers_info[[i]]$gorna_granica + 1 # Dodanie punktu oddalonego
+# b) Wykresy dla punktów oddalonych
+for (i in 1:min(4, length(outliers))) {
+  if (length(outliers[[i]]) > 0) {
+    p <- ggplot(wine, aes_string(x=names(wine)[i])) + 
+      geom_histogram(binwidth = 1, fill="blue", color="black") +
+      geom_vline(xintercept=wine[outliers[[i]], i], color="red", linetype="dashed") +
+      ggtitle(paste("Histogram of Variable", i, "with Outliers"))
+    print(p)
+    ggsave(paste("histogram_outliers_var", i, ".png", sep=""), plot=p, width=10, height=6)
   }
 }
 
-# Część b: Wizualizacja punktów oddalonych dla maksymalnie 4 zmiennych
-# Wybór pierwszych 4 zmiennych do wizualizacji
-selected_vars <- head(names(wine_data), 4)
-plots <- list()
-for (var in selected_vars) {
-  plot <- ggplot(wine_data, aes_string(x=var)) + 
-    geom_histogram(binwidth = 1, fill="skyblue", color="black") +
-    geom_vline(xintercept = outliers_info[[var]]$dolna_granica, color="red", linetype="dashed") +
-    geom_vline(xintercept = outliers_info[[var]]$gorna_granica, color="red", linetype="dashed") +
-    ggtitle(paste("Histogram zmiennej", var, "z punktami oddalonymi"))
-  plots[[var]] <- plot
+# c) Usuwanie punktów oddalonych
+total_outliers_removed <- 0
+outlier_indices <- unique(unlist(outliers)) # Zbieranie unikalnych indeksów wierszy do usunięcia
+total_outliers_removed <- length(outlier_indices)
+wine <- wine[-outlier_indices, ] # Usunięcie wierszy jednorazowo
+
+cat("Total outliers removed:", total_outliers_removed, "\n")
+cat("Remaining data points:", nrow(wine), "\n")
+
+# d) Ponowne sporządzenie wykresów
+for (i in 1:selected_variables) {
+  if (length(outliers[[i]]) > 0) {
+    p <- ggplot(wine, aes_string(x=names(wine)[i])) + 
+      geom_histogram(binwidth = 1, fill="blue", color="black") +
+      ggtitle(paste("Histogram of Variable", i, "After Removing Outliers"))
+    print(p)
+    ggsave(paste("histogram_cleaned_var", i, ".png", sep=""), plot=p, width=10, height=6)
+  }
 }
 
-# Część c: Usuwanie punktów oddalonych
-cleaned_wine_data <- wine_data
-for (var in names(wine_data)) {
-  cleaned_wine_data <- cleaned_wine_data[cleaned_wine_data[[var]] >= outliers_info[[var]]$dolna_granica &
-                                           cleaned_wine_data[[var]] <= outliers_info[[var]]$gorna_granica, ]
-}
-
-# Część d: Wizualizacja po usunięciu punktów oddalonych dla tych samych 4 zmiennych
-cleaned_plots <- list()
-for (var in selected_vars) {
-  plot <- ggplot(cleaned_wine_data, aes_string(x=var)) + 
-    geom_histogram(binwidth = 1, fill="green", color="black") +
-    ggtitle(paste("Histogram zmiennej", var, "po usunięciu punktów oddalonych"))
-  cleaned_plots[[var]] <- plot
-}
-
-# Część e: Zapisanie oczyszczonego zbioru danych
-write.csv(cleaned_wine_data, "cleaned_wine_data.csv", row.names = FALSE)
-
-# Wynik
-list("oryginalne_wykresy" = plots, "oczyszczone_wykresy" = cleaned_plots, "plik_z_oczyszczonymi_danymi" = "/mnt/data/cleaned_wine_data.csv")
+# e) Zapis zmodyfikowanego zbioru danych do pliku
+write.csv(wine, "wine_cleaned.csv", row.names=FALSE)
