@@ -1,98 +1,142 @@
-# Wczytanie potrzebnych bibliotek
-library(e1071)
+# Załadowanie potrzebnej biblioteki
 library(caret)
-library(ggplot2)
+library(e1071)
 
 # Ustawienie ścieżki dostępu do danych
-path <- "C:/Users/petit/Desktop/repos/UO/rok 3/Wprowadzenie do eksploracji danych/lista10"
+path <- "C:/Users/petit/Desktop/repos/UO/rok 3/Wprowadzenie do eksploracji danych/lista12"
 setwd(path)
 
 # Wczytanie danych
-data <- read.csv('wine/wine.data', header = FALSE)
+wine_data <- read.csv('wine/wine.data', header = FALSE)
 
-set.seed(123)  # Dla powtarzalności wyników
-splitIndex <- createDataPartition(data$V14, p = .8, list = FALSE)
-train_data <- data[splitIndex, ]
-test_data <- data[-splitIndex, ]
+# Ustawienie ziarna losowości dla powtarzalności wyników
+set.seed(123)
 
-# b) Naiwny klasyfikator Bayesowski
-library(e1071)
-nb_model <- naiveBayes(V14 ~ ., data = train_data)
-# print(nb_model)
+# Podział danych na zbiór treningowy i testowy
+splitIndex <- createDataPartition(wine_data$V1, p = 0.8, list = FALSE)
+train_set <- wine_data[splitIndex, ]
+test_set <- wine_data[-splitIndex, ]
 
-write.csv(nb_model$tables, file = "nb_model.csv")
+# Budowanie naiwnego klasyfikatora bayesowskiego
+nb_model <- naiveBayes(V1 ~ ., data = train_set)
 
-# c) Klasyfikacja danych testowych i macierz błędów
-nb_predictions <- predict(nb_model, test_data)
+# Wyświetlenie rozkładu klas zmiennej celu
+print(nb_model$class)
 
-# Upewnienie się, że przewidywania mają te same poziomy co zmienna celu
-nb_predictions <- factor(nb_predictions, levels = levels(as.factor(test_data$V14)))
+# Wyświetlenie tabel prawdopodobieństw warunkowych dla każdej zmiennej
+print(nb_model$tables)
 
-# Tworzenie macierzy błędów
-confusionMatrix(nb_predictions, as.factor(test_data$V14))
+# przeprowadzić klasyfikację danych za pomocą naiwnego klasyfikatora bayesowskiego na zbiorze testowym i wyświetlić macierz błędów, wykonamy następujące kroki w R:
+# Przewidywanie na zbiorze testowym
+predictions <- predict(nb_model, test_set)
 
+# Obliczenie i wyświetlenie macierzy błędów
+confusionMatrix <- table(test_set$V1, predictions)
+print(confusionMatrix)
 
-# d) Dokładność klasyfikacji i współczynnik błędu
-accuracy <- sum(nb_predictions == test_data$V14) / nrow(test_data)
-error_rate <- 1 - accuracy
-print(accuracy)
-print(error_rate)
+# e) Zbuduj cztery modele SVM z różnymi funkcjami jądra: radialną, liniową, wielomianową i sigmoidalną (pamiętaj o standaryzacji danych).
+# Standaryzacja danych treningowych i testowych
+train_set_standardized <- scale(train_set[, -1])
+test_set_standardized <- scale(test_set[, -1], center = attr(train_set_standardized, "scaled:center"), scale = attr(train_set_standardized, "scaled:scale"))
 
-# e) Cztery modele SVM
-library(kernlab)
+# Dodanie kolumny z etykietami klasy do zbiorów danych
+train_set_standardized <- data.frame(train_set$V1, train_set_standardized)
+test_set_standardized <- data.frame(test_set$V1, test_set_standardized)
+colnames(train_set_standardized)[1] <- "V1"
+colnames(test_set_standardized)[1] <- "V1"
 
-# Przygotowanie danych (standaryzacja)
-train_data_scaled <- scale(train_data[, -ncol(train_data)])
-test_data_scaled <- scale(test_data[, -ncol(test_data)])
+# Budowanie modeli SVM z różnymi funkcjami jądra
+svm_radial <- svm(V1 ~ ., data = train_set_standardized, kernel = "radial")
+svm_linear <- svm(V1 ~ ., data = train_set_standardized, kernel = "linear")
+svm_polynomial <- svm(V1 ~ ., data = train_set_standardized, kernel = "polynomial")
+svm_sigmoid <- svm(V1 ~ ., data = train_set_standardized, kernel = "sigmoid")
 
-# SVM z różnymi jądrami
-svm_radial <- ksvm(V14 ~ ., data = train_data, kernel = "rbfdot")
-svm_linear <- ksvm(V14 ~ ., data = train_data, kernel = "vanilladot")
-svm_polynomial <- ksvm(V14 ~ ., data = train_data, kernel = "polydot")
-svm_sigmoid <- ksvm(V14 ~ ., data = train_data, kernel = "tanhdot")
-
-# f) Parametry i liczba wektorów nośnych dla każdego modelu
+# Wyświetlenie informacji o modelach
 summary(svm_radial)
 summary(svm_linear)
 summary(svm_polynomial)
 summary(svm_sigmoid)
 
-# g) Klasyfikacja zbioru testowego dla modeli SVM
-svm_radial_pred <- predict(svm_radial, test_data)
-svm_linear_pred <- predict(svm_linear, test_data)
-svm_polynomial_pred <- predict(svm_polynomial, test_data)
-svm_sigmoid_pred <- predict(svm_sigmoid, test_data)
+## f) Dla każdego modelu wydrukuj parametry i liczbę wektorów nośnych
+# Wyświetlenie parametrów i liczby wektorów nośnych dla każdego modelu SVM
 
-# h) Macierze błędów i dokładność dla każdego modelu SVM
-# Konwersja przewidywań do tego samego typu i poziomów co oryginalna zmienna celu
-svm_radial_pred_factor <- factor(svm_radial_pred, levels = levels(as.factor(test_data$V14)))
-svm_linear_pred_factor <- factor(svm_linear_pred, levels = levels(as.factor(test_data$V14)))
-svm_polynomial_pred_factor <- factor(svm_polynomial_pred, levels = levels(as.factor(test_data$V14)))
-svm_sigmoid_pred_factor <- factor(svm_sigmoid_pred, levels = levels(as.factor(test_data$V14)))
+# Model SVM z funkcją jądra radialną
+cat("Model SVM z funkcją jądra radialną:\n")
+print(summary(svm_radial))
+cat("Liczba wektorów nośnych:", length(svm_radial$index), "\n\n")
 
-# Tworzenie macierzy błędów
-confusionMatrix(svm_radial_pred_factor, as.factor(test_data$V14))
-confusionMatrix(svm_linear_pred_factor, as.factor(test_data$V14))
-confusionMatrix(svm_polynomial_pred_factor, as.factor(test_data$V14))
-confusionMatrix(svm_sigmoid_pred_factor, as.factor(test_data$V14))
+# Model SVM z funkcją jądra liniową
+cat("Model SVM z funkcją jądra liniową:\n")
+print(summary(svm_linear))
+cat("Liczba wektorów nośnych:", length(svm_linear$index), "\n\n")
 
-# j) Wykres Słupkowy Dokładności
-# Użyj tych samych średnich i odchylenia standardowego z danych treningowych do przeskalowania danych testowych
-test_data_scaled <- scale(test_data[, -ncol(test_data)], center = attr(train_data_scaled, "scaled:center"), scale = attr(train_data_scaled, "scaled:scale"))
+# Model SVM z funkcją jądra wielomianową
+cat("Model SVM z funkcją jądra wielomianową:\n")
+print(summary(svm_polynomial))
+cat("Liczba wektorów nośnych:", length(svm_polynomial$index), "\n\n")
 
-# Wykonanie predykcji
-predictions_radial <- predict(svm_radial, test_data_scaled[, -ncol(test_data_scaled)])
-predictions_linear <- predict(svm_linear, test_data_scaled[, -ncol(test_data_scaled)])
-predictions_polynomial <- predict(svm_polynomial, test_data_scaled[, -ncol(test_data_scaled)])
-predictions_sigmoid <- predict(svm_sigmoid, test_data_scaled[, -ncol(test_data_scaled)])
+# Model SVM z funkcją jądra sigmoidalną
+cat("Model SVM z funkcją jądra sigmoidalną:\n")
+print(summary(svm_sigmoid))
+cat("Liczba wektorów nośnych:", length(svm_sigmoid$index), "\n\n")
 
-# Obliczenie dokładności
-svm_radial_accuracy <- sum(predictions_radial == test_data$V14) / nrow(test_data)
-svm_linear_accuracy <- sum(predictions_linear == test_data$V14) / nrow(test_data)
-svm_polynomial_accuracy <- sum(predictions_polynomial == test_data$V14) / nrow(test_data)
-svm_sigmoid_accuracy <- sum(predictions_sigmoid == test_data$V14) / nrow(test_data)
+# g) Przeprowadź klasyfikację stosując kolejne cztery modele SVM do zbioru testowego.
+# Przewidywanie dla modelu SVM z funkcją jądra radialną
+predictions_radial <- predict(svm_radial, test_set_standardized)
+
+# Przewidywanie dla modelu SVM z funkcją jądra liniową
+predictions_linear <- predict(svm_linear, test_set_standardized)
+
+# Przewidywanie dla modelu SVM z funkcją jądra wielomianową
+predictions_polynomial <- predict(svm_polynomial, test_set_standardized)
+
+# Przewidywanie dla modelu SVM z funkcją jądra sigmoidalną
+predictions_sigmoid <- predict(svm_sigmoid, test_set_standardized)
+
+# Opcjonalnie: Wyświetlenie przewidywań dla każdego modelu
+cat("Przewidywania modelu SVM z funkcją jądra radialną:\n", predictions_radial, "\n")
+cat("Przewidywania modelu SVM z funkcją jądra liniową:\n", predictions_linear, "\n")
+cat("Przewidywania modelu SVM z funkcją jądra wielomianową:\n", predictions_polynomial, "\n")
+cat("Przewidywania modelu SVM z funkcją jądra sigmoidalną:\n", predictions_sigmoid, "\n")
+
+# h) Dla każdego modelu wydrukuj macierz błędów oraz dokładność.
+# Funkcja do obliczenia i wydrukowania macierzy błędów oraz dokładności
+print_confusion_matrix_and_accuracy <- function(predictions, actual) {
+  confusion_matrix <- table(actual, predictions)
+  accuracy <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
+  cat("Macierz błędów:\n")
+  print(confusion_matrix)
+  cat("Dokładność:", accuracy, "\n\n")
+}
+
+# Macierz błędów i dokładność dla modelu SVM z funkcją jądra radialną
+cat("Model SVM - Radialne jądro:\n")
+print_confusion_matrix_and_accuracy(predictions_radial, test_set_standardized$V1)
+
+# Macierz błędów i dokładność dla modelu SVM z funkcją jądra liniową
+cat("Model SVM - Liniowe jądro:\n")
+print_confusion_matrix_and_accuracy(predictions_linear, test_set_standardized$V1)
+
+# Macierz błędów i dokładność dla modelu SVM z funkcją jądra wielomianową
+cat("Model SVM - Wielomianowe jądro:\n")
+print_confusion_matrix_and_accuracy(predictions_polynomial, test_set_standardized$V1)
+
+# Macierz błędów i dokładność dla modelu SVM z funkcją jądra sigmoidalną
+cat("Model SVM - Sigmoidalne jądro:\n")
+print_confusion_matrix_and_accuracy(predictions_sigmoid, test_set_standardized$V1)
+
+
+# j) Sporządź wykres słupkowy ilustrujący dokładność klasyfikacji dla metod klasyfikacji: Bayes, SVM-f. radialna, SVM-f. liniowa, SVM-f. wielomianowa i SVM-f.sigmoidalna.
+# Przykładowe dane dotyczące dokładności (zastąp wartościami uzyskanymi z modeli)
+dokladnosci <- data.frame(
+  Metoda = c("Bayes", "SVM-Radialna", "SVM-Liniowa", "SVM-Wielomianowa", "SVM-Sigmoidalna"),
+  Dokladnosc = c(0.97, 0.95, 0.96, 0.94, 0.93) # przykładowe wartości
+)
 
 # Tworzenie wykresu słupkowego
-accuracy_values <- c(accuracy_nb, svm_radial_accuracy, svm_linear_accuracy, svm_polynomial_accuracy, svm_sigmoid_accuracy)
-names(accuracy_values) <- c("Bayes", "SVM Radial", "SVM Linear", "SVM Polynomial", "SVM Sigmoid")
-barplot(accuracy_values, main="Porównanie dokładności metod klasyfikacji", ylab="Dokładność", xlab="Metoda", col=rainbow(length(accuracy_values)))
+ggplot(dokladnosci, aes(x = Metoda, y = Dokladnosc)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  theme_minimal() +
+  labs(title = "Dokładność klasyfikacji różnych metod",
+       x = "Metoda",
+       y = "Dokładność")
