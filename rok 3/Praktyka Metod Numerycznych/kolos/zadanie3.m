@@ -1,41 +1,46 @@
-Macierz = [15, -4, 3, -2; -1, 15, -1, -1; 2, -2, 15, -2; -2, 2, -1, 15];
-Wektor = [12; 12; 13; 14];
+MacierzA = [15, -4, 3, 2; -1, 15, -1, -1; 2, -2, 15, -2; -2, 2, -1, 15];
+WektorB = [12; 12; 13; 14];
 
-function x = iteracja_jacobiego(Macierz, Wektor, maks_iteracje, tolerancja)
+function rozwiazanie = Jakobi(Macierz, Wektor, przyblizenie, IteracjeMax)
+    Diag = diag(Macierz);
+    Wektor = Wektor ./ Diag;
     rozmiar = length(Wektor);
-    x_stare = zeros(rozmiar, 1);
-    x_nowe = zeros(rozmiar, 1);
 
-    for iteracja = 1:maks_iteracje
-        for indeks = 1:rozmiar
-            suma = Macierz(indeks, :) * x_stare - Macierz(indeks, indeks) * x_stare(indeks);
-            x_nowe(indeks) = (Wektor(indeks) - suma) / Macierz(indeks, indeks);
-        end
+    for indeks = 1:rozmiar
+        Macierz(indeks, :) = Macierz(indeks, :) / Diag(indeks);
+    endfor
 
-        if norm(x_nowe - x_stare, inf) < tolerancja
-            x_stare = x_nowe;
-            break;
-        end
+    for iteracja = 1:IteracjeMax
+        nowe_przyblizenie = Wektor;
+        for i = 1:rozmiar
+            for j = 1:(i - 1)
+                nowe_przyblizenie(i) = nowe_przyblizenie(i) - Macierz(i, j) * przyblizenie(j);
+            endfor
+            for j = (i + 1):rozmiar
+                nowe_przyblizenie(i) = nowe_przyblizenie(i) - Macierz(i, j) * przyblizenie(j);
+            endfor
+        endfor
+        przyblizenie = nowe_przyblizenie;
+    endfor
+    rozwiazanie = przyblizenie;
+endfunction
 
-        x_stare = x_nowe;
-    end
-    x = x_stare;
-end
+przyblizenie_poczatkowe = zeros(length(WektorB), 1);
 
-% Weryfikacja dominacji przekątniowej macierzy
-czy_dominujaca = all(2 * abs(diag(Macierz)) >= sum(abs(Macierz), 2) - abs(diag(Macierz)));
-if czy_dominujaca
-    disp('Dominacja przekątniowa potwierdzona. Metoda Jacobiego ma duże szanse na zbieżność.');
+MaxIteracje = 1000;
+
+% Sprawdzenie warunku zbieżności metody Jacobiego
+czy_zbiezna = all(2 * abs(diag(MacierzA)) > sum(abs(MacierzA), 2));
+
+% Wywołanie metody Jacobiego i wyświetlenie wyników
+rozwiazanie_jakobi = Jakobi(MacierzA, WektorB, przyblizenie_poczatkowe, MaxIteracje);
+
+if czy_zbiezna
+disp('Metoda Jacobiego jest zbieżna dla podanego układu równań.');
 else
-    disp('Brak dominacji przekątniowej. Zbieżność metody Jacobiego niepewna.');
+disp('Nie można zagwarantować zbieżności metody Jacobiego dla podanego układu równań.');
 end
 
-% Parametry dla iteracji Jacobiego
-ilosc_iteracji = 1000;
-dokladnosc = 1e-6;
-
-% Obliczenia przy użyciu metody Jacobiego
-wynik = iteracja_jacobiego(Macierz, Wektor, ilosc_iteracji, dokladnosc);
-disp('Wynik obliczeń układu równań:');
-disp(wynik);
+disp('Rozwiązanie układu równań metodą Jacobiego:');
+disp(rozwiazanie_jakobi);
 

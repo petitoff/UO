@@ -10,6 +10,8 @@ setwd(path)
 # Wczytanie danych
 wine_data <- read.csv('wine/wine.data', header = FALSE)
 
+head(wine_data)
+
 # Ustawianie ziarna losowości dla powtarzalności wyników
 set.seed(123)
 

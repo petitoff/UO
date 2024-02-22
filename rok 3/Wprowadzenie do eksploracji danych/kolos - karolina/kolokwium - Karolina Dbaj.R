@@ -1,0 +1,146 @@
+library(ggplot2)
+library(cluster)
+library(rpart)
+library(caret)
+
+install.packages("ggplot2")
+
+# Ustawienie ścieżki dostępu do danych
+path <- "C:/Users/petit/Desktop/repos/UO/rok 3/Wprowadzenie do eksploracji danych/kolos - karolina"
+setwd(path)
+
+plik="internet robots.txt"
+robots=read.table(plik, header=TRUE)
+
+View(robots)
+
+typeof(robots$IsRobot)
+typeof(robots$Pages)
+typeof(robots$Requests)
+typeof(robots$Transfer)
+typeof(robots$Duration)
+typeof(robots$TimePerPage)
+typeof(robots$EmptyReferrers)
+typeof(robots$X4xxRequests)
+
+sum(is.na(robots))
+
+robots$IsRobot <- as.factor(robots$IsRobot)
+is.factor(robots$IsRobot)
+
+## 3. Napisz, jaka jest liczba obserwacji w zbiorze, jaka jest liczba atrybutów i ich typy, jaka jest zmienna celu i ile jest klas.
+# Liczba obserwacji
+cat("Liczba obserwacji: ", nrow(robots), "\n")
+
+# Liczba atrybutów
+cat("Liczba atrybutów: ", ncol(robots), "\n")
+
+# Typy atrybutów
+cat("Typy atrybutów:\n")
+str(robots)
+
+# Zmienna celu i liczba klas
+cat("Zmienna celu: IsRobot\n")
+cat("Liczba klas: ", length(unique(robots$IsRobot)), "\n")
+cat("Klasy:\n")
+print(table(robots$IsRobot))
+
+## 4. Wyznacz i zilustruj na wykresie dla wybranej cechy: minimum, maksimum, medianę, 1 i 3 kwartyl.
+# Wyznaczenie statystyk
+min_val <- min(robots$Duration, na.rm = TRUE)
+max_val <- max(robots$Duration, na.rm = TRUE)
+median_val <- median(robots$Duration, na.rm = TRUE)
+first_quartile <- quantile(robots$Duration, 0.25, na.rm = TRUE)
+third_quartile <- quantile(robots$Duration, 0.75, na.rm = TRUE)
+
+cat("Minimum: ", min_val, "\n")
+cat("Maksimum: ", max_val, "\n")
+cat("Mediana: ", median_val, "\n")
+cat("1. kwartyl: ", first_quartile, "\n")
+cat("3. kwartyl: ", third_quartile, "\n")
+
+# Wykres pudełkowy
+ggplot(robots, aes(x = "", y = Duration)) +
+  geom_boxplot() +
+  labs(y = "Duration", x = "", title = "Wykres pudełkowy dla 'Duration'")
+
+table(robots$IsRobot)
+
+## 5. Wyznacz i pokaż na rysunku histogram ww. cechy. Zinterpretuj wyniki.
+ggplot(robots, aes(x = Duration)) +
+  geom_histogram(binwidth = 500, fill = "blue", color = "black") +
+  labs(x = "Duration", y = "Frequency", title = "Histogram dla 'Duration'")
+
+## 6. Przeprowadź grupowanie metoda k-średnich dla dwóch klastrów.
+# Ponieważ grupujemy na dwa grupy, ustawiamy centers na 2
+set.seed(123) # Ustawienie ziarna dla reprodukowalności wyników
+kmeans_result <- kmeans(robots[, c("Pages", "Requests", "Transfer", "Duration", "TimePerPage", "EmptyReferrers", "X4xxRequests")], centers = 2)
+
+# Wyświetlenie wyników
+print(kmeans_result)
+
+# Dodanie przypisań klastrów do Twojego zestawu danych
+robots$cluster <- kmeans_result$cluster
+
+# Aby zobrazować klastry, możemy użyć wykresu dla dwóch wymiarów naszych danych
+# Tutaj używamy Pages i Requests jako przykładu
+plot(robots$Pages, robots$Requests, col = robots$cluster, main = "Grupowanie metodą k-średnich", xlab = "Pages", ylab = "Requests", pch = 20)
+points(kmeans_result$centers[,c("Pages", "Requests")], col = 1:2, pch = 4, cex = 4)
+
+## 7. Przeprowadź klasyfikacje danych metoda drzewa decyzyjnego dla dwóch wersji zbioru cech: bez grupowania oraz z grupowaniem (w tym drugim przypadku miary wydajności klasyfikacji beda Średnia odpowiednich miar dla obu klastrów). Cel klasyfikacji: rozpoznawanie obserwacji z klasa True (robot internetowy).
+# Podział danych na treningowe i testowe
+set.seed(123)
+indeksy <- createDataPartition(robots$IsRobot, p = .8, list = FALSE)
+dane_treningowe <- robots[indeksy, ]
+dane_testowe <- robots[-indeksy, ]
+
+# Klasyfikacja bez grupowania
+drzewo_bez_grupowania <- rpart(IsRobot ~ . - cluster, data = dane_treningowe, method = "class")
+prognoza_bez_grupowania <- predict(drzewo_bez_grupowania, dane_testowe, type = "class")
+macierz_pomyłek_bez <- confusionMatrix(prognoza_bez_grupowania, dane_testowe$IsRobot)
+print(macierz_pomyłek_bez)
+
+# Klasyfikacja z grupowaniem
+drzewo_z_grupowaniem <- rpart(IsRobot ~ ., data = dane_treningowe, method = "class")
+prognoza_z_grupowaniem <- predict(drzewo_z_grupowaniem, dane_testowe, type = "class")
+macierz_pomyłek_z <- confusionMatrix(prognoza_z_grupowaniem, dane_testowe$IsRobot)
+print(macierz_pomyłek_z)
+
+# Obliczenie średnich miar wydajności dla obu klastrów
+srednia_wydajnosc <- (macierz_pomyłek_bez$overall['Accuracy'] + macierz_pomyłek_z$overall['Accuracy']) / 2
+print(srednia_wydajnosc)
+
+# Wyświetlenie drzewa decyzyjnego
+# Opcjonalnie można wyświetlić drzewo dla wersji bez grupowania:
+plot(drzewo_bez_grupowania)
+text(drzewo_bez_grupowania, use.n = TRUE, cex = .6)
+
+# Oraz dla wersji z grupowaniem:
+plot(drzewo_z_grupowaniem)
+text(drzewo_z_grupowaniem, use.n = TRUE, cex = .6)
+
+## 8. Sporządź wykres słupkowy porównujący precyzję (precision) obu wersji. Zinterpretuj wyniki klasyfikacji (która wersja była najlepsza, jakie są wyniki: dokładność, czułość, precyzja, i co oznaczają).
+# Obliczenie precyzji dla obu modeli
+precyzja_bez_grupowania <- macierz_pomyłek_bez$byClass['Precision']
+precyzja_z_grupowaniem <- macierz_pomyłek_z$byClass['Precision']
+
+# Stworzenie ramki danych z wynikami precyzji dla obu modeli
+precyzje <- data.frame(
+  Model = c('Bez grupowania', 'Z grupowaniem'),
+  Precyzja = c(precyzja_bez_grupowania, precyzja_z_grupowaniem)
+)
+
+# Stworzenie wykresu słupkowego
+ggplot(precyzje, aes(x = Model, y = Precyzja, fill = Model)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Model", y = "Precyzja", title = "Porównanie precyzji modeli") +
+  theme_minimal()
+
+# Interpretacja wyników
+cat("Dokładność bez grupowania: ", macierz_pomyłek_bez$overall['Accuracy'], "\n")
+cat("Czułość bez grupowania: ", macierz_pomyłek_bez$byClass['Sensitivity'], "\n")
+cat("Precyzja bez grupowania: ", precyzja_bez_grupowania, "\n\n")
+
+cat("Dokładność z grupowaniem: ", macierz_pomyłek_z$overall['Accuracy'], "\n")
+cat("Czułość z grupowaniem: ", macierz_pomyłek_z$byClass['Sensitivity'], "\n")
+cat("Precyzja z grupowaniem: ", precyzja_z_grupowaniem, "\n")
