@@ -19,6 +19,14 @@ public class Klient {
     @OneToMany
     private List<Adres> adresy;
 
+    @ManyToMany
+    @JoinTable(
+            name = "klient_usluga", // Nazwa tabeli pośredniczącej
+            joinColumns = @JoinColumn(name = "klient_id"), // Kolumna w tabeli pośredniczącej odnosząca się do tej klasy
+            inverseJoinColumns = @JoinColumn(name = "usluga_id") // Kolumna w tabeli pośredniczącej odnosząca się do drugiej klasy
+    )
+    private List<Usluga> uslugi;
+
     public Integer getId() {
         return id;
     }
@@ -49,6 +57,30 @@ public class Klient {
 
     public void setPesel(String pesel) {
         this.pesel = pesel;
+    }
+
+    public List<Usluga> getUslugi() {
+        return uslugi;
+    }
+
+    public void setUslugi(List<Usluga> uslugi) {
+        this.uslugi = uslugi;
+    }
+
+    public Dokument getDokument() {
+        return dokument;
+    }
+
+    public void setDokument(Dokument dokument) {
+        this.dokument = dokument;
+    }
+
+    public List<Adres> getAdresy() {
+        return adresy;
+    }
+
+    public void setAdresy(List<Adres> adresy) {
+        this.adresy = adresy;
     }
 
     // Getters and Setters

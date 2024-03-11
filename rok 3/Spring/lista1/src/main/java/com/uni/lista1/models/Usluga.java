@@ -1,9 +1,8 @@
 package com.uni.lista1.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Usluga {
@@ -14,6 +13,9 @@ public class Usluga {
     private String nazwa;
     private Double cena;
     private Boolean dostepnosc;
+
+    @ManyToMany(mappedBy = "uslugi")
+    private List<Klient> klienci;
 
     public Integer getId() {
         return id;
