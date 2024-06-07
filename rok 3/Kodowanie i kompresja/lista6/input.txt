@@ -1,0 +1,2 @@
+This is a sample text for encoding and decoding using the diagram algorithm.
+We will check how well this algorithm works on this example.
