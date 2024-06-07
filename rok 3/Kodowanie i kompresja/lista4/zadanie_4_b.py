@@ -9,6 +9,7 @@ def float_to_binary(value, precision=32):
             binary += '0'
     return binary
 
+
 def binary_to_float(binary):
     value = 0.0
     for i, bit in enumerate(binary):
@@ -16,15 +17,18 @@ def binary_to_float(binary):
             value += 2 ** -(i + 1)
     return value
 
+
 def encode_arithmetic_binary(data, probabilities):
     encoded_value = encode_arithmetic(data, probabilities)
     binary_code = float_to_binary(encoded_value)
     return binary_code
 
+
 def decode_arithmetic_binary(binary_code, probabilities, length):
     encoded_value = binary_to_float(binary_code)
     decoded_data = decode_arithmetic(encoded_value, probabilities, length)
     return decoded_data
+
 
 # Przykładowe użycie:
 from zadanie_4_a import calculate_probabilities, encode_arithmetic, decode_arithmetic
