@@ -1,3 +1,6 @@
+from zadanie_4_a import calculate_probabilities, encode_arithmetic, decode_arithmetic
+
+
 def float_to_binary(value, precision=32):
     binary = ""
     while value > 0 and len(binary) < precision:
@@ -29,9 +32,6 @@ def decode_arithmetic_binary(binary_code, probabilities, length):
     decoded_data = decode_arithmetic(encoded_value, probabilities, length)
     return decoded_data
 
-
-# Przykładowe użycie:
-from zadanie_4_a import calculate_probabilities, encode_arithmetic, decode_arithmetic
 
 data = "hello"
 probabilities = calculate_probabilities(data)

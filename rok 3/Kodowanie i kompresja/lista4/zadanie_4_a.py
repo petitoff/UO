@@ -46,8 +46,7 @@ def decode_arithmetic(encoded_value, probabilities, length):
     return decoded_output
 
 
-# Przykładowe użycie:
-data = "hello"
+data = "ccabbccaabbaacc"
 probabilities = calculate_probabilities(data)
 encoded_value = encode_arithmetic(data, probabilities)
 decoded_data = decode_arithmetic(encoded_value, probabilities, len(data))

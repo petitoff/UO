@@ -1,7 +1,6 @@
 import os
 import math
 
-os.chdir('lista1')
 
 def load_probabilistic_model(file_path):
     probabilistic_model = {}
@@ -11,9 +10,11 @@ def load_probabilistic_model(file_path):
             probabilistic_model[letter] = float(probability)
     return probabilistic_model
 
+
 def calculate_entropy(probabilistic_model):
     entropy = -sum(prob * math.log2(prob) for prob in probabilistic_model.values())
     return entropy
+
 
 if __name__ == "__main__":
     current_directory = os.path.dirname(os.path.abspath(__file__))

@@ -1,8 +1,5 @@
 import heapq
 from collections import defaultdict, Counter
-import os
-
-os.chdir('lista3')
 
 
 class Node:
