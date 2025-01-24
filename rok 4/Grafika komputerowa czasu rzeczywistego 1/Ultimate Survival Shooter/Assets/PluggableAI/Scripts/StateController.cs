@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public class StateController : MonoBehaviour
 {
-
     public State currentState;
     public EnemyStats enemyStats;
     public Transform eyes;
@@ -14,10 +13,10 @@ public class StateController : MonoBehaviour
     [HideInInspector] public Transform[] wayPoints = { };
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public Transform chaseTarget;
-    [HideInInspector] public float rotationTimeElapsed; // Obrót
-    [HideInInspector] private float stateTimeElapsed; // Strzelanie
+    [HideInInspector] public float currentRotation;
+    [HideInInspector] private float stateTimeElapsed;
     [HideInInspector] public float PreviousHealth;
-    [HideInInspector] private Transform _wayPointContainer;
+    [SerializeField] private Transform _wayPointContainer;
     [HideInInspector] public IHealth healthComponent;
 
     private bool aiActive;
@@ -57,13 +56,11 @@ public class StateController : MonoBehaviour
         if (!aiActive)
             return;
         stateTimeElapsed += Time.deltaTime;
-        Debug.Log($"StateController: Aktualny stan: {currentState.name}");
         currentState.UpdateState(this);
     }
 
     public void TransitionToState(State nextState)
     {
-        Debug.Log($"StateController: Zmiana stanu z {currentState?.name} na {nextState.name}");
         currentState = nextState;
         OnExitState();
     }
@@ -85,6 +82,6 @@ public class StateController : MonoBehaviour
     private void OnExitState()
     {
         stateTimeElapsed = 0;
-        rotationTimeElapsed = 0f; // Resetowanie czasu obrotu
+        currentRotation = 0f;
     }
 }

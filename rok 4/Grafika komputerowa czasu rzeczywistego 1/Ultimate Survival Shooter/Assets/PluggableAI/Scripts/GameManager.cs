@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    private static GameManager Instance { get; set; }
 
     [Header("Tank Settings")]
     [SerializeField] private List<GameObject> tankPrefabs;
@@ -41,18 +41,15 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Waypoint container not set or empty!");
             return;
         }
-
-        // Get all waypoints from the container
+        
         Transform[] waypoints = new Transform[waypointContainer.childCount];
         for (int i = 0; i < waypointContainer.childCount; i++)
         {
             waypoints[i] = waypointContainer.GetChild(i);
         }
-
-        // Keep track of used spawn points to avoid duplicates
+        
         List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints);
-
-        // Spawn tanks at random points
+        
         for (int i = 0; i < Mathf.Min(tankPrefabs.Count, spawnPoints.Count); i++)
         {
             if (availableSpawnPoints.Count == 0)
@@ -60,20 +57,17 @@ public class GameManager : MonoBehaviour
                 Debug.LogWarning("Not enough spawn points for all tanks!");
                 break;
             }
-
-            // Pick a random spawn point
+            
             int randomIndex = Random.Range(0, availableSpawnPoints.Count);
             Transform chosenSpawnPoint = availableSpawnPoints[randomIndex];
-            availableSpawnPoints.RemoveAt(randomIndex); // Remove the chosen point to avoid reusing it
-
-            // Instantiate the tank at the random spawn point
+            availableSpawnPoints.RemoveAt(randomIndex);
+            
             GameObject tank = Instantiate(
                 tankPrefabs[i],
                 chosenSpawnPoint.position,
                 chosenSpawnPoint.rotation
             );
-
-            // Configure StateController
+            
             StateController stateController = tank.GetComponent<StateController>();
             if (stateController != null)
             {

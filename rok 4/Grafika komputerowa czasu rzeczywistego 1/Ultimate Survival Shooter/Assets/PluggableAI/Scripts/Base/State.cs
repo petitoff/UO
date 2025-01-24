@@ -28,7 +28,7 @@ public class State : ScriptableObject
         for (int i = 0; i < transitions.Length; i++)
         {
             bool decisionSucceeded = transitions[i].decision.Decide(controller);
-            State nextState = null;
+            State nextState;
 
             if (decisionSucceeded)
             {
@@ -39,7 +39,7 @@ public class State : ScriptableObject
                 nextState = transitions[i].falseState;
             }
 
-            if (nextState != null && nextState != controller.currentState)
+            if (nextState && nextState != controller.currentState)
             {
                 controller.TransitionToState(nextState);
                 return;

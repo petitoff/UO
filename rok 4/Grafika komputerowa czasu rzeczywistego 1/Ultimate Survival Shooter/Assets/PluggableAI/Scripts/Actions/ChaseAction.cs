@@ -10,16 +10,11 @@ public class ChaseAction : Action
 
     private void Chase(StateController controller)
     {
-        if (controller.chaseTarget != null)
+        if (controller.chaseTarget)
         {
-            Debug.Log($"ChaseAction: Œcigam gracza na pozycji {controller.chaseTarget.position}");
             controller.navMeshAgent.destination = controller.chaseTarget.position;
             controller.navMeshAgent.isStopped = false;
             controller.navMeshAgent.updateRotation = true;
-        }
-        else
-        {
-            Debug.LogWarning("ChaseAction: Brak celu do œcigania.");
         }
     }
 }

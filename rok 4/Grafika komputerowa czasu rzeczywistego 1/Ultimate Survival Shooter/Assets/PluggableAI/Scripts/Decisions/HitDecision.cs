@@ -5,23 +5,14 @@ public class HitDecision : Decision
 {
     public override bool Decide(StateController controller)
     {
-        return IfWasHit(controller);
+        return CheckIfWasHit(controller);
     }
 
-    private bool IfWasHit(StateController controller)
+    private bool CheckIfWasHit(StateController controller)
     {
-        IHealth health = controller.GetComponent<IHealth>();
+        bool wasHit = controller.healthComponent.CurrentHealth < controller.PreviousHealth;
+        controller.PreviousHealth = controller.healthComponent.CurrentHealth;
 
-        if (health != null)
-        {
-            bool wasHit = health.CurrentHealth < controller.PreviousHealth;
-
-            controller.PreviousHealth = health.CurrentHealth;
-
-            return wasHit;
-        }
-
-        Debug.LogWarning("HitDecision: Nie znaleziono komponentu IHealth.");
-        return false;
+        return wasHit;
     }
 }

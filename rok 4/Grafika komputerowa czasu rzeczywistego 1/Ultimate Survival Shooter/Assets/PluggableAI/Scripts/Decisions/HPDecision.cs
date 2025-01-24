@@ -10,14 +10,6 @@ public class HPDecision : Decision
 
     private bool CheckHealth(StateController controller)
     {
-        IHealth health = controller.healthComponent;
-        if (health != null)
-        {
-            // Debug.Log($"HPDecision: Current health = {health.CurrentHealth}, Escape threshold = {health.MaxHealth * 0.25f}");
-            return health.CurrentHealth <= (health.MaxHealth * 0.25f);
-        }
-
-        Debug.LogWarning("HPDecision: IHealth component not found.");
-        return false;
+        return controller.healthComponent.CurrentHealth <= (controller.healthComponent.MaxHealth * 0.25f);
     }
 }

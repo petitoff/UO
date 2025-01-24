@@ -10,15 +10,6 @@ public class ArrivedDecision : Decision
 
     private bool CheckIfArrived(StateController controller)
     {
-        if (controller.navMeshAgent.remainingDistance <= controller.navMeshAgent.stoppingDistance)
-        {
-            Debug.Log("ArrivedDecision: Agent dotar³ do waypointu.");
-            return true;
-        }
-
-        Debug.Log($"ArrivedDecision: Agent wci¹¿ w drodze. Pozosta³a odleg³oœæ = {controller.navMeshAgent.remainingDistance}");
-        return false;
+        return controller.navMeshAgent.remainingDistance <= controller.navMeshAgent.stoppingDistance;
     }
-
-
 }
